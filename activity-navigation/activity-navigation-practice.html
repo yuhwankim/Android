@@ -5,7 +5,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>index</title>
+<title>activity-navigation-practice</title>
 
 
 <style type="text/css">
@@ -328,95 +328,97 @@ kbd {
 
 <body>
 
-<h1 id="toc_0">안드로이드 프로그래밍 강의자료</h1>
+<style> 
+div.polaroid {
+    width: 200px;
+    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.2), 0 16px 30px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    margin-bottom: 0.5cm;
+}
+</style>
 
-<table>
-<thead>
-<tr>
-<th>주</th>
-<th>강의 내용</th>
-<th>실습</th>
-</tr>
-</thead>
+<h1 id="toc_0">Activity-Navigation 실습</h1>
 
-<tbody>
-<tr>
-<td>1주</td>
-<td><ul> <li> <a href="intro-android/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%EC%86%8C%EA%B0%9C.pdf">안드로이드 소개</a> <li> <a href="intro-android/install_dev_env.html">개발환경 설치</a> <li> <a href="intro-android/start-android-project.html">안드로이드 앱 시작하기</a> </ul></td>
-<td><a href="intro-android/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C_%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0_%EC%8B%A4%EC%8A%B5.html">안드로이드 시작하기 실습</a></td>
-</tr>
-<tr>
-<td>2주</td>
-<td><ul> <li><a href="android-project/android-project-basic.pdf">안드로이드 프로젝트 기본</a> <li> <a href="android-project/git_github.html">git/GitHub를 이용한 프로젝트 관리</a> </ul></td>
-<td><a href="android-project/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C_%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_%EA%B4%80%EB%A6%AC_%EC%8B%A4%EC%8A%B5.html">안드로이드 프로젝트 관리 실습</a></td>
-</tr>
-<tr>
-<td>3주</td>
-<td><ul> <li> <a href="android-ui/ui-design-overview.pdf">UI 설계 개요</a> <li> <a href="android-ui/widget.pdf">위젯</a> <li> <a href="android-ui/layouts.pdf">레이아웃</a> <li> <a href="android-ui/margin-padding-gravity.pdf">Marging/Padding/Gravity</a> <li><a href="android-ui/event-handling.pdf">이벤트 처리</a></td>
-<td><a href="android-ui/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C_UI_%EC%8B%A4%EC%8A%B5.html">안드로이드 UI 실습</a></td>
-</tr>
-<tr>
-<td>4주</td>
-<td><ul> <li> <a href="adapter-view/adapterview-overview.pdf">어댑터뷰 개요</a> <li><a href="adapter-view/listview.pdf">리스트뷰</a> <li><a href="adapter-view/gridview.pdf">그리드뷰</a> <li><a href="adapter-view/custom-adapterview.pdf">커스텀 어댑터뷰</a></td>
-<td><a href="adapter-view/adapterview-practice.html">어댑터 뷰 실습</a></td>
-</tr>
-<tr>
-<td>5주</td>
-<td><ul> <li> <a href="activity-navigation/activity.pdf">액티비티</a> <li><a href="activity-navigation/intent.pdf">인텐트</a> <li><a href="activity-navigation/actionbar.pdf">액션바</a></td>
-<td><a href="activity_navigation/activity-navigation-practice.html">실습5</a></td>
-</tr>
-<tr>
-<td>6주</td>
-<td><ul> <li> 프레그먼트 기본 <li> 동적 프래그먼트 <li> 화면방향과 프래그먼트</td>
-<td>실습6</td>
-</tr>
-<tr>
-<td>7주</td>
-<td><ul> <li> 컨텐츠 프로바이더 <li> 파일 실습</td>
-<td>실습7</td>
-</tr>
-<tr>
-<td>8주</td>
-<td>중간고사</td>
-<td></td>
-</tr>
-<tr>
-<td>9주</td>
-<td><ul> <li> 프레퍼런스 <li> SQLite</td>
-<td>실습8</td>
-</tr>
-<tr>
-<td>10주</td>
-<td><ul> <li> 서비스 <li> 멀티미디어</td>
-<td>실습9</td>
-</tr>
-<tr>
-<td>11주</td>
-<td><ul> <li> 위치기반 서비스 <li> 지도</td>
-<td>실습10</td>
-</tr>
-<tr>
-<td>12주</td>
-<td><ul> <li> 애니메이션 <li> 그래픽 <li> 스레드</td>
-<td>실습11</td>
-</tr>
-<tr>
-<td>13주</td>
-<td><ul> <li> 브로드캐스트 리시버 <li> 배터리 상태 표시 <li> SMS</td>
-<td>실습12</td>
-</tr>
-<tr>
-<td>14주</td>
-<td>기말고사</td>
-<td></td>
-</tr>
-<tr>
-<td>15주</td>
-<td>텀 프로젝트 발표</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<h2 id="toc_1">1. 액티비티 라이프사이클 실습</h2>
+
+<h3 id="toc_2">실습 내용</h3>
+
+<ul>
+<li>FirstActivity와 SecondActivity를 만든다.</li>
+<li>FirstActivity에 버튼을 하나 만들고 버튼을 누르면 SecondActivity를 시작한다.</li>
+<li>두 액티비티 모두 라이프 사이클 메소드를 오버라이드하고 각 메소드에서 Log.i 를 이용하여 해당 메소드 호출되었음을 알 수 있도록 로그를 출력한다.</li>
+<li>각 액티비티 전환 시 호출되는 라이프 사이클 콜백을 확인한다.</li>
+</ul>
+
+<h3 id="toc_3">실습 확인</h3>
+
+<ul>
+<li>FirstActivity에서 버튼 눌러서 SecondActivity를 생성한 후 백(Back) 버튼을 누른다. 이 때 표시된 로그를 Android Monitor에서 확인한다.</li>
+</ul>
+
+<h3 id="toc_4">로그 출력 방법</h3>
+
+<div><pre><code class="language-none">Log.i(“tag string”, “message”);</code></pre></div>
+
+<p>실제 사용 예</p>
+
+<div><pre><code class="language-java">    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_first);
+        Log.i(TAG, getLocalClassName() + &quot;.onCreate&quot;);
+    }</code></pre></div>
+
+<ul>
+<li>로그에 대한 한글 블로그: http://m.blog.naver.com/eominsuk55/220229760263</li>
+</ul>
+
+<h3 id="toc_5">참고 소스:</h3>
+
+<p><a href="https://github.com/kwanulee/Android/tree/master/examples/ActivityIntent">https://github.com/kwanulee/Android/tree/master/examples/ActivityIntent</a></p>
+
+<h2 id="toc_6">2. 액티비티간 정보 교환하기 실습</h2>
+
+<h3 id="toc_7">실습 내용</h3>
+
+<ul>
+<li>ThirdActivity 를 만든다.</li>
+<li>SecondActivity에 버튼을 하나 만들고 버튼을 누르면 ThirdActivity를 시작한다.</li>
+<li>이때 SecondActivity는 intent에 putExtra를 이용하여 문자열을 추가</li>
+<li>ThirdActivity는 onCreate에서 getIntent()로 전달 받은 인텐트를 가져온다.</li>
+<li>받은 인텐트에서 getStringExtra를 이용하여 문자열을 받아 EditText에 표시한다.</li>
+<li>ThirdActivity의 onBackPressed에서 인텐트를 만들어서 setResult 호출</li>
+<li>이때 인텐트에 putExtra를 이용하여 EditText에 입력된 문자열을 포함시킨다.</li>
+<li>SecondActivity의 onActivityResult에서 전달 받은 인텐트에 포함된 문자열을 Log.i 로 보인다.</li>
+</ul>
+
+<h3 id="toc_8">실습 확인</h3>
+
+<ul>
+<li>Android Monitor에 출력된 로그값을 확인하여 ThirdActivity에서 전달한 문자열을 확인한다. </li>
+</ul>
+
+<h3 id="toc_9">참고 소스:</h3>
+
+<p><a href="https://github.com/kwanulee/Android/tree/master/examples/ActivityIntent">https://github.com/kwanulee/Android/tree/master/examples/ActivityIntent</a></p>
+
+<h2 id="toc_10">3. 액션바 실습</h2>
+
+<h3 id="toc_11">실습 내용</h3>
+
+<ul>
+<li>앞에서 만든 SecondActivity에 위로 가기 버튼과 옵션 메뉴를 정의한다.</li>
+<li>옵선 메뉴의 아이템에는 ThirdActivity가 있다.</li>
+</ul>
+
+<h3 id="toc_12">실습 확인</h3>
+
+<ul>
+<li>FirstActivity에서 버튼을 눌러 SecondActivity로 전환 -&gt; SecondActivity에서 옵션메뉴인 ThirdActivity를 선택 -&gt; ThridActivity 전환 -&gt; 백버튼을 눌러 다시 SecondActivity로 전환 -&gt; 액션바의 Up 버튼을 눌러 FirstActivity로 전환</li>
+</ul>
+
+<h3 id="toc_13">참고 소스:</h3>
+
+<p><a href="https://github.com/kwanulee/Android/tree/master/examples/NavigationUI">https://github.com/kwanulee/Android/tree/master/examples/NavigationUI</a></p>
 
 
 
