@@ -6,7 +6,7 @@
 2주	| <ul> <li>[안드로이드 프로젝트 기본](android-project/android-project-basic.pdf) <li> [git/GitHub를 이용한 프로젝트 관리](android-project/git_github.html) </ul> | [안드로이드 프로젝트 관리 실습](android-project/안드로이드_프로젝트_관리_실습.html)
 	3주 | <ul> <li> [UI 설계 개요](android-ui/ui-design-overview.pdf) <li> [위젯](android-ui/widget.pdf) <li> [레이아웃](android-ui/layouts.pdf) <li> [Marging/Padding/Gravity](android-ui/margin-padding-gravity.pdf) <li>[이벤트 처리](android-ui/event-handling.pdf) | [안드로이드 UI 실습](android-ui/안드로이드_UI_실습.html)
 4주 | <ul> <li> [어댑터뷰 개요](adapter-view/adapterview-overview.pdf) <li>[리스트뷰](adapter-view/listview.pdf) <li>[그리드뷰](adapter-view/gridview.pdf) <li>[커스텀 어댑터뷰](adapter-view/custom-adapterview.pdf) | [어댑터 뷰 실습](adapter-view/adapterview-practice.html)
-5주 | <ul> <li> [액티비티](activity-navigation/activity.pdf) <li>[인텐트](activity-navigation/intent.pdf) <li>[액션바](activity-navigation/actionbar.pdf) | [실습5](activity_navigation/activity-navigation-practice.html)
+5주 | <ul> <li> [액티비티](activity-navigation/activity.pdf) <li>[인텐트](activity-navigation/intent.pdf) <li>[액션바](activity-navigation/actionbar.pdf) | [실습5](activity-navigation/activity-navigation-practice.html)
 6주 | <ul> <li> 프레그먼트 기본 <li> 동적 프래그먼트 <li> 화면방향과 프래그먼트 | 실습6
 7주 | <ul> <li> 컨텐츠 프로바이더 <li> 파일 실습 | 실습7
 8주 | 중간고사
