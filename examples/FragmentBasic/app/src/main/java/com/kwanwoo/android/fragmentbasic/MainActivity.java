@@ -14,32 +14,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        final FragmentTransaction fragmentTransaction =
-//                getSupportFragmentManager().beginTransaction();
-//
-//        fragmentTransaction.replace(R.id.container, new SecondFragment());
-//
-//        fragmentTransaction.addToBackStack(null);
-//
-//        fragmentTransaction.commit();
-    }
+        final FragmentTransaction fragmentTransaction =
+                getSupportFragmentManager().beginTransaction();
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
+        fragmentTransaction.replace(R.id.container, new SecondFragment());
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.frag_switch:
-                Intent intent = new Intent(this, FragSwitchActivity.class);
-                startActivity(intent);
+        fragmentTransaction.addToBackStack(null);
 
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+        fragmentTransaction.commit();
     }
 }

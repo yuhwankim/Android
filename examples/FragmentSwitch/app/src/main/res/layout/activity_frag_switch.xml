@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.kwanwoo.android.fragmentbasic.FragSwitchActivity">
+    tools:context="com.kwanwoo.android.fragmentswitch.FragSwitchActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,3 +29,4 @@
         android:id="@+id/fragment">
     </FrameLayout>
 </LinearLayout>
+
