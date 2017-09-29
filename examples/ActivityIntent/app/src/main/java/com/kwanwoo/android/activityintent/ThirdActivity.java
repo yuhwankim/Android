@@ -1,10 +1,8 @@
-package com.jyheo.activityintent;
+package com.kwanwoo.android.activityintent;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 
 public class ThirdActivity extends AppCompatActivity {

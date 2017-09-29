@@ -1,4 +1,4 @@
-package com.jyheo.activityintent;
+package com.kwanwoo.android.activityintent;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 
 public class FirstActivity extends AppCompatActivity {
-
     private static final String TAG = "ActivityLifeCycle";
     private static final int request_code = 0;
 
@@ -47,16 +46,6 @@ public class FirstActivity extends AppCompatActivity {
             }
         });
     }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode != request_code || data == null)
-            return;
-        String msg = data.getStringExtra("ResultString");
-        Log.i(TAG, "ActivityResult:" + resultCode + " " + msg);
-    }
-
     @Override
     protected void onStart() {
         super.onStart();

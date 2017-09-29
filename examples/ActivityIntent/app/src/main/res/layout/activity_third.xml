@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.jyheo.activityintent.ThirdActivity">
+    tools:context="com.kwanwoo.android.activityintent.ThirdActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -15,15 +15,15 @@
         android:text="@string/message_bundled_in_intent"
         android:id="@+id/textView2"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentLeft="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editText"
         android:layout_below="@+id/textView2"
-        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:inputType="text"
-        android:layout_alignEnd="@+id/textView2" />
+        android:layout_alignRight="@+id/textView2" />
 
 </RelativeLayout>

@@ -1,7 +1,7 @@
-package com.jyheo.activityintent;
+package com.kwanwoo.android.activityintent;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 public class SecondActivity extends AppCompatActivity {
