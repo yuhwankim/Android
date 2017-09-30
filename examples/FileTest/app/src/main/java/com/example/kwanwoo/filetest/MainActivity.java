@@ -39,10 +39,10 @@ public class MainActivity extends AppCompatActivity {
         result = (TextView) findViewById(R.id.textView1);
         Button iSave = (Button) findViewById(R.id.button1);
         Button iLoad = (Button) findViewById(R.id.button2);
-        Button eSave = (Button) findViewById(R.id.button3);
-        Button eLoad = (Button) findViewById(R.id.button4);
-        Button epSave = (Button) findViewById(R.id.button5);
-        Button epLoad = (Button) findViewById(R.id.button6);
+        Button rawLoad = (Button) findViewById(R.id.button3);
+        Button eSave = (Button) findViewById(R.id.button4);
+        Button eLoad = (Button) findViewById(R.id.button5);
+
 
         iSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,6 +83,30 @@ public class MainActivity extends AppCompatActivity {
                     buffer.close();
                 } catch (FileNotFoundException e) {
                     result.setText("File Not Found");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        rawLoad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    // 파일에서 읽은 데이터를 저장하기 위해서 만든 변수
+                    StringBuffer data = new StringBuffer();
+
+                    InputStream is = getResources().openRawResource(R.raw.description);
+                    BufferedReader buffer = new BufferedReader
+                            (new InputStreamReader(is));
+
+                    String str = buffer.readLine(); // 파일에서 한줄을 읽어옴
+                    while (str != null) {
+                        data.append(str + "\n");
+                        str = buffer.readLine();
+                    }
+                    result.setText(data);
+                    buffer.close();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -146,31 +170,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        epSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!isExternalStorageWritable())
-                    return;     // 외부메모리를 사용하지 못하면 끝냄
-                requestPermission();
 
-                Log.i(TAG, getLocalClassName() + ":file save start");
-                try {
-                    File f = new File(getExternalFilesDir(null), "demofile.jpg"); // 경로, 파일명
-                    OutputStream os = new FileOutputStream(f);
-                    InputStream is = getResources().openRawResource(R.raw.ballons);
-                    byte[] data = new byte[is.available()];
-                    is.read(data);
-                    os.write(data);
-                    is.close();
-                    os.close();
-
-                    result.setText("저장완료");
-                    Log.i(TAG, getLocalClassName() + ":file saved");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
     }
 
 

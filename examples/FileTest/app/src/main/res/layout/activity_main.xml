@@ -30,22 +30,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button3"
-        android:text="Saving to External Public Storage"/>
+        android:text="Loading from the file in the res/raw folder"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button4"
-        android:text="Loading from Public External Storage"/>
+        android:text="Saving to External Public Storage"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button5"
-        android:text="Saving to External Storage for the App"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button6"
-        android:text="Loading from External Storage for the App"/>
+        android:text="Loading from Public External Storage"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
