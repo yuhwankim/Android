@@ -5,7 +5,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>index</title>
+<title>sharedpreferences</title>
 
 
 <style type="text/css">
@@ -240,136 +240,142 @@ pre[class*="language-"] {
 
 <body>
 
-<h1 id="toc_0">안드로이드 프로그래밍 강의자료</h1>
-
-<h2 id="toc_1">1주 - 안드로이드 개요</h2>
+<h1 id="toc_0">설정(SharedPreferences)</h1>
 
 <ul>
-<li><a href="intro-android/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%EC%86%8C%EA%B0%9C.pdf">안드로이드 소개</a> </li>
-<li><a href="intro-android/install_dev_env.html">개발환경 설치</a> </li>
-<li><a href="intro-android/start-android-project.html">안드로이드 앱 시작하기</a><br></li>
-<li><a href="intro-android/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C_%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0_%EC%8B%A4%EC%8A%B5.html">[실습1]</a></li>
-</ul>
-
-<h2 id="toc_2">2주 - 프로젝트 관리</h2>
+<li><strong>프로그램의 설정 정보</strong> (사용자의 옵션 선택 사항 이나 프로그램의 구성 정보)를 영구적으로 저장하는 용도로 사용</li>
+<li>XML 포맷의 텍스트 파일에 <strong>키-값 세트</strong>로 정보를 저장.</li>
+<li><a href="https://developer.android.com/reference/android/content/SharedPreferences.html?hl=ko">SharedPreferences</a> 클래스
 
 <ul>
-<li><a href="android-project/android-project-basic.pdf">안드로이드 프로젝트 기본</a> </li>
-<li><a href="android-project/git_github.html">git/GitHub를 이용한 프로젝트 관리</a></li>
-<li><a href="android-project/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C_%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_%EA%B4%80%EB%A6%AC_%EC%8B%A4%EC%8A%B5.html">[실습2]</a></li>
+<li>프레프런스의 데이터를 관리하는 클래스</li>
+<li>응용 프로그램 내의 액티비티 간에 공유하며, 한쪽 액티비티에서 수정 시 다른 액티비티에서도 수정된 값을 읽을 수 있다.</li>
+<li>응용 프로그램의 고유한 정보이므로 외부에서는 읽을 수 없다.</li>
+</ul></li>
 </ul>
 
-<h2 id="toc_3">3주 - 안드로이드 UI</h2>
+<h2 id="toc_1">SharedPreferences 객체 얻기</h2>
 
 <ul>
-<li><a href="android-ui/ui-design-overview.pdf">UI 설계 개요</a> </li>
-<li><a href="android-ui/widget.pdf">위젯</a> </li>
-<li><a href="android-ui/layouts.pdf">레이아웃</a></li>
-<li><a href="android-ui/margin-padding-gravity.pdf">Marging/Padding/Gravity</a> </li>
-<li><a href="android-ui/event-handling.pdf">이벤트 처리</a> </li>
-<li><a href="android-ui/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C_UI_%EC%8B%A4%EC%8A%B5.html">[실습3]</a></li>
-</ul>
-
-<h2 id="toc_4">4주 - 어댑터 뷰</h2>
+<li><p>SharedPreferences 객체를 얻는 2 가지 방법</p>
 
 <ul>
-<li><a href="adapter-view/adapterview-overview.pdf">어댑터뷰 개요</a></li>
-<li><a href="adapter-view/listview.pdf">리스트뷰</a> </li>
-<li><a href="adapter-view/gridview.pdf">그리드뷰</a> </li>
-<li><a href="adapter-view/custom-adapterview.pdf">커스텀 어댑터뷰</a> </li>
-<li><a href="adapter-view/adapterview-practice.html">[실습4]</a></li>
-</ul>
-
-<h2 id="toc_5">5주 - 액티비티와 네비게이션</h2>
+<li><a href="https://developer.android.com/reference/android/content/Context.html?hl=ko#getSharedPreferences(java.lang.String,%20int)">public SharedPreferences getSharedPreferences (String name, int mode)</a>
 
 <ul>
-<li><a href="activity-navigation/activity.pdf">액티비티</a> </li>
-<li><a href="activity-navigation/intent.pdf">인텐트</a> </li>
-<li><a href="activity-navigation/actionbar.pdf">액션바</a> </li>
-<li><a href="activity-navigation/activity-navigation-practice.html">[실습5]</a></li>
-</ul>
-
-<h2 id="toc_6">6주 - 프래그먼트</h2>
+<li>name : 프레프런스를 저장할 XML 파일의 이름이다.</li>
+<li>mode : 파일의 공유 모드
 
 <ul>
-<li><a href="fragment/fragment-basics.pdf">프그먼트 기본</a> </li>
-<li><a href="fragment/fragment-replace.pdf">동적 프래그먼트</a></li>
-<li><a href="fragment/fragment-example.pdf">화면방향과 프래그먼트</a> </li>
-<li><a href="fragment/fragment-practice.html">[실습6]</a></li>
-</ul>
-
-<h2 id="toc_7">7주</h2>
+<li>MODE_PRIVATE: 호출하는 액티비티 내에서만 읽기 쓰기가 가능</li>
+</ul></li>
+</ul></li>
+<li><p><a href="https://developer.android.com/reference/android/app/Activity.html?hl=ko#getPreferences(int)">public SharedPreferences getPreferences (int mode)</a></p>
 
 <ul>
-<li><a href="data-management/sharedpreferences.html">설정</a> </li>
-<li><a href="data-management/file.html">파일</a> </li>
-<li>[실습7]</li>
+<li>Activity 클래스에 정의된 메소드 이므로, Activity 인스턴스를 통해 접근 가능</li>
+<li>생성한 액티비티 전용이므로 같은 패키지의 다른 액티비티는 읽을 수 없다.</li>
+<li>액티비티와 동일한 이름의 XML 파일 생성</li>
 </ul>
 
-<h2 id="toc_8">8주</h2>
+<div><pre><code class="language-java">SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);</code></pre></div></li>
+</ul></li>
+</ul>
+
+<h2 id="toc_2">프레퍼런스의 데이터 읽기</h2>
 
 <ul>
-<li>중간고사</li>
-</ul>
-
-<h2 id="toc_9">9주</h2>
+<li>프레퍼런스에 저장된 여러 타입의 정보를 SharedPreferences 객체의 다음 메서드를 이용하여 읽을 수 있다
 
 <ul>
-<li>SQLite </li>
-<li>컨텐츠 프로바이더 </li>
-<li> 실습8</li>
-</ul>
-
-<h2 id="toc_10">10주</h2>
+<li><a href="https://developer.android.com/reference/android/content/SharedPreferences.html?hl=ko#getInt(java.lang.String,%20int)">int getInt (String key, int defValue)</a></li>
+<li><a href="https://developer.android.com/reference/android/content/SharedPreferences.html?hl=ko#getString(java.lang.String,%20java.lang.String)">String getString (String key, String defValue)</a></li>
+<li><a href="https://developer.android.com/reference/android/content/SharedPreferences.html?hl=ko#getBoolean(java.lang.String,%20boolean)">boolean getBoolean (String key, boolean defValue)</a><br>
 
 <ul>
-<li>서비스 </li>
-<li>멀티미디어 </li>
-<li> 실습9</li>
+<li><em>key</em> 인수 : 데이터의 이름 지정</li>
+<li><em>defValue</em> 인수 : 값이 없을 때 적용할 디폴트 지정.</li>
+</ul></li>
+</ul></li>
 </ul>
 
-<h2 id="toc_11">11주</h2>
+<h2 id="toc_3">프레퍼런스에 데이터 저장하기</h2>
 
 <ul>
-<li>위치기반 서비스 </li>
-<li>지도 </li>
-<li> 실습10</li>
-</ul>
-
-<h2 id="toc_12">12주</h2>
+<li>프레프런스는 키와 값의 쌍으로 데이터를 저장
 
 <ul>
-<li>애니메이션 </li>
-<li>그래픽 </li>
-<li>스레드</li>
-<li> 실습11</li>
-</ul>
-
-<h2 id="toc_13">13주</h2>
+<li>키는 정보의 이름이며 값은 정보의 실제값</li>
+</ul></li>
+<li><a href="https://developer.android.com/reference/android/content/SharedPreferences.Editor.html?hl=ko">SharedPreferences.Editor</a> 이용하여 프레프런스에 값을 저장
 
 <ul>
-<li>브로드캐스트 리시버</li>
-<li>배터리 상태 표시 </li>
-<li> SMS </li>
-<li> 실습12</li>
-</ul>
-
-<h2 id="toc_14">14주</h2>
+<li>데이터 저장 시 <a href="https://developer.android.com/reference/android/content/SharedPreferences.html?hl=ko">SharedPreferences</a>의 <strong><a href="https://developer.android.com/reference/android/content/SharedPreferences.html?hl=ko#edit()">edit()</a> 메서드를 호출하여 <a href="https://developer.android.com/reference/android/content/SharedPreferences.Editor.html?hl=ko">SharedPreferences.Editor</a> 객체를 먼저 얻음.</strong></li>
+<li><strong>SharedPreferences.Editor</strong> 객체에는 값을 저장하고 관리하는 메서드가 제공됨
 
 <ul>
-<li>기말고사</li>
+<li>SharedPreferences.Editor putInt(String key, int value)</li>
+<li>SharedPreferences.Editor putBoolean(String key, int value)</li>
+<li>SharedPreferences.Editor putString(String key, String value)</li>
+<li>SharedPreferences.Editor remove(String key)</li>
+<li>SharedPreferences.Editor clear()</li>
+<li>Boolean commit()</li>
+</ul></li>
+<li>Editor는 모든 변경을 모아 두었다가 <strong>commit() 메소드를 통해 한꺼번에 적용</strong></li>
+</ul></li>
 </ul>
 
-<h2 id="toc_15">15주</h2>
+<h2 id="toc_4">SharedPreferences Example</h2>
 
-<ul>
-<li>텀 프로젝트 발표</li>
-</ul>
+<div><pre><code class="language-java">public class MainActivity extends AppCompatActivity {
+*   public static final String  PREFERENCES_GROUP = &quot;MyPreference&quot;;
+    public static final String  PREFERENCES_ATTR = &quot;TextInput&quot;;
+*   SharedPreferences   setting;
+
+    public void onCreate(Bundle savedInstanceState) {
+        ... 생략 ...
+*       setting = getSharedPreferences(PREFERENCES_GROUP, MODE_PRIVATE);
+        final EditText textInput = (EditText) findViewById(R.id.textInput1);
+*       textInput.setText(retrieveText());
+
+        Button btn = (Button) findViewById(R.id.button1);
+        btn.setOnClickListener( new View.OnClickListener() {
+            public void onClick(View v) {
+                String name = textInput. getText().toString();
+*               saveText(name);
+            }    
+        });
+    }
+
+    private String retrieveText() {
+        String initText=&quot;&quot;;
+        if (setting.contains(PREFERENCES_ATTR)) {
+*           initText = setting.getString(PREFERENCES_ATTR, &quot;&quot;);
+        }
+        return initText;
+    }
+
+    private void saveText(String text) {
+*       SharedPreferences.Editor editor = setting.edit();
+*       editor.putString(PREFERENCES_ATTR, text);
+*       editor.commit();
+    }
+}</code></pre></div>
+
+<p><a href="https://github.com/kwanu70/AndroidExamples/blob/master/chap7/SharedPreferenceTest/app/src/main/java/com/example/kwanwoo/sharedpreferencetest/MainActivity.java">https://github.com/kwanu70/AndroidExamples/blob/master/chap7/SharedPreferenceTest/app/src/main/java/com/example/kwanwoo/sharedpreferencetest/MainActivity.java</a></p>
 
 
 
 <script type="text/javascript">
 var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
+</script>
+
+<script type="text/javascript">
+Prism.languages.clike={comment:[{pattern:/(^|[^\\])\/\*[\w\W]*?\*\//,lookbehind:!0},{pattern:/(^|[^\\:])\/\/.*/,lookbehind:!0}],string:{pattern:/(["'])(\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,greedy:!0},"class-name":{pattern:/((?:\b(?:class|interface|extends|implements|trait|instanceof|new)\s+)|(?:catch\s+\())[a-z0-9_\.\\]+/i,lookbehind:!0,inside:{punctuation:/(\.|\\)/}},keyword:/\b(if|else|while|do|for|return|in|instanceof|function|new|try|throw|catch|finally|null|break|continue)\b/,"boolean":/\b(true|false)\b/,"function":/[a-z0-9_]+(?=\()/i,number:/\b-?(?:0x[\da-f]+|\d*\.?\d+(?:e[+-]?\d+)?)\b/i,operator:/--?|\+\+?|!=?=?|<=?|>=?|==?=?|&&?|\|\|?|\?|\*|\/|~|\^|%/,punctuation:/[{}[\];(),.:]/};
+</script>
+
+<script type="text/javascript">
+Prism.languages.java=Prism.languages.extend("clike",{keyword:/\b(abstract|continue|for|new|switch|assert|default|goto|package|synchronized|boolean|do|if|private|this|break|double|implements|protected|throw|byte|else|import|public|throws|case|enum|instanceof|return|transient|catch|extends|int|short|try|char|final|interface|static|void|class|finally|long|strictfp|volatile|const|float|native|super|while)\b/,number:/\b0b[01]+\b|\b0x[\da-f]*\.?[\da-fp\-]+\b|\b\d*\.?\d+(?:e[+-]?\d+)?[df]?\b/i,operator:{pattern:/(^|[^.])(?:\+[+=]?|-[-=]?|!=?|<<?=?|>>?>?=?|==?|&[&=]?|\|[|=]?|\*=?|\/=?|%=?|\^=?|[?:~])/m,lookbehind:!0}}),Prism.languages.insertBefore("java","function",{annotation:{alias:"punctuation",pattern:/(^|[^.])@\w+/,lookbehind:!0}});
 </script>
 
 <script type="text/x-mathjax-config">
