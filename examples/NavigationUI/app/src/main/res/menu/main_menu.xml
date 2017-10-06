@@ -5,7 +5,7 @@
         android:id="@+id/quick_action1"
         android:title="Quick1"
         android:icon="@drawable/ic_android_black_24dp"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom|withText"/>
     <item
         android:id="@+id/action_settings"
         android:title="@string/action_settings"
