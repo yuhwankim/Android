@@ -46,6 +46,16 @@ public class FirstActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode != request_code || data == null)
+            return;
+        String msg = data.getStringExtra("ResultString");
+        Log.i(TAG, "ActivityResult:" + resultCode + " " + msg);
+    }
+    
     @Override
     protected void onStart() {
         super.onStart();
