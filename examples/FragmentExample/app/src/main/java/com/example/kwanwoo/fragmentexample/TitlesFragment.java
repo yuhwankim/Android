@@ -39,7 +39,8 @@ public class TitlesFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 mCurCheckPosition = i;
-                ((OnTitleSelectedListener)getActivity()).onTitleSelected(i);
+                Activity activity = getActivity();
+                ((OnTitleSelectedListener)activity).onTitleSelected(i);
             }
         });
         lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
