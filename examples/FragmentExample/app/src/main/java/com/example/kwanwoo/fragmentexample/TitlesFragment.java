@@ -1,6 +1,7 @@
 package com.example.kwanwoo.fragmentexample;
 
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -51,7 +52,8 @@ public class TitlesFragment extends Fragment {
         if (savedInstanceState != null) {
             mCurCheckPosition = savedInstanceState.getInt("curChoice", -1);
             if (mCurCheckPosition >= 0) {
-                ((OnTitleSelectedListener) getActivity()).onTitleSelected(mCurCheckPosition);
+                Activity activity = getActivity(); // activity associated with the current fragment
+                ((OnTitleSelectedListener)activity).onTitleSelected(mCurCheckPosition);
 
                 ListView lv = (ListView) getView().findViewById(R.id.listview);
                 lv.setSelection(mCurCheckPosition);
