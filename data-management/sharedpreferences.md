@@ -2,7 +2,7 @@
 # 설정(SharedPreferences)
 
 * **프로그램의 설정 정보** (사용자의 옵션 선택 사항 이나 프로그램의 구성 정보)를 영구적으로 저장하는 용도로 사용
-* XML 포맷의 텍스트 파일에 **키-값 세트**로 정보를 저장.
+* XML 포맷의 텍스트 파일에 **키-값 세트**로 정보를 저장. 
 * [SharedPreferences](https://developer.android.com/reference/android/content/SharedPreferences.html?hl=ko) 클래스
     - 프레퍼런스의 데이터(**키-값 세트**)를 관리하는 클래스
     - 응용 프로그램 내의 액티비티 간에 공유하며, 한쪽 액티비티에서 수정 시 다른 액티비티에서도 수정된 값을 읽을 수 있다.
@@ -11,10 +11,11 @@
 
 ## SharedPreferences 객체 얻기
 * SharedPreferences 객체를 얻는 2 가지 방법
-    - [public SharedPreferences getSharedPreferences (String name, int mode)](https://developer.android.com/reference/android/content/Context.html?hl=ko#getSharedPreferences(java.lang.String,int))
+    - [public SharedPreferences getSharedPreferences (String name, int mode)](https://developer.android.com/reference/android/content/Context.html?hl=ko#getSharedPreferences(java.lang.String, int))
         + name : 프레퍼런스 데이터를 저장할 XML 파일의 이름이다.
         + mode : 파일의 공유 모드
-            - MODE_PRIVATE: 호출한 액티비티 내에서만 읽기 쓰기가 가능
+            - **MODE\_PRIVATE**: 생성된 XML 파일은 호출한 애플리케이션 내에서만 읽기 쓰기가 가능
+            - MODE\_WORLD\_READABLE, MODE\_WORLD\_WRITEABLE은 보안상 이유로 API level 17에서 deprecated됨
     - [public SharedPreferences getPreferences (int mode)](https://developer.android.com/reference/android/app/Activity.html?hl=ko#getPreferences(int))
     	+ Activity 클래스에 정의된 메소드 이므로, Activity 인스턴스를 통해 접근 가능
     	+ 생성한 액티비티 전용이므로 같은 패키지의 다른 액티비티는 읽을 수 없다.
@@ -49,42 +50,52 @@
 
 
 ## SharedPreferences Example
-
 ```java
 public class MainActivity extends AppCompatActivity {
-*   public static final String	PREFERENCES_GROUP = "MyPreference";
-    public static final String 	PREFERENCES_ATTR = "TextInput";
-*   SharedPreferences	setting;
+
+*   public static final String PREFERENCES_GROUP = "LoginInfo";
+    public static final String PREFERENCES_ATTR1 = "Username";
+    ... 생략 ...
+    SharedPreferences setting;
 
     public void onCreate(Bundle savedInstanceState) {
-        ... 생략 ...
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
 *       setting = getSharedPreferences(PREFERENCES_GROUP, MODE_PRIVATE);
-        final EditText textInput = (EditText) findViewById(R.id.textInput1);
-*       textInput.setText(retrieveText());
+        final EditText textInput1 = (EditText) findViewById(R.id.textInput1);
+        ... 생략 ...
+
+*       textInput1.setText(retrieveName());
+        ... 생략 ...
 
         Button btn = (Button) findViewById(R.id.button1);
-        btn.setOnClickListener( new View.OnClickListener() {
+        btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                String name = textInput. getText().toString();
-*               saveText(name);
-            }    
+                String name = textInput1.getText().toString();
+
+*               saveName(name);
+                
+                ... 생략 ...
+            }
         });
     }
 
-    private String retrieveText() {
-        String initText="";
-        if (setting.contains(PREFERENCES_ATTR)) {
-*           initText = setting.getString(PREFERENCES_ATTR, "");
+    private String retrieveName() {
+        String nameText = "";
+ *      if (setting.contains(PREFERENCES_ATTR1)) {
+ *          nameText = setting.getString(PREFERENCES_ATTR1, "");
         }
-        return initText;
+        return nameText;
     }
 
-    private void saveText(String text) {
+    private void saveName(String text) {
 *       SharedPreferences.Editor editor = setting.edit();
-*       editor.putString(PREFERENCES_ATTR, text);
+*       editor.putString(PREFERENCES_ATTR1, text);
 *       editor.commit();
     }
+    ... 생략 ...
 }
 ```
 
-[https://github.com/kwanu70/AndroidExamples/blob/master/chap7/SharedPreferenceTest/app/src/main/java/com/example/kwanwoo/sharedpreferencetest/MainActivity.java](https://github.com/kwanu70/AndroidExamples/blob/master/chap7/SharedPreferenceTest/app/src/main/java/com/example/kwanwoo/sharedpreferencetest/MainActivity.java)
+[https://github.com/kwanulee/Android/blob/master/examples/SharedPreference/app/src/main/java/com/example/kwanwoo/sharedpreferencetest/MainActivity.java](https://github.com/kwanulee/Android/blob/master/examples/SharedPreference/app/src/main/java/com/example/kwanwoo/sharedpreferencetest/MainActivity.java)

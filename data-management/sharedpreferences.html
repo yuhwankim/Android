@@ -260,14 +260,15 @@ pre[class*="language-"] {
 <li><p>SharedPreferences 객체를 얻는 2 가지 방법</p>
 
 <ul>
-<li><a href="https://developer.android.com/reference/android/content/Context.html?hl=ko#getSharedPreferences(java.lang.String,int)">public SharedPreferences getSharedPreferences (String name, int mode)</a>
+<li><a href="https://developer.android.com/reference/android/content/Context.html?hl=ko#getSharedPreferences(java.lang.String,%20int)">public SharedPreferences getSharedPreferences (String name, int mode)</a>
 
 <ul>
 <li>name : 프레퍼런스 데이터를 저장할 XML 파일의 이름이다.</li>
 <li>mode : 파일의 공유 모드
 
 <ul>
-<li>MODE_PRIVATE: 호출한 액티비티 내에서만 읽기 쓰기가 가능</li>
+<li><strong>MODE_PRIVATE</strong>: 생성된 XML 파일은 호출한 애플리케이션 내에서만 읽기 쓰기가 가능</li>
+<li>MODE_WORLD_READABLE, MODE_WORLD_WRITEABLE은 보안상 이유로 API level 17에서 deprecated됨</li>
 </ul></li>
 </ul></li>
 <li><p><a href="https://developer.android.com/reference/android/app/Activity.html?hl=ko#getPreferences(int)">public SharedPreferences getPreferences (int mode)</a></p>
@@ -328,41 +329,52 @@ pre[class*="language-"] {
 <h2 id="toc_4">SharedPreferences Example</h2>
 
 <div><pre><code class="language-java">public class MainActivity extends AppCompatActivity {
-*   public static final String  PREFERENCES_GROUP = &quot;MyPreference&quot;;
-    public static final String  PREFERENCES_ATTR = &quot;TextInput&quot;;
-*   SharedPreferences   setting;
+
+*   public static final String PREFERENCES_GROUP = &quot;LoginInfo&quot;;
+    public static final String PREFERENCES_ATTR1 = &quot;Username&quot;;
+    ... 생략 ...
+    SharedPreferences setting;
 
     public void onCreate(Bundle savedInstanceState) {
-        ... 생략 ...
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
 *       setting = getSharedPreferences(PREFERENCES_GROUP, MODE_PRIVATE);
-        final EditText textInput = (EditText) findViewById(R.id.textInput1);
-*       textInput.setText(retrieveText());
+        final EditText textInput1 = (EditText) findViewById(R.id.textInput1);
+        ... 생략 ...
+
+*       textInput1.setText(retrieveName());
+        ... 생략 ...
 
         Button btn = (Button) findViewById(R.id.button1);
-        btn.setOnClickListener( new View.OnClickListener() {
+        btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                String name = textInput. getText().toString();
-*               saveText(name);
-            }    
+                String name = textInput1.getText().toString();
+
+*               saveName(name);
+                
+                ... 생략 ...
+            }
         });
     }
 
-    private String retrieveText() {
-        String initText=&quot;&quot;;
-        if (setting.contains(PREFERENCES_ATTR)) {
-*           initText = setting.getString(PREFERENCES_ATTR, &quot;&quot;);
+    private String retrieveName() {
+        String nameText = &quot;&quot;;
+ *      if (setting.contains(PREFERENCES_ATTR1)) {
+ *          nameText = setting.getString(PREFERENCES_ATTR1, &quot;&quot;);
         }
-        return initText;
+        return nameText;
     }
 
-    private void saveText(String text) {
+    private void saveName(String text) {
 *       SharedPreferences.Editor editor = setting.edit();
-*       editor.putString(PREFERENCES_ATTR, text);
+*       editor.putString(PREFERENCES_ATTR1, text);
 *       editor.commit();
     }
+    ... 생략 ...
 }</code></pre></div>
 
-<p><a href="https://github.com/kwanu70/AndroidExamples/blob/master/chap7/SharedPreferenceTest/app/src/main/java/com/example/kwanwoo/sharedpreferencetest/MainActivity.java">https://github.com/kwanu70/AndroidExamples/blob/master/chap7/SharedPreferenceTest/app/src/main/java/com/example/kwanwoo/sharedpreferencetest/MainActivity.java</a></p>
+<p><a href="https://github.com/kwanulee/Android/blob/master/examples/SharedPreference/app/src/main/java/com/example/kwanwoo/sharedpreferencetest/MainActivity.java">https://github.com/kwanulee/Android/blob/master/examples/SharedPreference/app/src/main/java/com/example/kwanwoo/sharedpreferencetest/MainActivity.java</a></p>
 
 
 
