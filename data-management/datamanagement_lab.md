@@ -27,8 +27,8 @@
 </menu>
 ```
 
-### 다. [프레퍼런스 실습]
-옵션 메뉴 아이템을 선택하면, 선택된 메뉴 아이템의 체크 상태를 true로 만들어서 체크 표시가 되도록 하고, 선택된 상태를 프레퍼런스에 저장한다. 또한 옵션메뉴가 생성될 때 (onCreateOptionMenu() 메소드), 프레퍼런스에 저장된 선택 상태에 따라서 메뉴 아이템의 체크 상태를 설정하라.
+## 1. 설정(SharedPreferences) 실습
+옵션 메뉴 아이템을 선택하면, 선택된 메뉴 아이템의 체크 상태를 true로 만들어서 체크 표시가 되도록 하고, 선택된 상태를 SharedPreferences에 저장한다. 또한 옵션메뉴가 생성될 때 (onCreateOptionMenu() 메소드), SharedPreferences에 저장된 선택 상태에 따라서 메뉴 아이템의 체크 상태를 설정하라.
 
 * [힌트]
     - MenuItem 객체의 체크상태 설정 방법: **setChecked(boolean)** 메소드 파라미터에 true/false. 값을 설정함에 따라 해당 객체의 체크상태가 설정됨
@@ -47,7 +47,7 @@
 * [결과 확인]
     - 옵선 메뉴 아이템 External Storage를 선택한 후에, 프로그램을 종류 후 다시 시작했을 때, External Storage 메뉴 아이템이 선택되어 있으면 됩니다.
 
-## 1. Internal Storage 실습
+## 2. Internal Storage 실습
 * 옵션 메뉴 아이템 중 *Internal Storage*가 선택된 상태에서
 * 메인 화면의 *EditText* 창에 임의의 타이틀 텍스트를 입력하고, **SAVE** 버튼을 누르면, 앱 내부의 지정된 위치 (**/data/data/패키지명/files/**)에 있는 여러분이 지정한 이름의 파일에 입력된 텍스트를 저장합니다. **단 저장 시, 파일에 입력된 내용을 덧붙이는 방식으로 저장합니다.**
 * **[Tool->Android->Android Device Monitor]**를 실행시켜서, *FileExplorer* 탭을 열어 해당 파일이 생성되었는 지 확인합니다. (주의 **API level 23** 이하의 디바이스에서 앱을 실행해야 합니다.)
@@ -58,7 +58,7 @@
 
 * 참조코드: https://github.com/kwanulee/Android/blob/master/examples/FileTest/app/src/main/java/com/example/kwanwoo/filetest/MainActivity.java#L122-L159
 
-## 2.  External Storage 실습
+## 3.  External Storage 실습
 * 옵션 메뉴 아이템 중 *External Storage*가 선택된 상태에서
 * 메인 화면의 *EditText* 창에 임의의 타이틀 텍스트를 입력하고, **SAVE** 버튼을 누르면, 외부저장소의 위치(**sdcard/**)에 있는 여러분이 지정한 이름의 파일에 입력된 텍스트를 저장합니다. 단 저장 시, 파일에 입력된 내용을 덧붙이는 방식으로 저장합니다.
 * **[Tool->Android->Android Device Monitor]**를 실행시켜서, **FileExplorer** 탭을 열어 해당 파일이 생성되었는 지 확인합니다.
