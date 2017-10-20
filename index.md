@@ -45,7 +45,7 @@
 ## 7주 
 - [설정](data-management/sharedpreferences.html) 
 - [파일](data-management/file.html) 
-- [실습7]
+- [[실습7]](data-management/datamanagement_lab.html)
 
 ## 8주 
 - 중간고사
