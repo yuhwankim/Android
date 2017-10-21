@@ -51,7 +51,7 @@
 - 중간고사
 
 ## 9주 
-- SQLite 
+- [SQLite](data-management/sqlite.html) 
 - 컨텐츠 프로바이더 
 -  실습8
 
