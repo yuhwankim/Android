@@ -64,10 +64,10 @@ public class MainActivity extends AppCompatActivity {
         Cursor cursor = mDbHelper.getAllDataBySQL();
 
         StringBuffer buffer = new StringBuffer();
-             while (cursor.moveToNext()) {
-                 buffer.append(cursor.getInt(0)+" \t");
-                 buffer.append(cursor.getString(1)+" \t");
-                 buffer.append(cursor.getString(2)+"\n");
+        while (cursor.moveToNext()) {
+            buffer.append(cursor.getInt(0)+" \t");
+            buffer.append(cursor.getString(1)+" \t");
+            buffer.append(cursor.getString(2)+"\n");
         }
         result.setText(buffer);
     }
@@ -77,8 +77,11 @@ public class MainActivity extends AppCompatActivity {
         Cursor cursor = mDbHelper.getAllDataByMethod();
 
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(getApplicationContext(),
-                R.layout.item, cursor, new String[]{"_id", "UserID", "Password"},
-                new int[]{R.id._ID, R.id.ID, R.id.PW}, 0);
+                R.layout.item, cursor, new String[]{
+                UserContract.Users._ID,
+                UserContract.Users.KEY_ACCOUNT,
+                UserContract.Users.KEY_PASSWORD},
+                new int[]{R.id._id, R.id.account, R.id.password}, 0);
 
         ListView lv = (ListView)findViewById(R.id.listview);
         lv.setAdapter(adapter);
@@ -94,8 +97,8 @@ public class MainActivity extends AppCompatActivity {
 //                                    password.getText().toString());
 
         long nOfRows = mDbHelper.updateDataByMethod(_id.getText().toString(),
-                                                    userid.getText().toString(),
-                                                    password.getText().toString());
+                userid.getText().toString(),
+                password.getText().toString());
         if (nOfRows >0)
             Toast.makeText(this,nOfRows+" Record Deleted", Toast.LENGTH_SHORT).show();
         else
@@ -127,3 +130,4 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this,"No Record Inserted", Toast.LENGTH_SHORT).show();
     }
 }
+
