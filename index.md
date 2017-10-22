@@ -52,7 +52,7 @@
 
 ## 9주 
 - [SQLite](data-management/sqlite.html) 
-- 컨텐츠 프로바이더 
+- [컨텐츠 프로바이더](data-management/content-provider.html) 
 -  실습8
 
 ##10주
