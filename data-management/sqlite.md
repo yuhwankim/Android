@@ -352,8 +352,8 @@ https://github.com/kwanulee/Android/blob/master/examples/SQLiteDBTest/app/src/ma
 	SimpleCursorAdapter (Context context,   
 	      int layout,     // 어댑터 뷰 항목 표현을 위한 레이아웃  
 	      Cursor c,       // 검색 결과를 가리키는 커서  
-	      String[] from,  // 표시할 테이블 속성  
-	      int[] to,       // 테이블 속성을 출력할 뷰 ID  
+	      String[] from,  // 검색 결과에서 표시할 테이블 열들  
+	      int[] to,       // 테이블 열의 값을 출력할 뷰 ID  
 	      int flags)      // 보통은 0  
 	```
 * 예제
@@ -367,11 +367,17 @@ https://github.com/kwanulee/Android/blob/master/examples/SQLiteDBTest/app/src/ma
 	        Cursor cursor = mDbHelper.getAllDataByMethod();
 	
 	        SimpleCursorAdapter adapter = new SimpleCursorAdapter(getApplicationContext(),
-	                R.layout.item, cursor, new String[]{
-	                                            UserContract.Users._ID,
-	                                            UserContract.Users.KEY_ACCOUNT,
-	                                            UserContract.Users.KEY_PASSWORD},
-	                new int[]{R.id._id, R.id.account, R.id.password}, 0);
+	                R.layout.item, // ListView의 항목 뷰 리소스
+	                cursor, 		// 검색결과 Cursor 객체
+	                new String[]{	// 검색 결과에서 표시할 테이블 열들
+	                             UserContract.Users._ID,
+	                             UserContract.Users.KEY_ACCOUNT,
+	                             UserContract.Users.KEY_PASSWORD},
+	                new int[]{		// 테이블 열의 값을 출력할 View ID
+	                			 R.id._id, 
+	                			 R.id.account, 
+	                			 R.id.password}, 
+	                0);
 	
 	        ListView lv = (ListView)findViewById(R.id.listview);
 	        lv.setAdapter(adapter);
