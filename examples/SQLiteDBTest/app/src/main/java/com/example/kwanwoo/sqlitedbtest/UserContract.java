@@ -15,13 +15,13 @@ public final class UserContract {
     /* Inner class that defines the table contents */
     public static class Users implements BaseColumns {
         public static final String TABLE_NAME="Users";
-        public static final String KEY_ACCOUNT = "Account";
-        public static final String KEY_PASSWORD = "Password";
+        public static final String KEY_NAME = "Name";
+        public static final String KEY_PHONE = "Phone";
 
         public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " (" +
                 _ID + " INTEGER PRIMARY KEY" + COMMA_SEP +
-                KEY_ACCOUNT + TEXT_TYPE + COMMA_SEP +
-                KEY_PASSWORD + TEXT_TYPE +  " )";
+                KEY_NAME + TEXT_TYPE + COMMA_SEP +
+                KEY_PHONE + TEXT_TYPE +  " )";
         public static final String DELETE_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
     }
 }

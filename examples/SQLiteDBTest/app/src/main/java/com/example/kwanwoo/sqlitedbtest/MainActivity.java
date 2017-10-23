@@ -5,6 +5,8 @@ import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -14,12 +16,21 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     final static String TAG="SQLITEDBTEST";
+
+    EditText mId;
+    EditText mName;
+    EditText mPhone;
+
     private DBHelper mDbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mId = (EditText)findViewById(R.id._id);
+        mName = (EditText)findViewById(R.id.edit_name);
+        mPhone = (EditText)findViewById(R.id.edit_phone);
 
         mDbHelper = new DBHelper(this);
 
@@ -28,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 insertRecord();
+                viewAllToListView();
             }
         });
 
@@ -36,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 deleteRecord();
+                viewAllToListView();
             }
         });
 
@@ -44,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 updateRecord();
+                viewAllToListView();
             }
         });
 
@@ -51,13 +65,14 @@ public class MainActivity extends AppCompatActivity {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                viewAllToTextView();
+             //   viewAllToTextView();
                 viewAllToListView();
 
             }
         });
-
+        viewAllToListView();
     }
+
     private void viewAllToTextView() {
         TextView result = (TextView)findViewById(R.id.result);
 
@@ -74,56 +89,60 @@ public class MainActivity extends AppCompatActivity {
 
     private void viewAllToListView() {
 
-        Cursor cursor = mDbHelper.getAllDataByMethod();
+        Cursor cursor = mDbHelper.getAllUsersByMethod();
 
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(getApplicationContext(),
                 R.layout.item, cursor, new String[]{
                 UserContract.Users._ID,
-                UserContract.Users.KEY_ACCOUNT,
-                UserContract.Users.KEY_PASSWORD},
+                UserContract.Users.KEY_NAME,
+                UserContract.Users.KEY_PHONE},
                 new int[]{R.id._id, R.id.account, R.id.password}, 0);
 
         ListView lv = (ListView)findViewById(R.id.listview);
         lv.setAdapter(adapter);
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Adapter adapter = adapterView.getAdapter();
+
+                mId.setText(((Cursor)adapter.getItem(i)).getString(0));
+                mName.setText(((Cursor)adapter.getItem(i)).getString(1));
+                mPhone.setText(((Cursor)adapter.getItem(i)).getString(2));
+            }
+        });
+        lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
     }
 
     private void updateRecord() {
         EditText _id = (EditText)findViewById(R.id._id);
-        EditText userid = (EditText)findViewById(R.id.userid);
-        EditText password = (EditText)findViewById(R.id.password);
+        EditText name = (EditText)findViewById(R.id.edit_name);
+        EditText phone = (EditText)findViewById(R.id.edit_phone);
 
-//        mDbHelper.updateDataBySQL(_id.getText().toString(),
-//                                    userid.getText().toString(),
-//                                    password.getText().toString());
-
-        long nOfRows = mDbHelper.updateDataByMethod(_id.getText().toString(),
-                userid.getText().toString(),
-                password.getText().toString());
+        long nOfRows = mDbHelper.updateUserByMethod(_id.getText().toString(),
+                name.getText().toString(),
+                phone.getText().toString());
         if (nOfRows >0)
-            Toast.makeText(this,nOfRows+" Record Deleted", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Record Updated", Toast.LENGTH_SHORT).show();
         else
-            Toast.makeText(this,"No Record Deleted", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"No Record Updated", Toast.LENGTH_SHORT).show();
     }
 
     private void deleteRecord() {
         EditText _id = (EditText)findViewById(R.id._id);
 
-        //mDbHelper.deleteDataBySQL(_id.getText().toString());
-
-        long nOfRows = mDbHelper.deleteDataByMethod(_id.getText().toString());
+        long nOfRows = mDbHelper.deleteUserByMethod(_id.getText().toString());
         if (nOfRows >0)
-            Toast.makeText(this,nOfRows+" Record Deleted", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Record Deleted", Toast.LENGTH_SHORT).show();
         else
             Toast.makeText(this,"No Record Deleted", Toast.LENGTH_SHORT).show();
     }
 
     private void insertRecord() {
-        EditText userID = (EditText)findViewById(R.id.userid);
-        EditText password = (EditText)findViewById(R.id.password);
+        EditText name = (EditText)findViewById(R.id.edit_name);
+        EditText phone = (EditText)findViewById(R.id.edit_phone);
 
-        //mDbHelper.insertDataBySQL(userID.getText().toString(),password.getText().toString());
-
-        long nOfRows = mDbHelper.insertDataByMethod(userID.getText().toString(),password.getText().toString());
+        long nOfRows = mDbHelper.insertUserByMethod(name.getText().toString(),phone.getText().toString());
         if (nOfRows >0)
             Toast.makeText(this,nOfRows+" Record Inserted", Toast.LENGTH_SHORT).show();
         else

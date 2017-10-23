@@ -28,16 +28,16 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void insertDataBySQL(String id, String password) {
+    public void insertUserBySQL(String name, String phone) {
         try {
             String sql = String.format (
                     "INSERT INTO %s (%s, %s, %s) VALUES (NULL, '%s', '%s')",
                     UserContract.Users.TABLE_NAME,
                     UserContract.Users._ID,
-                    UserContract.Users.KEY_ACCOUNT,
-                    UserContract.Users.KEY_PASSWORD,
-                    id,
-                    password);
+                    UserContract.Users.KEY_NAME,
+                    UserContract.Users.KEY_PHONE,
+                    name,
+                    phone);
 
             getWritableDatabase().execSQL(sql);
         } catch (SQLException e) {
@@ -50,7 +50,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return getReadableDatabase().rawQuery(sql,null);
     }
 
-    public void deleteDataBySQL(String _id) {
+    public void deleteUserBySQL(String _id) {
         try {
             String sql = String.format (
                     "DELETE FROM %s WHERE %s = %s",
@@ -63,13 +63,13 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public void updateDataBySQL(String _id, String userid, String password) {
+    public void updateUserBySQL(String _id, String name, String phone) {
         try {
             String sql = String.format (
                     "UPDATE  %s SET %s = '%s', %s = '%s' WHERE %s = %s",
                     UserContract.Users.TABLE_NAME,
-                    UserContract.Users.KEY_ACCOUNT, userid,
-                    UserContract.Users.KEY_PASSWORD, password,
+                    UserContract.Users.KEY_NAME, name,
+                    UserContract.Users.KEY_PHONE, phone,
                     UserContract.Users._ID, _id) ;
             getWritableDatabase().execSQL(sql);
         } catch (SQLException e) {
@@ -77,21 +77,21 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public long insertDataByMethod(String id, String password) {
+    public long insertUserByMethod(String name, String phone) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(UserContract.Users.KEY_ACCOUNT, id);
-        values.put(UserContract.Users.KEY_PASSWORD,password);
+        values.put(UserContract.Users.KEY_NAME, name);
+        values.put(UserContract.Users.KEY_PHONE,phone);
 
         return db.insert(UserContract.Users.TABLE_NAME,null,values);
     }
 
-    public Cursor getAllDataByMethod() {
+    public Cursor getAllUsersByMethod() {
         SQLiteDatabase db = getReadableDatabase();
         return db.query(UserContract.Users.TABLE_NAME,null,null,null,null,null,null);
     }
 
-    public long deleteDataByMethod(String _id) {
+    public long deleteUserByMethod(String _id) {
         SQLiteDatabase db = getWritableDatabase();
 
         String whereClause = UserContract.Users._ID +" = ?";
@@ -99,12 +99,12 @@ public class DBHelper extends SQLiteOpenHelper {
         return db.delete(UserContract.Users.TABLE_NAME, whereClause, whereArgs);
     }
 
-    public long updateDataByMethod(String _id, String userid, String password) {
+    public long updateUserByMethod(String _id, String name, String phone) {
         SQLiteDatabase db = getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(UserContract.Users.KEY_ACCOUNT, userid);
-        values.put(UserContract.Users.KEY_PASSWORD,password);
+        values.put(UserContract.Users.KEY_NAME, name);
+        values.put(UserContract.Users.KEY_PHONE,phone);
 
         String whereClause = UserContract.Users._ID +" = ?";
         String[] whereArgs ={_id};
