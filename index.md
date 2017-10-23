@@ -53,7 +53,7 @@
 ## 9주 
 - [SQLite](data-management/sqlite.html) 
 - [컨텐츠 프로바이더](data-management/content-provider.html) 
--  실습8
+-  [[실습8]](data-management/sqlite-content-provider-lab.html)
 
 ##10주
 - 서비스 
