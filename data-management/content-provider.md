@@ -210,7 +210,9 @@ https://github.com/kwanulee/Android/blob/master/examples/ContentResolverTest/app
 	        ListView lv = (ListView) findViewById(R.id.listview);
 	        lv.setAdapter(adapter);
 		```
+		
 		https://github.com/kwanulee/Android/blob/master/examples/ContentResolverTest/app/src/main/java/com/kwanwoo/android/contentresolvertest/MainActivity.java#L59-L77
+		
 ---		
 		
 ## 3. 콘텐츠 제공자에 데이터 삽입, 업데이트 및 삭제
