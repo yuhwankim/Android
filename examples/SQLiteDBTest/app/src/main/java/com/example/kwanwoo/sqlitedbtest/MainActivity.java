@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
     private void viewAllToTextView() {
         TextView result = (TextView)findViewById(R.id.result);
 
-        Cursor cursor = mDbHelper.getAllDataBySQL();
+        Cursor cursor = mDbHelper.getAllUsersBySQL();
 
         StringBuffer buffer = new StringBuffer();
         while (cursor.moveToNext()) {

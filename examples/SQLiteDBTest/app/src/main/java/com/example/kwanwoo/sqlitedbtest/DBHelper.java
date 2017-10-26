@@ -41,11 +41,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
             getWritableDatabase().execSQL(sql);
         } catch (SQLException e) {
-            Log.e(TAG,"Error in deleting recodes");
+            Log.e(TAG,"Error in inserting recodes");
         }
     }
 
-    public Cursor getAllDataBySQL() {
+    public Cursor getAllUsersBySQL() {
         String sql = "Select * FROM " + UserContract.Users.TABLE_NAME;
         return getReadableDatabase().rawQuery(sql,null);
     }
