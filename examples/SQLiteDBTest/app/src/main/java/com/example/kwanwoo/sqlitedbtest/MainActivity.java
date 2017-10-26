@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                 UserContract.Users._ID,
                 UserContract.Users.KEY_NAME,
                 UserContract.Users.KEY_PHONE},
-                new int[]{R.id._id, R.id.account, R.id.password}, 0);
+                new int[]{R.id._id, R.id.name, R.id.phone}, 0);
 
         ListView lv = (ListView)findViewById(R.id.listview);
         lv.setAdapter(adapter);
