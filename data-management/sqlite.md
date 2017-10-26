@@ -159,57 +159,55 @@ https://github.com/kwanulee/Android/blob/master/examples/SQLiteDBTest/app/src/ma
 * 예제 코드 (INSERT)
 
 	```java
-    public void insertDataBySQL(String id, String password) {
-        try {
-            String sql = String.format (
-                    "INSERT INTO %s (%s, %s, %s) VALUES (NULL, '%s', '%s')",
-                    UserContract.Users.TABLE_NAME,
-                    UserContract.Users._ID,
-                    UserContract.Users.KEY_ACCOUNT,
-                    UserContract.Users.KEY_PASSWORD,
-                    id,
-                    password);
-
-            getWritableDatabase().execSQL(sql);
-        } catch (SQLException e) {
-            Log.e(TAG,"Error in deleting recodes");
-        }
-    }
-    ```
+	    public void insertUserBySQL(String name, String phone) {
+	        try {
+	            String sql = String.format (
+	                    "INSERT INTO %s (%s, %s, %s) VALUES (NULL, '%s', '%s')",
+	                    UserContract.Users.TABLE_NAME,
+	                    UserContract.Users._ID,
+	                    UserContract.Users.KEY_NAME,
+	                    UserContract.Users.KEY_PHONE,
+	                    name,
+	                    phone);
 	
+	            getWritableDatabase().execSQL(sql);
+	        } catch (SQLException e) {
+	            Log.e(TAG,"Error in inserting recodes");
+	        }
+	    }
+	```	
 	https://github.com/kwanulee/Android/blob/master/examples/SQLiteDBTest/app/src/main/java/com/example/kwanwoo/sqlitedbtest/DBHelper.java#L31-L46
 
 
 * 예제 코드 (DELETE)
 	
 	```java
-    public void deleteDataBySQL(String _id) {
-        try {
-            String sql = String.format (
-                    "DELETE FROM %s WHERE %s = %s",
-                    UserContract.Users.TABLE_NAME,
-                    UserContract.Users._ID,
-                    _id);
-            getWritableDatabase().execSQL(sql);
-        } catch (SQLException e) {
-            Log.e(TAG,"Error in deleting recodes");
-        }
-    }
-   	```
-	
+	    public void deleteUserBySQL(String _id) {
+	        try {
+	            String sql = String.format (
+	                    "DELETE FROM %s WHERE %s = %s",
+	                    UserContract.Users.TABLE_NAME,
+	                    UserContract.Users._ID,
+	                    _id);
+	            getWritableDatabase().execSQL(sql);
+	        } catch (SQLException e) {
+	            Log.e(TAG,"Error in deleting recodes");
+	        }
+	    }
+	```   	
 	https://github.com/kwanulee/Android/blob/master/examples/SQLiteDBTest/app/src/main/java/com/example/kwanwoo/sqlitedbtest/DBHelper.java#L53-L64
 
 
 * 예제 코드 (UPDATE)
 
 	```java
-    public void updateDataBySQL(String _id, String userid, String password) {
+    public void updateUserBySQL(String _id, String name, String phone) {
         try {
             String sql = String.format (
                     "UPDATE  %s SET %s = '%s', %s = '%s' WHERE %s = %s",
                     UserContract.Users.TABLE_NAME,
-                    UserContract.Users.KEY_ACCOUNT, userid,
-                    UserContract.Users.KEY_PASSWORD, password,
+                    UserContract.Users.KEY_NAME, name,
+                    UserContract.Users.KEY_PHONE, phone,
                     UserContract.Users._ID, _id) ;
             getWritableDatabase().execSQL(sql);
         } catch (SQLException e) {
@@ -226,7 +224,7 @@ https://github.com/kwanulee/Android/blob/master/examples/SQLiteDBTest/app/src/ma
 	```java
 	public class DBHelper extends SQLiteOpenHelper {
 	...
-	    public Cursor getAllDataBySQL() {
+	    public Cursor getAllUsersBySQL() {
 	        String sql = "Select * FROM " + UserContract.Users.TABLE_NAME;
 	*       return getReadableDatabase().rawQuery(sql,null);
 	    } 
@@ -259,23 +257,24 @@ https://github.com/kwanulee/Android/blob/master/examples/SQLiteDBTest/app/src/ma
 		```java
 		public class MainActivity extends AppCompatActivity {
 			private DBHelper mDbHelper;
-		...
+			...
 		    private void viewAllToTextView() {
 		        TextView result = (TextView)findViewById(R.id.result);
 		
-		        Cursor cursor = mDbHelper.getAllDataBySQL();
+		        Cursor cursor = mDbHelper.getAllUsersBySQL();
 		
 		        StringBuffer buffer = new StringBuffer();
-		             while (cursor.moveToNext()) {
-		                 buffer.append(cursor.getInt(0)+" \t");
-		                 buffer.append(cursor.getString(1)+" \t");
-		                 buffer.append(cursor.getString(2)+"\n");
+		        while (cursor.moveToNext()) {
+		            buffer.append(cursor.getInt(0)+" \t");
+		            buffer.append(cursor.getString(1)+" \t");
+		            buffer.append(cursor.getString(2)+"\n");
 		        }
 		        result.setText(buffer);
 		    }
+		    ...
 		```
 
-		https://github.com/kwanulee/Android/blob/master/examples/SQLiteDBTest/app/src/main/java/com/example/kwanwoo/sqlitedbtest/MainActivity.java#L61-L73
+		https://github.com/kwanulee/Android/blob/master/examples/SQLiteDBTest/app/src/main/java/com/example/kwanwoo/sqlitedbtest/MainActivity.java#L76-L88
 
 <a name="5.2"></a>
 ### 5.2. 데이터베이스 조작과 조회를 위한 개별 메소드 이용
@@ -288,14 +287,14 @@ https://github.com/kwanulee/Android/blob/master/examples/SQLiteDBTest/app/src/ma
 * 예제코드 (insert)
 
 	```java
-	public long insertDataByMethod(String id, String password) {
-	     SQLiteDatabase db = getWritableDatabase();
-	     ContentValues values = new ContentValues();
-	     values.put(UserContract.Users.KEY_ACCOUNT, id);
-	     values.put(UserContract.Users.KEY_PASSWORD,password);
-	
-	*    return db.insert(UserContract.Users.TABLE_NAME,null,values);
-	}
+    public long insertUserByMethod(String name, String phone) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(UserContract.Users.KEY_NAME, name);
+        values.put(UserContract.Users.KEY_PHONE,phone);
+
+        return db.insert(UserContract.Users.TABLE_NAME,null,values);
+    }
 	```
 	
 	https://github.com/kwanulee/Android/blob/master/examples/SQLiteDBTest/app/src/main/java/com/example/kwanwoo/sqlitedbtest/DBHelper.java#L80-L87
@@ -303,7 +302,7 @@ https://github.com/kwanulee/Android/blob/master/examples/SQLiteDBTest/app/src/ma
 * 예제코드 (delete)
 	
 	```java
-    public long deleteDataByMethod(String _id) {
+    public long deleteUserByMethod(String _id) {
         SQLiteDatabase db = getWritableDatabase();
 
         String whereClause = UserContract.Users._ID +" = ?";
@@ -317,24 +316,25 @@ https://github.com/kwanulee/Android/blob/master/examples/SQLiteDBTest/app/src/ma
 * 예제코드 (upate)
 
 	```java
-    public long updateDataByMethod(String _id, String userid, String password) {
+    public long updateUserByMethod(String _id, String name, String phone) {
         SQLiteDatabase db = getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(UserContract.Users.KEY_ACCOUNT, userid);
-        values.put(UserContract.Users.KEY_PASSWORD,password);
+        values.put(UserContract.Users.KEY_NAME, name);
+        values.put(UserContract.Users.KEY_PHONE,phone);
 
         String whereClause = UserContract.Users._ID +" = ?";
         String[] whereArgs ={_id};
-    *   return db.update(UserContract.Users.TABLE_NAME, values, whereClause, whereArgs);
+
+        return db.update(UserContract.Users.TABLE_NAME, values, whereClause, whereArgs);
     }
-	```
+    ```
 https://github.com/kwanulee/Android/blob/master/examples/SQLiteDBTest/app/src/main/java/com/example/kwanwoo/sqlitedbtest/DBHelper.java#L102-L113
 
 * 예제코드 (query)
 
 	```java
-	    public Cursor getAllDataByMethod() {
+	    public Cursor getAllUsersByMethod() {
 	        SQLiteDatabase db = getReadableDatabase();
 *	    return db.query(UserContract.Users.TABLE_NAME,null,null,null,null,null,null);
 	    }
@@ -364,27 +364,34 @@ https://github.com/kwanulee/Android/blob/master/examples/SQLiteDBTest/app/src/ma
 	    ...
 	    private void viewAllToListView() {
 	
-	        Cursor cursor = mDbHelper.getAllDataByMethod();
+	        Cursor cursor = mDbHelper.getAllUsersByMethod();
 	
 	        SimpleCursorAdapter adapter = new SimpleCursorAdapter(getApplicationContext(),
-	                R.layout.item, // ListView의 항목 뷰 리소스
-	                cursor, 		// 검색결과 Cursor 객체
-	                new String[]{	// 검색 결과에서 표시할 테이블 열들
-	                             UserContract.Users._ID,
-	                             UserContract.Users.KEY_ACCOUNT,
-	                             UserContract.Users.KEY_PASSWORD},
-	                new int[]{		// 테이블 열의 값을 출력할 View ID
-	                			 R.id._id, 
-	                			 R.id.account, 
-	                			 R.id.password}, 
-	                0);
+	                R.layout.item, cursor, new String[]{
+	                UserContract.Users._ID,
+	                UserContract.Users.KEY_NAME,
+	                UserContract.Users.KEY_PHONE},
+	                new int[]{R.id._id, R.id.name, R.id.phone}, 0);
 	
 	        ListView lv = (ListView)findViewById(R.id.listview);
 	        lv.setAdapter(adapter);
-    }
+	
+	        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+	            @Override
+	            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+	                Adapter adapter = adapterView.getAdapter();
+	
+	                mId.setText(((Cursor)adapter.getItem(i)).getString(0));
+	                mName.setText(((Cursor)adapter.getItem(i)).getString(1));
+	                mPhone.setText(((Cursor)adapter.getItem(i)).getString(2));
+	            }
+	        });
+	        lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+	    }
+
 	```
 
-	https://github.com/kwanulee/Android/blob/master/examples/SQLiteDBTest/app/src/main/java/com/example/kwanwoo/sqlitedbtest/MainActivity.java#L75-L88
+	https://github.com/kwanulee/Android/blob/master/examples/SQLiteDBTest/app/src/main/java/com/example/kwanwoo/sqlitedbtest/MainActivity.java#L90-L115
 
 * item.xml for SimpleCursorAdapter
 
@@ -404,7 +411,7 @@ https://github.com/kwanulee/Android/blob/master/examples/SQLiteDBTest/app/src/ma
 	        android:gravity="center"
 	        />
 	    <TextView
-	        android:id="@+id/account"
+	        android:id="@+id/name"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:padding="5dp"
@@ -413,7 +420,7 @@ https://github.com/kwanulee/Android/blob/master/examples/SQLiteDBTest/app/src/ma
 	        android:gravity="center"
 	        />
 	    <TextView
-	        android:id="@+id/password"
+	        android:id="@+id/phone"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:padding="5dp"
