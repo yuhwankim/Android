@@ -15,9 +15,9 @@ div.polaroid {
 * [SQLiteOpenHepler 클래스](#4)
 	1. [SQLiteOpenHelper의 서브 클래스 정의](#4.1)
 	2. [SQLiteOpenHelper 객체를 통한 DB 접근](#4.2)
-* [데이터베이스 조작과 조회](#5)
+* [SQLiteDatabase 클래스](#5)
 	1. [SQL 실행을 위한 메소드](#5.1)
-	2. [데이터베이스 조작과 조회를 위한 개별 메소드 이용](#5.2)
+	2. [데이터베이스 조작과 조회를 위한 개별 메소드](#5.2)
 * [SimpleCursorAdapter](#6)
 
 - **예제 안드로이드 프로젝트 다운로드** [링크](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kwanulee/Android/tree/master/examples/SQLiteDBTest) 
@@ -66,13 +66,13 @@ public final class UserContract {
     /* Inner class that defines the table contents */
     public static class Users implements BaseColumns {
         public static final String TABLE_NAME="Users";
-        public static final String KEY_ACCOUNT = "Account";
-        public static final String KEY_PASSWORD = "Password";
+        public static final String KEY_NAME = "Name";
+        public static final String KEY_PHONE = "Phone";
 
         public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " (" +
                                                     _ID + " INTEGER PRIMARY KEY" + COMMA_SEP +
-                                                    KEY_ACCOUNT + TEXT_TYPE + COMMA_SEP +
-                                                    KEY_PASSWORD + TEXT_TYPE +  " )";
+                                                    KEY_NAME + TEXT_TYPE + COMMA_SEP +
+                                                    KEY_PHONE + TEXT_TYPE +  " )";
         public static final String DELETE_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
     }
 }
@@ -84,6 +84,7 @@ https://github.com/kwanulee/Android/blob/master/examples/SQLiteDBTest/app/src/ma
 <a name="4"></a>
 ## 4. SQLiteOpenHelper 클래스
 * DB 생성 및 열기 담당
+
 <a name="4.1"></a>
 ### 4.1. SQLiteOpenHelper의 서브 클래스 정의
 * [SQLiteOpenHelper](https://developer.android.com/reference/android/database/sqlite/SQLiteOpenHelper.html)는 추상 클래스 이므로, 서브클래스에서 생성자와 아래의 콜백 메소드를 재정의 해야함
@@ -113,19 +114,19 @@ https://github.com/kwanulee/Android/blob/master/examples/SQLiteDBTest/app/src/ma
 	    final static String TAG="SQLiteDBTest";
 	
 	    public DBHelper(Context context) {
-	        super(context, DatabaseContract.DB_NAME, null, DatabaseContract.DATABASE_VERSION);
+	        super(context, UserContract.DB_NAME, null, UserContract.DATABASE_VERSION);
 	    }
 	
 	    @Override
 	    public void onCreate(SQLiteDatabase db) {
 	        Log.i(TAG,getClass().getName()+".onCreate()");
-	        db.execSQL(DatabaseContract.User.CREATE_TABLE);
+	        db.execSQL(UserContract.Users.CREATE_TABLE);
 	    }
 	
 	    @Override
 	    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
 	        Log.i(TAG,getClass().getName() +".onUpgrade()");
-	        db.execSQL(DatabaseContract.User.DELETE_TABLE);
+	        db.execSQL(UserContract.Users.DELETE_TABLE);
 	        onCreate(db);
 	    }
 	    ...
@@ -144,7 +145,7 @@ https://github.com/kwanulee/Android/blob/master/examples/SQLiteDBTest/app/src/ma
 	
 ---
 <a name="5"></a>
-## 5. 데이터베이스 조작 및 조회
+## 5. SQLiteDatabase 클래스
 - [SQLiteDatabase](https://developer.android.com/reference/android/database/sqlite/SQLiteDatabase.html) 객체의 다양한 메소드를 이용하여 데이터베이스에 정보를 조작 (저장,삭제,수정) 및 조회를 수행
 
 <a name="5.1"></a>
@@ -277,7 +278,7 @@ https://github.com/kwanulee/Android/blob/master/examples/SQLiteDBTest/app/src/ma
 		https://github.com/kwanulee/Android/blob/master/examples/SQLiteDBTest/app/src/main/java/com/example/kwanwoo/sqlitedbtest/MainActivity.java#L76-L88
 
 <a name="5.2"></a>
-### 5.2. 데이터베이스 조작과 조회를 위한 개별 메소드 이용
+### 5.2. 데이터베이스 조작과 조회를 위한 개별 메소드
 * [SQLiteDatabase](https://developer.android.com/reference/android/database/sqlite/SQLiteDatabase.html)의  관련 메소드
 	* long [**insert**](https://developer.android.com/reference/android/database/sqlite/SQLiteDatabase.html#insert(java.lang.String,%20java.lang.String,%20android.content.ContentValues)) (String table, String nullColumnHack, [ContentValues](https://developer.android.com/reference/android/content/ContentValues.html) values)
 	* int [**delete**](https://developer.android.com/reference/android/database/sqlite/SQLiteDatabase.html#delete(java.lang.String,%20java.lang.String,%20java.lang.String[])) (String table, String whereClause, String[] whereArgs)

@@ -263,11 +263,11 @@ div.polaroid {
 <li><a href="#4.1">SQLiteOpenHelper의 서브 클래스 정의</a></li>
 <li><a href="#4.2">SQLiteOpenHelper 객체를 통한 DB 접근</a></li>
 </ol></li>
-<li><a href="#5">데이터베이스 조작과 조회</a>
+<li><a href="#5">SQLiteDatabase 클래스</a>
 
 <ol>
 <li><a href="#5.1">SQL 실행을 위한 메소드</a></li>
-<li><a href="#5.2">데이터베이스 조작과 조회를 위한 개별 메소드 이용</a></li>
+<li><a href="#5.2">데이터베이스 조작과 조회를 위한 개별 메소드</a></li>
 </ol></li>
 <li><p><a href="#6">SimpleCursorAdapter</a></p></li>
 </ol>
@@ -343,13 +343,13 @@ div.polaroid {
     /* Inner class that defines the table contents */
     public static class Users implements BaseColumns {
         public static final String TABLE_NAME=&quot;Users&quot;;
-        public static final String KEY_ACCOUNT = &quot;Account&quot;;
-        public static final String KEY_PASSWORD = &quot;Password&quot;;
+        public static final String KEY_NAME = &quot;Name&quot;;
+        public static final String KEY_PHONE = &quot;Phone&quot;;
 
         public static final String CREATE_TABLE = &quot;CREATE TABLE &quot; + TABLE_NAME + &quot; (&quot; +
                                                     _ID + &quot; INTEGER PRIMARY KEY&quot; + COMMA_SEP +
-                                                    KEY_ACCOUNT + TEXT_TYPE + COMMA_SEP +
-                                                    KEY_PASSWORD + TEXT_TYPE +  &quot; )&quot;;
+                                                    KEY_NAME + TEXT_TYPE + COMMA_SEP +
+                                                    KEY_PHONE + TEXT_TYPE +  &quot; )&quot;;
         public static final String DELETE_TABLE = &quot;DROP TABLE IF EXISTS &quot; + TABLE_NAME;
     }
 }</code></pre></div>
@@ -363,9 +363,14 @@ div.polaroid {
 <h2 id="toc_4">4. SQLiteOpenHelper 클래스</h2>
 
 <ul>
-<li>DB 생성 및 열기 담당
-<a name="4.1"></a>
-### 4.1. SQLiteOpenHelper의 서브 클래스 정의</li>
+<li>DB 생성 및 열기 담당</li>
+</ul>
+
+<p><a name="4.1"></a></p>
+
+<h3 id="toc_5">4.1. SQLiteOpenHelper의 서브 클래스 정의</h3>
+
+<ul>
 <li><p><a href="https://developer.android.com/reference/android/database/sqlite/SQLiteOpenHelper.html">SQLiteOpenHelper</a>는 추상 클래스 이므로, 서브클래스에서 생성자와 아래의 콜백 메소드를 재정의 해야함</p>
 
 <ul>
@@ -408,19 +413,19 @@ div.polaroid {
     final static String TAG=&quot;SQLiteDBTest&quot;;
 
     public DBHelper(Context context) {
-        super(context, DatabaseContract.DB_NAME, null, DatabaseContract.DATABASE_VERSION);
+        super(context, UserContract.DB_NAME, null, UserContract.DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         Log.i(TAG,getClass().getName()+&quot;.onCreate()&quot;);
-        db.execSQL(DatabaseContract.User.CREATE_TABLE);
+        db.execSQL(UserContract.Users.CREATE_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         Log.i(TAG,getClass().getName() +&quot;.onUpgrade()&quot;);
-        db.execSQL(DatabaseContract.User.DELETE_TABLE);
+        db.execSQL(UserContract.Users.DELETE_TABLE);
         onCreate(db);
     }
     ...</code></pre></div>
@@ -430,7 +435,7 @@ div.polaroid {
 
 <p><a name="4.2"></a></p>
 
-<h3 id="toc_5">4.2. SQLiteOpenHelper 객체를 통한 DB 접근</h3>
+<h3 id="toc_6">4.2. SQLiteOpenHelper 객체를 통한 DB 접근</h3>
 
 <ul>
 <li><p>DB 접근 시 <strong><a href="https://developer.android.com/reference/android/database/sqlite/SQLiteOpenHelper.html">SQLiteOpenHelper</a></strong> 객체의 다음 메서드를 호출하여 <strong><a href="https://developer.android.com/reference/android/database/sqlite/SQLiteDatabase.html">SQLiteDatabase</a> 객체</strong>를 얻는다.</p>
@@ -460,7 +465,7 @@ div.polaroid {
 
 <p><a name="5"></a></p>
 
-<h2 id="toc_6">5. 데이터베이스 조작 및 조회</h2>
+<h2 id="toc_7">5. SQLiteDatabase 클래스</h2>
 
 <ul>
 <li><a href="https://developer.android.com/reference/android/database/sqlite/SQLiteDatabase.html">SQLiteDatabase</a> 객체의 다양한 메소드를 이용하여 데이터베이스에 정보를 조작 (저장,삭제,수정) 및 조회를 수행</li>
@@ -468,7 +473,7 @@ div.polaroid {
 
 <p><a name="5.1"></a></p>
 
-<h3 id="toc_7">5.1. SQL 실행을 위한 메소드</h3>
+<h3 id="toc_8">5.1. SQL 실행을 위한 메소드</h3>
 
 <ul>
 <li><p><strong><a href="https://developer.android.com/reference/android/database/sqlite/SQLiteDatabase.html">SQLiteDatabase</a> 객체</strong>의 다음 메소드를 통해 SQL문 실행</p>
@@ -651,7 +656,7 @@ div.polaroid {
 
 <p><a name="5.2"></a></p>
 
-<h3 id="toc_8">5.2. 데이터베이스 조작과 조회를 위한 개별 메소드 이용</h3>
+<h3 id="toc_9">5.2. 데이터베이스 조작과 조회를 위한 개별 메소드</h3>
 
 <ul>
 <li><p><a href="https://developer.android.com/reference/android/database/sqlite/SQLiteDatabase.html">SQLiteDatabase</a>의  관련 메소드</p>
@@ -715,7 +720,7 @@ div.polaroid {
 
 <p><a name="6"></a></p>
 
-<h2 id="toc_9">6. SimpleCursorAdapter</h2>
+<h2 id="toc_10">6. SimpleCursorAdapter</h2>
 
 <ul>
 <li><p><a href="https://developer.android.com/reference/android/widget/SimpleCursorAdapter.html">SimpleCursorAdapter</a>를 이용하여 간편하게 리스트 뷰(어댑터 뷰)에 SELECT 결과를 출력</p>
