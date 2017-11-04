@@ -293,11 +293,17 @@ public class MainActivity extends AppCompatActivity {
 
     private void dispatchTakeVideoIntent() {
         Intent takeVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+
         if (takeVideoIntent.resolveActivity(getPackageManager()) != null) {
+            //1. 카메라 앱으로 찍은 동영상을 저장할 파일 객체 생성
             mVideoFileName = "VIDEO"+currentDateFormat()+".mp4";
             File destination = new File(getExternalFilesDir(Environment.DIRECTORY_MOVIES), mVideoFileName);
+
             if (destination != null) {
+                //2. 생성된 파일 객체에 대한 Uri 객체를 얻기
                 Uri videoUri = FileProvider.getUriForFile(this, "com.example.kwanwoo.multimediatest", destination);
+
+                //3. Uri 객체를 Extras를 통해 카메라 앱으로 전달
                 takeVideoIntent.putExtra(MediaStore.EXTRA_OUTPUT, videoUri);
                 startActivityForResult(takeVideoIntent, REQUEST_VIDEO_CAPTURE);
             }
@@ -308,7 +314,6 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             if (mPhotoFileName != null) {
                 mPhotoFile = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), mPhotoFileName);
-                //Uri imageUri = FileProvider.getUriForFile(this,"com.example.kwanwoo.multimediatest",mPhotoFile);
                 mAdapter.addItem(new MediaItem(MediaItem.SDCARD, mPhotoFileName, Uri.fromFile(mPhotoFile), MediaItem.IMAGE));
             } else
                 Toast.makeText(getApplicationContext(), "mPhotoFile is null", Toast.LENGTH_SHORT).show();
@@ -321,6 +326,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /*
+        카메라 앱을 통해 이미지를 저장하고 다시 현재 앱으로 돌아오는 경우, 예기치 않게 액티비티가 재시작되는 경우
+        기존 상태 (mPhotoFileName)을 저장하는 메소드. 안드로이드 프레임워크에 의해서 자동으로 호출
+     */
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         outState.putString("mPhotoFileName",mPhotoFileName);

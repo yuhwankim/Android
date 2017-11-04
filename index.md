@@ -56,9 +56,12 @@
 -  [[실습8]](data-management/sqlite-content-provider-lab.html)
 
 ##10주
-- 서비스 
-- 멀티미디어 
--  실습9
+- [오디오 재생하기](multimedia/multimedia.html#1)
+- [동영상 재생하기](multimedia/multimedia.html#2)
+- [오디오 녹음하기](multimedia/multimedia.html#3)
+- [카메라 앱으로 사진 및 동영상 저장하기](multimedia/multimedia.html#4)
+
+-  [실습9]
 
 ##11주 
 - 위치기반 서비스 
