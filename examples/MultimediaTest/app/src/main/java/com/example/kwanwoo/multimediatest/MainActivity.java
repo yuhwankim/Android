@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         Button imageCaptureBtn = (Button) findViewById(R.id.imageCaptureBtn);
 
         checkDangerousPermissions();
-        initListView();
+       // initListView();
 
         voiceRecBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -81,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    final int  REQUEST_EXTERNAL_STORAGE_FOR_MULTIMEDIA=1;
+
     private void checkDangerousPermissions() {
         String[] permissions = {
                 Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -97,7 +99,21 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, permissions, 1);
+            ActivityCompat.requestPermissions(this, permissions, REQUEST_EXTERNAL_STORAGE_FOR_MULTIMEDIA);
+        } else
+            initListView();
+    }
+
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        if (grantResults.length > 0
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED) { // permission was granted
+            switch (requestCode) {
+                case REQUEST_EXTERNAL_STORAGE_FOR_MULTIMEDIA:
+                    initListView();
+                    break;
+            }
+        } else { // permission was denied
+            Toast.makeText(getApplicationContext(),"접근 권한이 필요합니다",Toast.LENGTH_SHORT).show();
         }
     }
 
