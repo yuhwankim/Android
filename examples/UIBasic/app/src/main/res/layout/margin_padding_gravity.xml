@@ -13,12 +13,13 @@
         android:orientation="vertical"
         android:layout_margin="10dp"
         android:padding="10dp"
-        android:background="#aa00ff">
+        android:background="#aa00ff"
+        >
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Button"
-            android:layout_gravity="left"/>
+           />
     </LinearLayout>
     <FrameLayout
         android:layout_width="match_parent"
