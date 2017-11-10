@@ -3,6 +3,7 @@
 ### [2. 동영상 재생하기](#2)
 ### [3. 오디오 녹음하기](#3)
 ### [4. 카메라 앱으로 사진 및 동영상 저장하기](#4)
+### [5. Photo 앱으로 선택한 사진 저장하기](#5)
 
 ---
 <a name="1"></a>
@@ -105,7 +106,7 @@
 
 <img src="images/playaudio.png">
 
-.footnote[https://github.com/kwanu70/AndroidExamples/blob/master/chap10/MultimediaTest/app/src/main/java/com/example/kwanwoo/multimediatest/MainActivity.java]
+https://github.com/kwanulee/Android/blob/master/examples/MultimediaTest/app/src/main/java/com/example/kwanwoo/multimediatest/MainActivity.java#L150-L158
 
 
 1. 그림의 앱 화면에서 리스트 항목 선택
@@ -136,9 +137,9 @@
 
 <img src="images/playvideo.png">
 	
-https://github.com/kwanu70/AndroidExamples/blob/master/chap10/MultimediaTest/app/src/main/res/layout/activity_video.xml
+https://github.com/kwanulee/Android/blob/master/examples/MultimediaTest/app/src/main/res/layout/activity_video.xml
 
-https://github.com/kwanu70/AndroidExamples/blob/master/chap10/MultimediaTest/app/src/main/java/com/example/kwanwoo/multimediatest/VideoActivity.java
+https://github.com/kwanulee/Android/blob/master/examples/MultimediaTest/app/src/main/java/com/example/kwanwoo/multimediatest/VideoActivity.java
 
 ---
 <a name="3"></a>
@@ -191,7 +192,7 @@ https://github.com/kwanu70/AndroidExamples/blob/master/chap10/MultimediaTest/app
     }
 ```
 
-.footnote[https://github.com/kwanu70/AndroidExamples/blob/master/chap10/MultimediaTest/app/src/main/java/com/example/kwanwoo/multimediatest/MainActivity.java]
+https://github.com/kwanulee/Android/blob/master/examples/MultimediaTest/app/src/main/java/com/example/kwanwoo/multimediatest/MainActivity.java#L96-L116
 
 
 ## 오디오 녹음 시작
@@ -220,7 +221,7 @@ https://github.com/kwanu70/AndroidExamples/blob/master/chap10/MultimediaTest/app
    }
 ```
 
-.footnote[https://github.com/kwanu70/AndroidExamples/blob/master/chap10/MultimediaTest/app/src/main/java/com/example/kwanwoo/multimediatest/MainActivity.java]
+https://github.com/kwanulee/Android/blob/master/examples/MultimediaTest/app/src/main/java/com/example/kwanwoo/multimediatest/MainActivity.java#L247-L263
 
 
 ## 오디오 녹음 중단
@@ -242,13 +243,13 @@ https://github.com/kwanu70/AndroidExamples/blob/master/chap10/MultimediaTest/app
     }
 ```
 
-.footnote[https://github.com/kwanu70/AndroidExamples/blob/master/chap10/MultimediaTest/app/src/main/java/com/example/kwanwoo/multimediatest/MainActivity.java]
+https://github.com/kwanulee/Android/blob/master/examples/MultimediaTest/app/src/main/java/com/example/kwanwoo/multimediatest/MainActivity.java#L265-L275
 
 
 <a name="4"></a>
 # 4. 카메라 앱으로 사진 및 동영상 저장하기
 
-## 카메라 앱으로 사진찍기
+## 4.1 카메라 앱 실행 요청
 * 특별한 Permission이 필요 없음
 
 * 카메라 앱 요청
@@ -263,10 +264,9 @@ https://github.com/kwanu70/AndroidExamples/blob/master/chap10/MultimediaTest/app
 	}
 	```
 
-.footnote[https://github.com/kwanu70/AndroidExamples/blob/master/chap10/MultimediaTest/app/src/main/java/com/example/kwanwoo/multimediatest/MainActivity.java]
 
-
-## 카메라 앱으로 찍은 사진 저장하기
+## 4.2 카메라 앱으로 찍은 사진 저장하기
+### 4.2.1 카메라 앱 실행 요청
 
 1. 카메라 앱으로 찍은 이미지를 저장할 파일 객체 생성
 2. 생성된 파일 객체에 대한 Uri 객체를 얻기
@@ -302,9 +302,9 @@ https://github.com/kwanu70/AndroidExamples/blob/master/chap10/MultimediaTest/app
 
 
 
-.footnote[https://github.com/kwanu70/AndroidExamples/blob/master/chap10/MultimediaTest/app/src/main/java/com/example/kwanwoo/multimediatest/MainActivity.java]
+https://github.com/kwanulee/Android/blob/master/examples/MultimediaTest/app/src/main/java/com/example/kwanwoo/multimediatest/MainActivity.java#L306-L324
 
-
+---
 ### FileProvider 설정
 FileProvider는 ContentProvider의 특별한 서브 클래스로서 특정한 앱에서 생성한 파일을 다른 앱과 공유할 수 있도록 안전한 방법(**file:///Uri** 대신에 **content://Uri** 사용)을 제공해 준다.
 
@@ -340,9 +340,10 @@ FileProvider는 ContentProvider의 특별한 서브 클래스로서 특정한 �
 		```	
 
 	[추가 참고자료: https://developer.android.com/reference/android/support/v4/content/FileProvider.html]
-	
 
-## 카메라 앱으로 찍은 사진 저장하기
+---	
+
+###4.2.2 카메라 앱으로 찍은 사진 결과 처리
 * onActivityResult() 메소드에서 저장된 사진을 리스트 뷰의 항목으로 추가
 
 ```java
@@ -362,10 +363,11 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 }
 ```
 
-.footnote[https://github.com/kwanu70/AndroidExamples/blob/master/chap10/MultimediaTest/app/src/main/java/com/example/kwanwoo/multimediatest/MainActivity.java]
+https://github.com/kwanulee/Android/blob/master/examples/MultimediaTest/app/src/main/java/com/example/kwanwoo/multimediatest/MainActivity.java#L362-L367
 
+##4.3 카메라 앱으로 촬영한 동영상 저장하기
 
-## 카메라 앱으로 동영상 촬영하기
+###4.3.1 카메라 앱으로 동영상 촬영하기
 
 ```java
 static final int REQUEST_VIDEO_CAPTURE = 2;
@@ -390,10 +392,10 @@ private void dispatchTakeVideoIntent() {
 }
 ```
 
-.footnote[https://github.com/kwanu70/AndroidExamples/blob/master/chap10/MultimediaTest/app/src/main/java/com/example/kwanwoo/multimediatest/MainActivity.java]
+https://github.com/kwanulee/Android/blob/master/examples/MultimediaTest/app/src/main/java/com/example/kwanwoo/multimediatest/MainActivity.java#L328-L345
 
 
-## 촬영결과를 외부저장소 파일로 저장하기
+###4.3.2 촬영결과를 외부저장소 파일로 저장하기
 
 ```java
 protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -413,4 +415,79 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     }
 ```
 
-.footnote[https://github.com/kwanu70/AndroidExamples/blob/master/chap10/MultimediaTest/app/src/main/java/com/example/kwanwoo/multimediatest/MainActivity.java]
+https://github.com/kwanulee/Android/blob/master/examples/MultimediaTest/app/src/main/java/com/example/kwanwoo/multimediatest/MainActivity.java#L368-L374
+
+<a name="5"> </a>
+# 5. Photo/Gallery 앱으로 선택한 사진 저장하기
+
+##5.1 Photo/Gallery 앱으로 사진 선택하기
+* 특별한 Permission이 필요 없음
+
+* Photo/Gallery 앱 요청
+
+	```java
+    private void dispatchPickPictureIntent() {
+        Intent pickPictureIntent = new Intent(Intent.ACTION_PICK);
+        pickPictureIntent.setType("image/*");
+
+        if (pickPictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(pickPictureIntent,REQUEST_IMAGE_PICK);
+        }
+    }
+
+	```
+
+https://github.com/kwanulee/Android/blob/master/examples/MultimediaTest/app/src/main/java/com/example/kwanwoo/multimediatest/MainActivity.java#L306-L324
+
+###5.2 Photo/Gallery 앱으로 사진 선택한 결과 저장하기
+
+* onActivityResult() 메소드에서 선택된 사진 결과 얻기
+	+ 선택된 사진 결과는 Uri 객체 형식으로 인텐트 객체를 통해 전달됨
+	+ [getBitmap()](https://developer.android.com/reference/android/provider/MediaStore.Images.Media.html#getBitmap(android.content.ContentResolver, android.net.Uri))를 통해 Uri로부터 비트맵 얻기
+	
+			Bitmap getBitmap (ContentResolver cr, Uri url)
+	
+	+ Example
+	 
+		``` java
+		protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	        if (requestCode == REQUEST_IMAGE_PICK && resultCode == RESULT_OK) {
+	            Uri imgUri = data.getData();
+	            try {
+	                Bitmap imgBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imgUri);
+	                ...
+	            } catch (IOException e) { ... }
+	            ...
+	
+
+		}
+		
+		```
+* Bitmap 데이터를 파일로 저장하기
+	* Bitmap 클래스의 compress 메소드를 이용하면 비트맵을 다양한 형식으로 저장할 수 있다.
+
+			compress(Bitmap.CompressFormat format, int quality, OutputStream stream) 
+
+	+ Example
+	
+		``` java
+	   protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	        if (requestCode == REQUEST_IMAGE_PICK && resultCode == RESULT_OK) {
+	            Uri imgUri = data.getData();
+	            try {
+	                Bitmap imgBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imgUri);
+	
+	                mPhotoFileName = "IMG"+currentDateFormat()+".jpg";
+	                mPhotoFile = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), mPhotoFileName);
+	
+	                imgBitmap.compress(Bitmap.CompressFormat.JPEG,100,
+	                        new FileOutputStream(mPhotoFile));
+	                ...
+	            } catch (IOException e) {...}
+	        }
+	
+		```
+		
+		https://github.com/kwanulee/Android/blob/master/examples/MultimediaTest/app/src/main/java/com/example/kwanwoo/multimediatest/MainActivity.java#L348-L357
+
+
