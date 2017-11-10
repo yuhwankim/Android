@@ -23,11 +23,13 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
+    private static String TAG="MultimediaTest";
     private ListView mListView;
     private int mSelectePoistion;
     private MediaItemAdapter mAdapter;
@@ -50,9 +52,10 @@ public class MainActivity extends AppCompatActivity {
         final Button voiceRecBtn = (Button) findViewById(R.id.voiceRecBtn);
         Button videoRecBtn = (Button) findViewById(R.id.videoRecBtn);
         Button imageCaptureBtn = (Button) findViewById(R.id.imageCaptureBtn);
+        Button imagePickBtn = (Button) findViewById(R.id.imagePickBtn);
 
         checkDangerousPermissions();
-       // initListView();
+        initListView();
 
         voiceRecBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -79,6 +82,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        imagePickBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dispatchPickPictureIntent();
+            }
+        });
+
     }
 
     final int  REQUEST_EXTERNAL_STORAGE_FOR_MULTIMEDIA=1;
@@ -100,8 +110,9 @@ public class MainActivity extends AppCompatActivity {
 
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, permissions, REQUEST_EXTERNAL_STORAGE_FOR_MULTIMEDIA);
-        } else
-            initListView();
+
+        }
+
     }
 
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
@@ -157,8 +168,6 @@ public class MainActivity extends AppCompatActivity {
                     mSelectePoistion = position;
                 }
             }
-
-
         });
     }
 
@@ -167,7 +176,6 @@ public class MainActivity extends AppCompatActivity {
         //final String AUDIO_URL2 = "http://www.hrupin.com/wp-content/uploads/mp3/testsong_20_sec.mp3";
         final String AUDIO_URL2="https://www.youtube.com/embed/EoP69Ld2Tkg";
         final String VIDEO_URL = "http://sites.google.com/site/ubiaccessmobile/sample_video.mp4";
-
         ArrayList mediaList = new ArrayList<MediaItem>();
 
         // Raw 리소스 데이터 추가
@@ -206,7 +214,7 @@ public class MainActivity extends AppCompatActivity {
         files = file.listFiles();
         if (files != null) {
             for (File f : files) {
-                Log.i("TAG", "File name=" + f.getName());
+                Log.i(TAG, "File name=" + f.getName());
                 Uri uri = Uri.parse("file://" + Environment.getExternalStorageDirectory().getPath() + "/Music/" + f.getName());
                 MediaItem item = new MediaItem(MediaItem.SDCARD, f.getName(), uri);
                 mediaList.add(item);
@@ -218,7 +226,7 @@ public class MainActivity extends AppCompatActivity {
         files = file.listFiles();
         if (files != null) {
             for (File f : files) {
-                Log.i("TAG", "File name=" + f.getName());
+                Log.i(TAG, "File name=" + f.getName());
                 Uri uri = Uri.parse("file://" + getExternalFilesDir(Environment.DIRECTORY_MOVIES).getPath()  +"/"+ f.getName());
 
                 MediaItem item = new MediaItem(MediaItem.SDCARD, f.getName(), uri, MediaItem.VIDEO);
@@ -282,6 +290,16 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    static final int REQUEST_IMAGE_PICK = 0;
+
+    private void dispatchPickPictureIntent() {
+        Intent pickPictureIntent = new Intent(Intent.ACTION_PICK);
+        pickPictureIntent.setType("image/*");
+
+        if (pickPictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(pickPictureIntent,REQUEST_IMAGE_PICK);
+        }
+    }
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
@@ -327,7 +345,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+        if (requestCode == REQUEST_IMAGE_PICK && resultCode == RESULT_OK) {
+            Uri imgUri = data.getData();
+            try {
+                Bitmap imgBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imgUri);
+
+                mPhotoFileName = "IMG"+currentDateFormat()+".jpg";
+                mPhotoFile = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), mPhotoFileName);
+
+                imgBitmap.compress(Bitmap.CompressFormat.JPEG,100,
+                        new FileOutputStream(mPhotoFile));
+                mAdapter.addItem(new MediaItem(MediaItem.SDCARD, mPhotoFileName, Uri.fromFile(mPhotoFile), MediaItem.IMAGE));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             if (mPhotoFileName != null) {
                 mPhotoFile = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), mPhotoFileName);
                 mAdapter.addItem(new MediaItem(MediaItem.SDCARD, mPhotoFileName, Uri.fromFile(mPhotoFile), MediaItem.IMAGE));
@@ -361,6 +393,5 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         killMediaPlayer();
     }
-
 
 }

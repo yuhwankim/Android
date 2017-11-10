@@ -20,15 +20,7 @@
             android:layout_gravity="center"
             android:text="음성녹음"
             />
-        <Button
-            android:id="@+id/imageCaptureBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
 
-            android:layout_gravity="center"
-            android:text="사진촬영"
-            />
         <Button
             android:id="@+id/videoRecBtn"
             android:layout_width="wrap_content"
@@ -38,7 +30,25 @@
             android:layout_gravity="center"
             android:text="비디오녹음"
             />
+        <Button
+            android:id="@+id/imageCaptureBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
 
+            android:layout_gravity="center"
+            android:text="사진촬영"
+            />
+
+        <Button
+            android:id="@+id/imagePickBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:layout_gravity="center"
+            android:text="사진선택"
+            />
     </LinearLayout>
     <ListView
         android:id="@+id/listView"
