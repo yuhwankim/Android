@@ -14,16 +14,18 @@
 * android.media 패키지에 있는 클래스
 * 오디오, 동영상 재생
 * 지원 미디어 포맷
-    - 오디오:mp3, wav, amr 등
-* 데이터 소스 지정 방법
-    - 프로젝트 로컬 리소스
-    - 단말 SD카드 (외부 저장소 접근 권한(**android.permission.READ\_EXTERNAL\_STORAGE**) 필요)
+    - 오디오: mp3, wav, amr 등
+    - 비디오: mp4
+* 데이터 소스 종류
+    - 애플리케이션 로컬 리소스 파일 (raw 리소스)
+    - 단말 내부 파일
+    	- 외부 저장소인 경우 접근 권한(**android.permission.READ\_EXTERNAL\_STORAGE**) 필요
     
-    	```xml
-		<manifest ... >
-		    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-		</manifest>
-		```
+	    	```xml
+			<manifest ... >
+			    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+			</manifest>
+			```
 
     - 웹 상의 URLs (인터넷 접근 권한(**android.permission.INTERNET**) 필요)
     

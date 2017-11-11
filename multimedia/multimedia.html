@@ -266,17 +266,22 @@ pre[class*="language-"] {
 <li>지원 미디어 포맷
 
 <ul>
-<li>오디오:mp3, wav, amr 등</li>
+<li>오디오: mp3, wav, amr 등</li>
+<li>비디오: mp4</li>
 </ul></li>
-<li><p>데이터 소스 지정 방법</p>
+<li><p>데이터 소스 종류</p>
 
 <ul>
-<li>프로젝트 로컬 리소스</li>
-<li><p>단말 SD카드 (외부 저장소 접근 권한(<strong>android.permission.READ_EXTERNAL_STORAGE</strong>) 필요)</p>
+<li>애플리케이션 로컬 리소스 파일 (raw 리소스)</li>
+<li><p>단말 내부 파일</p>
+
+<ul>
+<li><p>외부 저장소인 경우 접근 권한(<strong>android.permission.READ_EXTERNAL_STORAGE</strong>) 필요</p>
 
 <div><pre><code class="language-markup">&lt;manifest ... &gt;
     &lt;uses-permission android:name=&quot;android.permission.READ_EXTERNAL_STORAGE&quot; /&gt;
 &lt;/manifest&gt;</code></pre></div></li>
+</ul></li>
 <li><p>웹 상의 URLs (인터넷 접근 권한(<strong>android.permission.INTERNET</strong>) 필요)</p>
 
 <div><pre><code class="language-markup">&lt;manifest ... &gt;
