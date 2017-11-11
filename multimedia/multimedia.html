@@ -292,24 +292,27 @@ pre[class*="language-"] {
 
 <h2 id="toc_8">데이터 소스에 따른 재생 방법</h2>
 
-<ul>
-<li><p>res/raw 폴더에 있는 오디오 리소스 재생</p>
+<h3 id="toc_9">1. res/raw 폴더에 있는 오디오 리소스 재생</h3>
 
-<div><pre><code class="language-java">MediaPlayer mediaPlayer = MediaPlayer.create(context, R.raw.sound_file_1);
-mediaPlayer.start();</code></pre></div></li>
-<li><p>URL로부터 오디오 재생</p>
+<div><pre><code class="language-none">```java
+MediaPlayer mediaPlayer = MediaPlayer.create(context, R.raw.sound_file_1);
+mediaPlayer.start();
+```</code></pre></div>
 
-<div><pre><code class="language-java">String url = &quot;http://www.hrupin.com/wp-content/uploads/mp3/testsong_20_sec.mp3&quot;;
+<h3 id="toc_10">2. URL로부터 오디오 재생</h3>
+
+<div><pre><code class="language-none">```java
+String url = &quot;http://www.hrupin.com/wp-content/uploads/mp3/testsong_20_sec.mp3&quot;;
 MediaPlayer mediaPlayer = new MediaPlayer();
 mediaPlayer.setDataSource(url);
 mediaPlayer.prepare();  // 버퍼링으로 인해 오래 걸릴 수 있음
-mediaPlayer.start();</code></pre></div></li>
-</ul>
+mediaPlayer.start();
+```</code></pre></div>
 
-<h2 id="toc_9">URI란?</h2>
+<h3 id="toc_11">3. URI 기반 재생 방법</h3>
 
 <ul>
-<li><p>URI는 정보의 고유한 명칭으로 웹 주소를 나타내는 URL보다 더 상위의 개념</p>
+<li><p><strong>URI</strong>는 정보의 고유한 명칭으로 웹 주소를 나타내는 URL보다 더 상위의 개념</p>
 
 <ul>
 <li><p>File 타입: file://파일패스/파일이름</p>
@@ -325,19 +328,14 @@ mediaPlayer.start();</code></pre></div></li>
 
 <div><pre><code class="language-none">content://media/external/video/media/154</code></pre></div></li>
 </ul></li>
-</ul>
-
-<h2 id="toc_10">URI 기반 재생 방법</h2>
-
-<ul>
-<li><p>패턴</p>
+<li><p><strong>패턴</strong></p>
 
 <div><pre><code class="language-java">Uri myUri = ....; // initialize Uri here
 MediaPlayer mediaPlayer = new MediaPlayer();
 mediaPlayer.setDataSource(getApplicationContext(), myUri);
 mediaPlayer.prepare();
 mediaPlayer.start();</code></pre></div></li>
-<li><p>Uri 클래스의 주요 메소드</p>
+<li><p><strong>Uri 클래스의 주요 메소드</strong></p>
 
 <ul>
 <li><p>static Uri parse(String uriString) - Uri문자열로부터 Uri 객체 생성</p>
@@ -348,9 +346,7 @@ mediaPlayer.start();</code></pre></div></li>
 <div><pre><code class="language-java">Uri image_Uri = Uri.fromFile(
     new File(Environment.getExternalStorageDirectory().getPath()+&quot;/Pictures/camera_imge.jpg&quot;)));</code></pre></div></li>
 </ul></li>
-</ul>
-
-<h2 id="toc_11">예제</h2>
+<li><p><strong>예제</strong></p>
 
 <p><img src="images/playaudio.png"></p>
 
@@ -361,7 +357,8 @@ mediaPlayer.start();</code></pre></div></li>
 <li>onItemClick() 메소드가 호출됨</li>
 <li>mAdapter.getItem(position).uri 로 선택된 항목의 uri값을 추출</li>
 <li>추출 uri를 인자로 playAudio() 호출</li>
-</ol>
+</ol></li>
+</ul>
 
 <hr>
 

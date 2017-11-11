@@ -37,14 +37,14 @@
 
 
 ## 데이터 소스에 따른 재생 방법
-* res/raw 폴더에 있는 오디오 리소스 재생
+### 1. res/raw 폴더에 있는 오디오 리소스 재생
 
 	```java
 	MediaPlayer mediaPlayer = MediaPlayer.create(context, R.raw.sound_file_1);
 	mediaPlayer.start();
 	```
 
-* URL로부터 오디오 재생
+### 2. URL로부터 오디오 재생
 
 	```java
 	String url = "http://www.hrupin.com/wp-content/uploads/mp3/testsong_20_sec.mp3";
@@ -55,8 +55,10 @@
 	```
 
 
-## URI란?
-* URI는 정보의 고유한 명칭으로 웹 주소를 나타내는 URL보다 더 상위의 개념
+
+### 3. URI 기반 재생 방법
+
+* **URI**는 정보의 고유한 명칭으로 웹 주소를 나타내는 URL보다 더 상위의 개념
     - File 타입: file://파일패스/파일이름
         
         ```
@@ -79,8 +81,7 @@
         ```
 
 
-## URI 기반 재생 방법
-* 패턴
+* **패턴**
 
 	```java
 	Uri myUri = ....; // initialize Uri here
@@ -89,7 +90,7 @@
 	mediaPlayer.prepare();
 	mediaPlayer.start();
 	```
-* Uri 클래스의 주요 메소드
+* **Uri 클래스의 주요 메소드**
     - static Uri parse(String uriString) - Uri문자열로부터 Uri 객체 생성
 		    
 		```java
@@ -103,18 +104,18 @@
 		```
 
 
-## 예제
+* **예제**
 
 
-<img src="images/playaudio.png">
-
-https://github.com/kwanulee/Android/blob/master/examples/MultimediaTest/app/src/main/java/com/example/kwanwoo/multimediatest/MainActivity.java#L150-L158
-
-
-1. 그림의 앱 화면에서 리스트 항목 선택
-2. onItemClick() 메소드가 호출됨
-3. mAdapter.getItem(position).uri 로 선택된 항목의 uri값을 추출
-4. 추출 uri를 인자로 playAudio() 호출
+	<img src="images/playaudio.png">
+	
+	https://github.com/kwanulee/Android/blob/master/examples/MultimediaTest/app/src/main/java/com/example/kwanwoo/multimediatest/MainActivity.java#L150-L158
+	
+	
+	1. 그림의 앱 화면에서 리스트 항목 선택
+	2. onItemClick() 메소드가 호출됨
+	3. mAdapter.getItem(position).uri 로 선택된 항목의 uri값을 추출
+	4. 추출 uri를 인자로 playAudio() 호출
 
 ---
 <a name="2"></a>
