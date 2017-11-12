@@ -294,20 +294,16 @@ pre[class*="language-"] {
 
 <h3 id="toc_9">1. res/raw 폴더에 있는 오디오 리소스 재생</h3>
 
-<div><pre><code class="language-none">```java
-MediaPlayer mediaPlayer = MediaPlayer.create(context, R.raw.sound_file_1);
-mediaPlayer.start();
-```</code></pre></div>
+<div><pre><code class="language-java">    MediaPlayer mediaPlayer = MediaPlayer.create(context, R.raw.sound_file_1);
+    mediaPlayer.start();</code></pre></div>
 
 <h3 id="toc_10">2. URL로부터 오디오 재생</h3>
 
-<div><pre><code class="language-none">```java
-String url = &quot;http://www.hrupin.com/wp-content/uploads/mp3/testsong_20_sec.mp3&quot;;
-MediaPlayer mediaPlayer = new MediaPlayer();
-mediaPlayer.setDataSource(url);
-mediaPlayer.prepare();  // 버퍼링으로 인해 오래 걸릴 수 있음
-mediaPlayer.start();
-```</code></pre></div>
+<div><pre><code class="language-java">    String url = &quot;http://www.hrupin.com/wp-content/uploads/mp3/testsong_20_sec.mp3&quot;;
+    MediaPlayer mediaPlayer = new MediaPlayer();
+    mediaPlayer.setDataSource(url);
+    mediaPlayer.prepare();  // 버퍼링으로 인해 오래 걸릴 수 있음
+    mediaPlayer.start();</code></pre></div>
 
 <h3 id="toc_11">3. URI 기반 재생 방법</h3>
 
@@ -344,7 +340,8 @@ mediaPlayer.start();</code></pre></div></li>
 <li><p>static Uri.fromFile(File file) - file로부터 Uri 객체 생성</p>
 
 <div><pre><code class="language-java">Uri image_Uri = Uri.fromFile(
-    new File(Environment.getExternalStorageDirectory().getPath()+&quot;/Pictures/camera_imge.jpg&quot;)));</code></pre></div></li>
+                new File(Environment.getExternalStorageDirectory().getPath()+
+                        &quot;/Pictures/camera_imge.jpg&quot;)));</code></pre></div></li>
 </ul></li>
 <li><p><strong>예제</strong></p>
 
@@ -529,7 +526,7 @@ mediaPlayer.start();</code></pre></div></li>
 <ul>
 <li>Android 7.0 이전에서는 특정한 앱과 관련된 파일 객체를 다른 앱(예, 카메라 앱)에서 사용하고자 때, 해당 파일 객체에 대한 Uri를 <em>file:///URI</em> 형식으로 사용할 수 있었으나, Android 7.0 이상에서는 <a href="https://developer.android.com/reference/android/os/FileUriExposedException.html">FileUriExposedException</a>을 발생 시킴</li>
 </ul></li>
-<li><p>[사전조건] 외부 공유 저장소에 저장하기 위해서 Permission 획득 과정 필요</p>
+<li><p>[사전조건] 외부 저장소에 저장하기 위해서 Permission 획득 과정 필요</p>
 
 <div><pre><code class="language-java">*Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
@@ -691,7 +688,7 @@ private void dispatchTakeVideoIntent() {
 
 <ul>
 <li>선택된 사진 결과는 Uri 객체 형식으로 인텐트 객체를 통해 전달됨</li>
-<li><p><a href="https://developer.android.com/reference/android/provider/MediaStore.Images.Media.html#getBitmap(android.content.ContentResolver,%20android.net.Uri)">getBitmap()</a>를 통해 Uri로부터 비트맵 얻기</p>
+<li><p>MediaStore.Images.Media 클래스의 <a href="https://developer.android.com/reference/android/provider/MediaStore.Images.Media.html#getBitmap(android.content.ContentResolver,%20android.net.Uri)">getBitmap()</a>를 통해 Uri로부터 비트맵 얻기</p>
 
 <div><pre><code class="language-none">Bitmap getBitmap (ContentResolver cr, Uri url)</code></pre></div></li>
 <li><p>Example</p>
@@ -711,7 +708,7 @@ private void dispatchTakeVideoIntent() {
 <li><p>Bitmap 데이터를 파일로 저장하기</p>
 
 <ul>
-<li><p>Bitmap 클래스의 compress 메소드를 이용하면 비트맵을 다양한 형식으로 저장할 수 있다.</p>
+<li><p>Bitmap 클래스의 <a href="https://developer.android.com/reference/android/graphics/Bitmap.html#compress(android.graphics.Bitmap.CompressFormat,%20int,%20java.io.OutputStream)">compress</a> 메소드를 이용하면 비트맵을 다양한 형식으로 저장할 수 있다.</p>
 
 <div><pre><code class="language-none">compress(Bitmap.CompressFormat format, int quality, OutputStream stream) </code></pre></div></li>
 <li><p>Example</p>

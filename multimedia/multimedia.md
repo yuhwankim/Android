@@ -39,20 +39,20 @@
 ## 데이터 소스에 따른 재생 방법
 ### 1. res/raw 폴더에 있는 오디오 리소스 재생
 
-	```java
+```java
 	MediaPlayer mediaPlayer = MediaPlayer.create(context, R.raw.sound_file_1);
 	mediaPlayer.start();
-	```
+```
 
 ### 2. URL로부터 오디오 재생
 
-	```java
+```java
 	String url = "http://www.hrupin.com/wp-content/uploads/mp3/testsong_20_sec.mp3";
 	MediaPlayer mediaPlayer = new MediaPlayer();
 	mediaPlayer.setDataSource(url);
 	mediaPlayer.prepare(); 	// 버퍼링으로 인해 오래 걸릴 수 있음
 	mediaPlayer.start();
-	```
+```
 
 
 
@@ -100,7 +100,8 @@
     
 		```java
 		Uri image_Uri = Uri.fromFile(
-			new File(Environment.getExternalStorageDirectory().getPath()+"/Pictures/camera_imge.jpg")));
+						new File(Environment.getExternalStorageDirectory().getPath()+
+								"/Pictures/camera_imge.jpg")));
 		```
 
 
@@ -281,7 +282,7 @@ https://github.com/kwanulee/Android/blob/master/examples/MultimediaTest/app/src/
 
 
 
-* [사전조건] 외부 공유 저장소에 저장하기 위해서 Permission 획득 과정 필요
+* [사전조건] 외부 저장소에 저장하기 위해서 Permission 획득 과정 필요
 
 	```java
 	*Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -446,7 +447,7 @@ https://github.com/kwanulee/Android/blob/master/examples/MultimediaTest/app/src/
 
 * onActivityResult() 메소드에서 선택된 사진 결과 얻기
 	+ 선택된 사진 결과는 Uri 객체 형식으로 인텐트 객체를 통해 전달됨
-	+ [getBitmap()](https://developer.android.com/reference/android/provider/MediaStore.Images.Media.html#getBitmap(android.content.ContentResolver, android.net.Uri))를 통해 Uri로부터 비트맵 얻기
+	+ MediaStore.Images.Media 클래스의 [getBitmap()](https://developer.android.com/reference/android/provider/MediaStore.Images.Media.html#getBitmap(android.content.ContentResolver, android.net.Uri))를 통해 Uri로부터 비트맵 얻기
 	
 			Bitmap getBitmap (ContentResolver cr, Uri url)
 	
@@ -467,7 +468,7 @@ https://github.com/kwanulee/Android/blob/master/examples/MultimediaTest/app/src/
 		
 		```
 * Bitmap 데이터를 파일로 저장하기
-	* Bitmap 클래스의 compress 메소드를 이용하면 비트맵을 다양한 형식으로 저장할 수 있다.
+	* Bitmap 클래스의 [compress](https://developer.android.com/reference/android/graphics/Bitmap.html#compress(android.graphics.Bitmap.CompressFormat, int, java.io.OutputStream)) 메소드를 이용하면 비트맵을 다양한 형식으로 저장할 수 있다.
 
 			compress(Bitmap.CompressFormat format, int quality, OutputStream stream) 
 
