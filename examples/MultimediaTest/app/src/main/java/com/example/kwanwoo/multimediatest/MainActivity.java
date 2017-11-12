@@ -173,9 +173,9 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<MediaItem> prepareDataSource() {
         final String AUDIO_URL1 = "http://www.robtowns.com/music/blind_willie.mp3";
-        //final String AUDIO_URL2 = "http://www.hrupin.com/wp-content/uploads/mp3/testsong_20_sec.mp3";
-        final String AUDIO_URL2="https://www.youtube.com/embed/EoP69Ld2Tkg";
-        final String VIDEO_URL = "http://sites.google.com/site/ubiaccessmobile/sample_video.mp4";
+        final String AUDIO_URL2 = "http://www.hrupin.com/wp-content/uploads/mp3/testsong_20_sec.mp3";
+
+        final String VIDEO_URL ="https://kwanulee.github.io/Android/multimedia/images/makerton.mp4";
         ArrayList mediaList = new ArrayList<MediaItem>();
 
         // Raw 리소스 데이터 추가
