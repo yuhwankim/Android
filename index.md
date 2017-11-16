@@ -65,7 +65,7 @@
 -  [[실습9]](multimedia/multimedia_lab.html)
 
 ##11주 
-- 위치기반 서비스 
+- [위치기반 서비스](location_map/location.html) 
 - 지도 
 -  실습10
 
