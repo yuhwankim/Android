@@ -263,8 +263,6 @@
 	}
 	```
 
-.footnote[]
-
 <a name="6"> </a>
 ---
 ##6. 주소 찾기
@@ -276,12 +274,12 @@
     - Geocoder 객체 생성
         + Geocoder geocoder = new Geocoder(this, Locale.KOREA);
         + 두번째 생성자 파라미터는 로케일 값으로, 특정 지역 및 언어 영역을 나타냄
-    - Geocoder class의 아래 함수들을 이용
-        + List &lt; Address &gt; **getFromLocation**(double latitude, double longitude, int maxResults);
-        + List &lt; Address &gt; **getFromLocationName**(String locationName, int maxResults);
+    - [Geocoder](https://developer.android.com/reference/android/location/Geocoder.html) class의 아래 함수들을 이용
+        + List &lt;[Address](https://developer.android.com/reference/android/location/Address.html)&gt; [**getFromLocation**](https://developer.android.com/reference/android/location/Geocoder.html#getFromLocation(double, double, int))(double latitude, double longitude, int maxResults);
+        + List &lt;[Address](https://developer.android.com/reference/android/location/Address.html)&gt; [**getFromLocationName**](https://developer.android.com/reference/android/location/Geocoder.html#getFromLocationName(java.lang.String, int, double, double, double, double))(String locationName, int maxResults);
 
 
-* Address class:
+* [Address](https://developer.android.com/reference/android/location/Address.html) class:
     - getLatitude() : double type의 위도
     - getLongitude(): double type의 경도
     - getMaxAddressLineIndex() : 주소가 표시줄 수

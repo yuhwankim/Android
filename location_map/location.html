@@ -555,8 +555,6 @@ locRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);</code></pre></di
 }</code></pre></div></li>
 </ul>
 
-<p>.footnote[]</p>
-
 <h2 id="toc_14"><a name="6"> </a></h2>
 
 <h2 id="toc_15">6. 주소 찾기</h2>
@@ -575,14 +573,14 @@ locRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);</code></pre></di
 <li>Geocoder geocoder = new Geocoder(this, Locale.KOREA);</li>
 <li>두번째 생성자 파라미터는 로케일 값으로, 특정 지역 및 언어 영역을 나타냄</li>
 </ul></li>
-<li>Geocoder class의 아래 함수들을 이용
+<li><a href="https://developer.android.com/reference/android/location/Geocoder.html">Geocoder</a> class의 아래 함수들을 이용
 
 <ul>
-<li>List &lt; Address &gt; <strong>getFromLocation</strong>(double latitude, double longitude, int maxResults);</li>
-<li>List &lt; Address &gt; <strong>getFromLocationName</strong>(String locationName, int maxResults);</li>
+<li>List &lt;<a href="https://developer.android.com/reference/android/location/Address.html">Address</a>&gt; <a href="https://developer.android.com/reference/android/location/Geocoder.html#getFromLocation(double,%20double,%20int)"><strong>getFromLocation</strong></a>(double latitude, double longitude, int maxResults);</li>
+<li>List &lt;<a href="https://developer.android.com/reference/android/location/Address.html">Address</a>&gt; <a href="https://developer.android.com/reference/android/location/Geocoder.html#getFromLocationName(java.lang.String,%20int,%20double,%20double,%20double,%20double)"><strong>getFromLocationName</strong></a>(String locationName, int maxResults);</li>
 </ul></li>
 </ul></li>
-<li><p>Address class:</p>
+<li><p><a href="https://developer.android.com/reference/android/location/Address.html">Address</a> class:</p>
 
 <ul>
 <li>getLatitude() : double type의 위도</li>
