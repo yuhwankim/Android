@@ -100,7 +100,7 @@
 	        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 	
 	        switch (requestCode) {
-	            case MY_PERMISSION_REQUEST_LOCATION: {
+	            case REQUEST_PERMISSIONS_FOR_LAST_KNOWN_LOCATION: {
 	                if (grantResults.length > 0 
 	                	&& grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 	                     // 권한 획득 후 수행할 일: 예, getLastLocation(); 
