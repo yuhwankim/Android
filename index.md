@@ -66,7 +66,7 @@
 
 ##11주 
 - [위치기반 서비스](location_map/location.html) 
-- 지도 
+- [지도](location_map/map.html) 
 -  실습10
 
 ##12주 
