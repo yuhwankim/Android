@@ -33,7 +33,7 @@
 		      compile 'com.google.android.gms:play-services-location:11.0.4'
 		}
 		```
-    3. 툴바에서 "Sync Project with Graddle Files(<img src="images/sync.png">)" 또는 Sync Now 클릭
+    3. 툴바에서 "Sync Project with Graddle File" 또는 "Sync Now" 클릭
 
 
 
