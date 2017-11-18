@@ -67,7 +67,7 @@
 ##11주 
 - [위치기반 서비스](location_map/location.html) 
 - [지도](location_map/map.html) 
--  실습10
+-  [[실습10]](location_map/location-map-lab.html)
 
 ##12주 
 - 애니메이션 

@@ -5,7 +5,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>index</title>
+<title>location-map-lab</title>
 
 
 <style type="text/css">
@@ -240,133 +240,60 @@ pre[class*="language-"] {
 
 <body>
 
-<h1 id="toc_0">안드로이드 프로그래밍 강의자료</h1>
-
-<h2 id="toc_1">1주 - 안드로이드 개요</h2>
+<h1 id="toc_0">위치 기반 서비스 실습</h1>
 
 <ul>
-<li><a href="intro-android/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%EC%86%8C%EA%B0%9C.pdf">안드로이드 소개</a> </li>
-<li><a href="intro-android/install_dev_env.html">개발환경 설치</a> </li>
-<li><a href="intro-android/start-android-project.html">안드로이드 앱 시작하기</a><br></li>
-<li><a href="intro-android/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C_%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0_%EC%8B%A4%EC%8A%B5.html">[실습1]</a></li>
+<li>사전 준비물: 안드로이드 디바이스 (폰 혹은 테블릿), USB 케이블</li>
 </ul>
 
-<h2 id="toc_2">2주 - 프로젝트 관리</h2>
+<h2 id="toc_1">1. GoogleMap 사용 실습</h2>
 
 <ul>
-<li><a href="android-project/android-project-basic.pdf">안드로이드 프로젝트 기본</a> </li>
-<li><a href="android-project/git_github.html">git/GitHub를 이용한 프로젝트 관리</a></li>
-<li><a href="android-project/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C_%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_%EA%B4%80%EB%A6%AC_%EC%8B%A4%EC%8A%B5.html">[실습2]</a></li>
+<li>다음과 같은 레이아웃을 가지는 MainActivity를 실행시켰을 때, <fragment> 부분에 GoogleMap을 표시하여라</li>
 </ul>
 
-<h2 id="toc_3">3주 - 안드로이드 UI</h2>
+<p><img src="figures/google-map-lab.png"></p>
+
+<h2 id="toc_2">2. 위치 서비스 실습</h2>
 
 <ul>
-<li><a href="android-ui/ui-design-overview.pdf">UI 설계 개요</a> </li>
-<li><a href="android-ui/widget.pdf">위젯</a> </li>
-<li><a href="android-ui/layouts.pdf">레이아웃</a></li>
-<li><a href="android-ui/margin-padding-gravity.pdf">Marging/Padding/Gravity</a> </li>
-<li><a href="android-ui/event-handling.pdf">이벤트 처리</a> </li>
-<li><a href="android-ui/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C_UI_%EC%8B%A4%EC%8A%B5.html">[실습3]</a></li>
+<li><p><strong>Google Play Service</strong>의 <strong>Location API</strong> 이용을 위한 설정을 한 후에, <strong>Fused Location Provider</strong>의 <strong>getLastLocation</strong>() 메소드를 이용하여 <strong>현재 위치를 얻어 내고, GoogleMap을 줌 레벨은 15의 현재 위치로 이동하여 표시</strong>하라.</p>
+
+<p><img src="figures/current-poistion-google-map.png"></p></li>
+<li><p>참조코드</p>
+
+<ul>
+<li>현재 위치 알아내는 방법
+
+<ul>
+<li><a href="https://github.com/kwanulee/Android/blob/master/examples/LocationService/app/src/main/java/com/kwanwoo/android/locationservice/MainActivity.java#L148-L162">https://github.com/kwanulee/Android/blob/master/examples/LocationService/app/src/main/java/com/kwanwoo/android/locationservice/MainActivity.java#L148-L162</a></li>
+</ul></li>
+<li>지정된 위치와 줌 레벨로 지도 이동 방법
+
+<ul>
+<li>  <a href="https://github.com/kwanulee/Android/blob/master/examples/SampleMapTest/app/src/main/java/com/kwanwoo/android/samplemaptest/MainActivity.java#L45">https://github.com/kwanulee/Android/blob/master/examples/SampleMapTest/app/src/main/java/com/kwanwoo/android/samplemaptest/MainActivity.java#L45</a></li>
+</ul></li>
+</ul></li>
 </ul>
 
-<h2 id="toc_4">4주 - 어댑터 뷰</h2>
+<h2 id="toc_3">3. Geocoding 실습</h2>
 
 <ul>
-<li><a href="adapter-view/adapterview-overview.pdf">어댑터뷰 개요</a></li>
-<li><a href="adapter-view/listview.pdf">리스트뷰</a> </li>
-<li><a href="adapter-view/gridview.pdf">그리드뷰</a> </li>
-<li><a href="adapter-view/custom-adapterview.pdf">커스텀 어댑터뷰</a> </li>
-<li><a href="adapter-view/adapterview-practice.html">[실습4]</a></li>
-</ul>
-
-<h2 id="toc_5">5주 - 액티비티와 네비게이션</h2>
+<li><p>EditText 창에 찾고자 하는 장소 이름을 입력한 후에 Button을 클릭하면, Geocoder를 이용하여 입력된 장소 이름으로부터 위치(위도, 경도 값)를 얻고(편의상 첫번째 결과만 이용) </p>
 
 <ul>
-<li><a href="activity-navigation/activity.pdf">액티비티</a> </li>
-<li><a href="activity-navigation/intent.pdf">인텐트</a> </li>
-<li><a href="activity-navigation/actionbar.pdf">액션바</a> </li>
-<li><a href="activity-navigation/activity-navigation-practice.html">[실습5]</a></li>
-</ul>
-
-<h2 id="toc_6">6주 - 프래그먼트</h2>
+<li>해당 위치 정보를 TextView 창에 표시</li>
+<li>해당 위치로 지도를 이동 (줌 레벨은 15)</li>
+<li><p>해당 위치에 마커로 표시 (마커의 타이틀로 장소 이름 설정)</p></li>
+<li><p>참조코드: (해당 위치 마커 표시 방법)</p>
 
 <ul>
-<li><a href="fragment/fragment-basics.pdf">프그먼트 기본</a> </li>
-<li><a href="fragment/fragment-replace.pdf">동적 프래그먼트</a></li>
-<li><a href="fragment/fragment-example.pdf">화면방향과 프래그먼트</a> </li>
-<li><a href="fragment/fragment-practice.html">[실습6]</a></li>
-</ul>
+<li><a href="https://github.com/kwanulee/Android/blob/master/examples/SampleMapTest/app/src/main/java/com/kwanwoo/android/samplemaptest/MainActivity.java#L37-L44">https://github.com/kwanulee/Android/blob/master/examples/SampleMapTest/app/src/main/java/com/kwanwoo/android/samplemaptest/MainActivity.java#L37-L44</a> </li>
+</ul></li>
+</ul></li>
+<li><p>[실행 결과 예시] “낙산공원” 입력후, 검색(Find) 버튼을 누른 결과</p>
 
-<h2 id="toc_7">7주</h2>
-
-<ul>
-<li><a href="data-management/sharedpreferences.html">설정</a> </li>
-<li><a href="data-management/file.html">파일</a> </li>
-<li><a href="data-management/datamanagement_lab.html">[실습7]</a></li>
-</ul>
-
-<h2 id="toc_8">8주</h2>
-
-<ul>
-<li>중간고사</li>
-</ul>
-
-<h2 id="toc_9">9주</h2>
-
-<ul>
-<li><a href="data-management/sqlite.html">SQLite</a> </li>
-<li><a href="data-management/content-provider.html">컨텐츠 프로바이더</a> </li>
-<li> <a href="data-management/sqlite-content-provider-lab.html">[실습8]</a></li>
-</ul>
-
-<h2 id="toc_10">10주</h2>
-
-<ul>
-<li><a href="multimedia/multimedia.html#1">오디오 재생하기</a></li>
-<li><a href="multimedia/multimedia.html#2">동영상 재생하기</a></li>
-<li><a href="multimedia/multimedia.html#3">오디오 녹음하기</a></li>
-<li><a href="multimedia/multimedia.html#4">카메라 앱으로 사진 및 동영상 저장하기</a></li>
-<li><p><a href="multimedia/multimedia.html#5">Photo 앱으로 선택한 사진 저장하기</a></p></li>
-<li><p><a href="multimedia/multimedia_lab.html">[실습9]</a></p></li>
-</ul>
-
-<h2 id="toc_11">11주</h2>
-
-<ul>
-<li><a href="location_map/location.html">위치기반 서비스</a> </li>
-<li><a href="location_map/map.html">지도</a> </li>
-<li> <a href="location_map/location-map-lab.html">[실습10]</a></li>
-</ul>
-
-<h2 id="toc_12">12주</h2>
-
-<ul>
-<li>애니메이션 </li>
-<li>그래픽 </li>
-<li>스레드</li>
-<li> 실습11</li>
-</ul>
-
-<h2 id="toc_13">13주</h2>
-
-<ul>
-<li>브로드캐스트 리시버</li>
-<li>배터리 상태 표시 </li>
-<li> SMS </li>
-<li> 실습12</li>
-</ul>
-
-<h2 id="toc_14">14주</h2>
-
-<ul>
-<li>기말고사</li>
-</ul>
-
-<h2 id="toc_15">15주</h2>
-
-<ul>
-<li>텀 프로젝트 발표</li>
+<p><img src="figures/google-map-lab3.png" width=500></p></li>
 </ul>
 
 
