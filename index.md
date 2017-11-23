@@ -70,9 +70,8 @@
 -  [[실습10]](location_map/location-map-lab.html)
 
 ##12주 
-- 애니메이션 
+- [애니메이션](animation-graphics/animation.html) 
 - 그래픽 
-- 스레드
 -  실습11
 
 ##13주 
