@@ -3,28 +3,32 @@ package com.kwanwoo.android.graphicstest;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 import java.util.ArrayList;
 
-public class AnimatedSurfaceView  extends SurfaceView implements SurfaceHolder.Callback {
+public class AnimatedSurfaceView  extends SurfaceView // SurfaceView 상속
+                    implements SurfaceHolder.Callback {
 
-    private BallAnimation thread;
+    private Thread thread;
     private ArrayList<Ball> arBall = new ArrayList<Ball>();
 
     SurfaceHolder holder;
 
-
-    public AnimatedSurfaceView(Context context) {
-        super(context);
+    public AnimatedSurfaceView(Context context, AttributeSet attrs) {
+        super(context, attrs);
         holder = getHolder();
         holder.addCallback(this);
 
-        thread = new BallAnimation();
+        thread = new Thread() {
+            public void run() {
+                draw();
+            }
+        };
     }
-
 
     public void surfaceCreated(SurfaceHolder surfaceHolder) {
         thread.start();
@@ -38,21 +42,24 @@ public class AnimatedSurfaceView  extends SurfaceView implements SurfaceHolder.C
         } catch (InterruptedException e) {}
     }
 
-    class BallAnimation extends Thread {
-        public void run() {
-            while (true) {
-                Canvas canvas  = holder.lockCanvas(null);
 
-                canvas.drawColor(Color.WHITE);
-                synchronized (holder) {
-                    for (int idx=0; idx<arBall.size(); idx++) {
-                        Ball B = arBall.get(idx);
-                        B.move(getWidth(),getHeight());
-                        B.draw(canvas);
-                    }
+    private void draw() {
+        while (true) {
+            //1. 볼을 그릴 캔버스를 lockCanvas() 메소드를 통해 참조하고 캔버스에 락을 걸어 둠
+            Canvas canvas  = holder.lockCanvas(null);
+
+            //2. 앞에서 얻은 캔버스에 모든 볼을 이동시키고 그림
+            canvas.drawColor(Color.WHITE); // cavas 지우기- 흰색으로 채우기
+            synchronized (holder) {
+                for (int idx=0; idx<arBall.size(); idx++) {
+                    Ball B = arBall.get(idx);
+                    B.move(getWidth(),getHeight());
+                    B.draw(canvas);
                 }
-                holder.unlockCanvasAndPost(canvas);
             }
+
+            // 3. 캔버스 객체에 락을 풀어줌
+            holder.unlockCanvasAndPost(canvas);
         }
     }
 
