@@ -71,7 +71,7 @@
 
 ##12주 
 - [애니메이션](animation-graphics/animation.html) 
-- 그래픽 
+- [그래픽](animation-graphics/graphics.html) 
 -  실습11
 
 ##13주 
