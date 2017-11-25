@@ -120,7 +120,7 @@
 - Ball 클래스
 	- 멤버 변수
 		- **mX**, **mY**: 중심좌표
-		- **Width**, **mHeight**: 넓이와 높이
+		- **mWidth**, **mHeight**: 넓이와 높이
 		- **dx**, **dy**: 볼의 x축 혹은 y축  이동 방향 및 속도 값으로 **랜덤으로 설정**
 		- **color**: 볼의 색상 값으로 **랜덤으로 설정**
 	- 메소드
@@ -132,7 +132,7 @@
 	```java
 	public class Ball {
 	    final int RAD = 24;     // 볼의 반지름
-	    int mX, mY;             // 볼의 중심 좌표
+	    int mX, mY;             // 볼의 기준좌표
 	    int mWidth, mHeight;    // 볼의 넓이와 높이
 	
 	    int dx, dy;             // 볼의 x축 혹은 y축  이동 방향, 이동 속도 값
