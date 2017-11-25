@@ -252,11 +252,11 @@ animatorSet.start();
 ## 애니메니션 리스너
 * 애니메이션 종료 후에 곧바로 다른 일을 해야 한다면 애니메이션 객체에 AnimationListener 객체를 등록해야 함
 * AnimationListener 인터페이스
-    - Animation.AnimationListener
-    - Animator.AnimationListener
+    - **Animation.AnimationListener**
+    - **Animator.AnimatorListener**
 * AnimationListener 객체 등록 방법
-    - Animation.setAnimationListener(Animation.AnimationListener)
-    - Animator.addListener(Animator.AnimationListener)
+    - Animation.setAnimationListener(**Animation.AnimationListener**)
+    - Animator.addListener(**Animator.AnimatorListener**)
 
 ---
 ## 애니메니션 리스너 예제
