@@ -5,7 +5,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>index</title>
+<title>animation_lab</title>
 
 
 <style type="text/css">
@@ -240,132 +240,40 @@ pre[class*="language-"] {
 
 <body>
 
-<h1 id="toc_0">안드로이드 프로그래밍 강의자료</h1>
+<h1 id="toc_0">애니메이션 실습</h1>
 
-<h2 id="toc_1">1주 - 안드로이드 개요</h2>
+<p>이번 실습은 불꽃 애니메이션에 대한 실습입니다. 강의자료로 주어진 예제에서는 불꽃 애니메이션이 뷰 애니메이션의 일종인 트윈 애니메이션으로 구현되어있습니다.</p>
+
+<p><img src="figures/animation-graphics-lab.png" width=300px></p>
 
 <ul>
-<li><a href="intro-android/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%EC%86%8C%EA%B0%9C.pdf">안드로이드 소개</a> </li>
-<li><a href="intro-android/install_dev_env.html">개발환경 설치</a> </li>
-<li><a href="intro-android/start-android-project.html">안드로이드 앱 시작하기</a><br></li>
-<li><a href="intro-android/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C_%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0_%EC%8B%A4%EC%8A%B5.html">[실습1]</a></li>
+<li><p>전체 예제 코드: <a href="https://github.com/kwanulee/Android/tree/master/examples/AnimationTest">https://github.com/kwanulee/Android/tree/master/examples/AnimationTest</a></p></li>
+<li><p>애니메이션 정의 파일: <a href="https://github.com/kwanulee/Android/blob/master/examples/AnimationTest/app/src/main/res/anim/fire.xml">https://github.com/kwanulee/Android/blob/master/examples/AnimationTest/app/src/main/res/anim/fire.xml</a></p></li>
+<li><p>불꽃 이미지 파일:  <a href="https://github.com/kwanulee/Android/blob/master/examples/AnimationTest/app/src/main/res/drawable/fireworks_01.jpg">https://github.com/kwanulee/Android/blob/master/examples/AnimationTest/app/src/main/res/drawable/fireworks_01.jpg</a></p></li>
 </ul>
 
-<h2 id="toc_2">2주 - 프로젝트 관리</h2>
+<h2 id="toc_1">1. ValueAnimator 실습</h2>
 
 <ul>
-<li><a href="android-project/android-project-basic.pdf">안드로이드 프로젝트 기본</a> </li>
-<li><a href="android-project/git_github.html">git/GitHub를 이용한 프로젝트 관리</a></li>
-<li><a href="android-project/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C_%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_%EA%B4%80%EB%A6%AC_%EC%8B%A4%EC%8A%B5.html">[실습2]</a></li>
+<li>이 불꽃 애니메이션을 프로퍼티 애니메이션의 ValueAnimator를 이용하여 구현하시오..
+[힌트]<br>
+참조코드:<br>
+<a href="https://github.com/kwanulee/Android/blob/master/examples/AnimationTest/app/src/main/java/com/example/kwanwoo/animationtest/MainActivity.java#L115-142">https://github.com/kwanulee/Android/blob/master/examples/AnimationTest/app/src/main/java/com/example/kwanwoo/animationtest/MainActivity.java#L115-142</a> (로켓의 ValueAnimator이용 방법과 유사함)</li>
 </ul>
 
-<h2 id="toc_3">3주 - 안드로이드 UI</h2>
+<h2 id="toc_2">2. ObjectAnimator 실습</h2>
 
 <ul>
-<li><a href="android-ui/ui-design-overview.pdf">UI 설계 개요</a> </li>
-<li><a href="android-ui/widget.pdf">위젯</a> </li>
-<li><a href="android-ui/layouts.pdf">레이아웃</a></li>
-<li><a href="android-ui/margin-padding-gravity.pdf">Marging/Padding/Gravity</a> </li>
-<li><a href="android-ui/event-handling.pdf">이벤트 처리</a> </li>
-<li><a href="android-ui/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C_UI_%EC%8B%A4%EC%8A%B5.html">[실습3]</a></li>
+<li>이 불꽃 애니메이션을 프로퍼티 애니메이션의 ObjectAnimator를 이용하여 구현하시오..
+[힌트]<br>
+참조코드:<br>
+<a href="https://github.com/kwanulee/Android/blob/master/examples/AnimationTest/app/src/main/java/com/example/kwanwoo/animationtest/MainActivity.java#L86-L100">https://github.com/kwanulee/Android/blob/master/examples/AnimationTest/app/src/main/java/com/example/kwanwoo/animationtest/MainActivity.java#L86-L100</a>  (로켓의 ObjectAnimator이용 방법과 유사함)</li>
 </ul>
 
-<h2 id="toc_4">4주 - 어댑터 뷰</h2>
+<h2 id="toc_3">3. 자유 애니메이션</h2>
 
 <ul>
-<li><a href="adapter-view/adapterview-overview.pdf">어댑터뷰 개요</a></li>
-<li><a href="adapter-view/listview.pdf">리스트뷰</a> </li>
-<li><a href="adapter-view/gridview.pdf">그리드뷰</a> </li>
-<li><a href="adapter-view/custom-adapterview.pdf">커스텀 어댑터뷰</a> </li>
-<li><a href="adapter-view/adapterview-practice.html">[실습4]</a></li>
-</ul>
-
-<h2 id="toc_5">5주 - 액티비티와 네비게이션</h2>
-
-<ul>
-<li><a href="activity-navigation/activity.pdf">액티비티</a> </li>
-<li><a href="activity-navigation/intent.pdf">인텐트</a> </li>
-<li><a href="activity-navigation/actionbar.pdf">액션바</a> </li>
-<li><a href="activity-navigation/activity-navigation-practice.html">[실습5]</a></li>
-</ul>
-
-<h2 id="toc_6">6주 - 프래그먼트</h2>
-
-<ul>
-<li><a href="fragment/fragment-basics.pdf">프그먼트 기본</a> </li>
-<li><a href="fragment/fragment-replace.pdf">동적 프래그먼트</a></li>
-<li><a href="fragment/fragment-example.pdf">화면방향과 프래그먼트</a> </li>
-<li><a href="fragment/fragment-practice.html">[실습6]</a></li>
-</ul>
-
-<h2 id="toc_7">7주</h2>
-
-<ul>
-<li><a href="data-management/sharedpreferences.html">설정</a> </li>
-<li><a href="data-management/file.html">파일</a> </li>
-<li><a href="data-management/datamanagement_lab.html">[실습7]</a></li>
-</ul>
-
-<h2 id="toc_8">8주</h2>
-
-<ul>
-<li>중간고사</li>
-</ul>
-
-<h2 id="toc_9">9주</h2>
-
-<ul>
-<li><a href="data-management/sqlite.html">SQLite</a> </li>
-<li><a href="data-management/content-provider.html">컨텐츠 프로바이더</a> </li>
-<li> <a href="data-management/sqlite-content-provider-lab.html">[실습8]</a></li>
-</ul>
-
-<h2 id="toc_10">10주</h2>
-
-<ul>
-<li><a href="multimedia/multimedia.html#1">오디오 재생하기</a></li>
-<li><a href="multimedia/multimedia.html#2">동영상 재생하기</a></li>
-<li><a href="multimedia/multimedia.html#3">오디오 녹음하기</a></li>
-<li><a href="multimedia/multimedia.html#4">카메라 앱으로 사진 및 동영상 저장하기</a></li>
-<li><p><a href="multimedia/multimedia.html#5">Photo 앱으로 선택한 사진 저장하기</a></p></li>
-<li><p><a href="multimedia/multimedia_lab.html">[실습9]</a></p></li>
-</ul>
-
-<h2 id="toc_11">11주</h2>
-
-<ul>
-<li><a href="location_map/location.html">위치기반 서비스</a> </li>
-<li><a href="location_map/map.html">지도</a> </li>
-<li> <a href="location_map/location-map-lab.html">[실습10]</a></li>
-</ul>
-
-<h2 id="toc_12">12주</h2>
-
-<ul>
-<li><a href="animation-graphics/animation.html">애니메이션</a> </li>
-<li><a href="animation-graphics/graphics.html">그래픽</a> </li>
-<li> <a href="animation-graphics/animation_lab.html">[실습11]</a></li>
-</ul>
-
-<h2 id="toc_13">13주</h2>
-
-<ul>
-<li>브로드캐스트 리시버</li>
-<li>배터리 상태 표시 </li>
-<li> SMS </li>
-<li> 실습12</li>
-</ul>
-
-<h2 id="toc_14">14주</h2>
-
-<ul>
-<li>기말고사</li>
-</ul>
-
-<h2 id="toc_15">15주</h2>
-
-<ul>
-<li>텀 프로젝트 발표</li>
+<li>이 불꽃 애니메이션에 각자 자유롭게 새로운 애니메이션 이펙트를 추가하시오. (뷰 애니메이션, 프로퍼티 애니메이션 어떠한 것을 사용해도 상관없습니다</li>
 </ul>
 
 

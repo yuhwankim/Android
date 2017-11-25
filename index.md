@@ -72,7 +72,7 @@
 ##12주 
 - [애니메이션](animation-graphics/animation.html) 
 - [그래픽](animation-graphics/graphics.html) 
--  실습11
+-  [[실습11]](animation-graphics/animation_lab.html)
 
 ##13주 
 - 브로드캐스트 리시버
