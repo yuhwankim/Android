@@ -77,7 +77,7 @@
 ##13주 
 - [브로드캐스트 리시버](broadcast_notification/broadcast_receiver.html)
 - [알림 (Notification)](broadcast_notification/notification.html)
--  실습12
+-  [[실습12]](broadcast_notification/broadcast-notification-lab.html)
 
 ##14주 
 - 기말고사

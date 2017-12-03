@@ -5,7 +5,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>index</title>
+<title>broadcast-notification-lab</title>
 
 
 <style type="text/css">
@@ -240,132 +240,46 @@ pre[class*="language-"] {
 
 <body>
 
-<h1 id="toc_0">안드로이드 프로그래밍 강의자료</h1>
+<h1 id="toc_0">브로드캐스트 리시버와 알림 실습</h1>
 
-<h2 id="toc_1">1주 - 안드로이드 개요</h2>
+<h2 id="toc_1">개요</h2>
 
-<ul>
-<li><a href="intro-android/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%EC%86%8C%EA%B0%9C.pdf">안드로이드 소개</a> </li>
-<li><a href="intro-android/install_dev_env.html">개발환경 설치</a> </li>
-<li><a href="intro-android/start-android-project.html">안드로이드 앱 시작하기</a><br></li>
-<li><a href="intro-android/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C_%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0_%EC%8B%A4%EC%8A%B5.html">[실습1]</a></li>
-</ul>
-
-<h2 id="toc_2">2주 - 프로젝트 관리</h2>
+<p>이번 실습은 예제로 주어진 배터리 상태 모니터링을 위한 브로드캐스트 예제와 알림 예제를 결합하여, 배터리 잔량이 20%가 남았을 때, 알림 메시지를 표시하고, 알림 메시지를 클릭하였을 때, 현재 배터리의 상태를 보여주는 액티비티를 실행하는 앱을 개발하는 것입니다.</p>
 
 <ul>
-<li><a href="android-project/android-project-basic.pdf">안드로이드 프로젝트 기본</a> </li>
-<li><a href="android-project/git_github.html">git/GitHub를 이용한 프로젝트 관리</a></li>
-<li><a href="android-project/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C_%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_%EA%B4%80%EB%A6%AC_%EC%8B%A4%EC%8A%B5.html">[실습2]</a></li>
+<li><p>에뮬레이터 제어기에서 배터리의 잔량을 20%로 내린 경우 
+<img src="figures/broadcast-notification-lab1.png" alt=""></p></li>
+<li><p>알림 창을 열고, 알림 메시지를 클릭한 경우
+<img src="figures/broadcast-notification-lab2.png" alt=""></p></li>
 </ul>
 
-<h2 id="toc_3">3주 - 안드로이드 UI</h2>
+<h2 id="toc_2">1. 배터리의 잔량을 모니터링 하기 브로드캐스트 리시버 구현</h2>
 
 <ul>
-<li><a href="android-ui/ui-design-overview.pdf">UI 설계 개요</a> </li>
-<li><a href="android-ui/widget.pdf">위젯</a> </li>
-<li><a href="android-ui/layouts.pdf">레이아웃</a></li>
-<li><a href="android-ui/margin-padding-gravity.pdf">Marging/Padding/Gravity</a> </li>
-<li><a href="android-ui/event-handling.pdf">이벤트 처리</a> </li>
-<li><a href="android-ui/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C_UI_%EC%8B%A4%EC%8A%B5.html">[실습3]</a></li>
+<li>배터리의 잔량을 모니터링 하기 위한 브로드캐스트 리시버를 구현하고 등록하시오.</li>
 </ul>
 
-<h2 id="toc_4">4주 - 어댑터 뷰</h2>
+<p>[힌트]
+참조코드: <a href="https://github.com/kwanulee/Android/blob/master/examples/BroadcastTest/app/src/main/java/com/kwanwoo/android/broadcasttest/BatteryWatchBR.java">https://github.com/kwanulee/Android/blob/master/examples/BroadcastTest/app/src/main/java/com/kwanwoo/android/broadcasttest/BatteryWatchBR.java</a> </p>
+
+<h2 id="toc_3">2. 알림 정의 및 발행</h2>
 
 <ul>
-<li><a href="adapter-view/adapterview-overview.pdf">어댑터뷰 개요</a></li>
-<li><a href="adapter-view/listview.pdf">리스트뷰</a> </li>
-<li><a href="adapter-view/gridview.pdf">그리드뷰</a> </li>
-<li><a href="adapter-view/custom-adapterview.pdf">커스텀 어댑터뷰</a> </li>
-<li><a href="adapter-view/adapterview-practice.html">[실습4]</a></li>
-</ul>
-
-<h2 id="toc_5">5주 - 액티비티와 네비게이션</h2>
+<li>배터리 잔량을 체크한 후, 20%가 되는 시점에 <strong>배터리 상태 경고</strong> 알림을 표시하는 알람을 구현하시오.</li>
+<li>알림 메시지를 클릭하는 경우에 배터리의 상태 정보를 표시해주는 액티비티를 실행시켜야 합니다.
 
 <ul>
-<li><a href="activity-navigation/activity.pdf">액티비티</a> </li>
-<li><a href="activity-navigation/intent.pdf">인텐트</a> </li>
-<li><a href="activity-navigation/actionbar.pdf">액션바</a> </li>
-<li><a href="activity-navigation/activity-navigation-practice.html">[실습5]</a></li>
-</ul>
-
-<h2 id="toc_6">6주 - 프래그먼트</h2>
+<li>표시되는 배터리 상태정보는 다음과 같습니다.
 
 <ul>
-<li><a href="fragment/fragment-basics.pdf">프그먼트 기본</a> </li>
-<li><a href="fragment/fragment-replace.pdf">동적 프래그먼트</a></li>
-<li><a href="fragment/fragment-example.pdf">화면방향과 프래그먼트</a> </li>
-<li><a href="fragment/fragment-practice.html">[실습6]</a></li>
+<li>Battery level, Charger Connection, Battery Health, Battery Status<br></li>
+</ul></li>
+</ul></li>
+<li>API level 26 이상의 플랫폼에서도 동작하도록 구현해야 합니다.</li>
 </ul>
 
-<h2 id="toc_7">7주</h2>
-
-<ul>
-<li><a href="data-management/sharedpreferences.html">설정</a> </li>
-<li><a href="data-management/file.html">파일</a> </li>
-<li><a href="data-management/datamanagement_lab.html">[실습7]</a></li>
-</ul>
-
-<h2 id="toc_8">8주</h2>
-
-<ul>
-<li>중간고사</li>
-</ul>
-
-<h2 id="toc_9">9주</h2>
-
-<ul>
-<li><a href="data-management/sqlite.html">SQLite</a> </li>
-<li><a href="data-management/content-provider.html">컨텐츠 프로바이더</a> </li>
-<li> <a href="data-management/sqlite-content-provider-lab.html">[실습8]</a></li>
-</ul>
-
-<h2 id="toc_10">10주</h2>
-
-<ul>
-<li><a href="multimedia/multimedia.html#1">오디오 재생하기</a></li>
-<li><a href="multimedia/multimedia.html#2">동영상 재생하기</a></li>
-<li><a href="multimedia/multimedia.html#3">오디오 녹음하기</a></li>
-<li><a href="multimedia/multimedia.html#4">카메라 앱으로 사진 및 동영상 저장하기</a></li>
-<li><p><a href="multimedia/multimedia.html#5">Photo 앱으로 선택한 사진 저장하기</a></p></li>
-<li><p><a href="multimedia/multimedia_lab.html">[실습9]</a></p></li>
-</ul>
-
-<h2 id="toc_11">11주</h2>
-
-<ul>
-<li><a href="location_map/location.html">위치기반 서비스</a> </li>
-<li><a href="location_map/map.html">지도</a> </li>
-<li> <a href="location_map/location-map-lab.html">[실습10]</a></li>
-</ul>
-
-<h2 id="toc_12">12주</h2>
-
-<ul>
-<li><a href="animation-graphics/animation.html">애니메이션</a> </li>
-<li><a href="animation-graphics/graphics.html">그래픽</a> </li>
-<li> <a href="animation-graphics/animation_lab.html">[실습11]</a></li>
-</ul>
-
-<h2 id="toc_13">13주</h2>
-
-<ul>
-<li><a href="broadcast_notification/broadcast_receiver.html">브로드캐스트 리시버</a></li>
-<li><a href="broadcast_notification/notification.html">알림 (Notification)</a></li>
-<li> <a href="broadcast_notification/broadcast-notification-lab.html">[실습12]</a></li>
-</ul>
-
-<h2 id="toc_14">14주</h2>
-
-<ul>
-<li>기말고사</li>
-</ul>
-
-<h2 id="toc_15">15주</h2>
-
-<ul>
-<li>텀 프로젝트 발표</li>
-</ul>
+<p>[힌트]
+참조코드: <a href="https://github.com/kwanulee/Android/tree/master/examples/NotificationTest">https://github.com/kwanulee/Android/tree/master/examples/NotificationTest</a></p>
 
 
 
