@@ -75,9 +75,8 @@
 -  [[실습11]](animation-graphics/animation_lab.html)
 
 ##13주 
-- 브로드캐스트 리시버
-- 배터리 상태 표시 
--  SMS 
+- [브로드캐스트 리시버](broadcast_notification/broadcast_receiver.html)
+- [알림 (Notification)](broadcast_notification/notification.html)
 -  실습12
 
 ##14주 
