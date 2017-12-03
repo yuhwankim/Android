@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private void initChannel() {
         if (android.os.Build.VERSION.SDK_INT >=26) {
             // The id of the channel.
-            String id = "my_channel_01";
+            String id = "default";
 
             // The user-visible name of the channel.
             CharSequence name = getString(R.string.channel_name);
