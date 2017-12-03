@@ -20,12 +20,14 @@
             </intent-filter>
         </activity>
         <receiver
-            android:name=".SystemBroadcastReceiver" android:enabled="true" android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.AIRPLANE_MODE"/>
-            <action android:name="android.intent.action.BOOT_COMPLETED" />
-        </intent-filter>
-    </receiver>
+            android:name=".SystemBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.AIRPLANE_MODE" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
