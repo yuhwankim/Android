@@ -1,6 +1,6 @@
 # 브로드캐스트 리시버
 
-## 브로드캐스트 개요
+##1. 브로드캐스트 개요
 
 - 안드로이드 앱은 안드로이드 시스템 혹은  다른 안드로이드 앱 간에 메시지를 주고 받을 수 있다.
 
@@ -24,13 +24,13 @@
       + Sdk/platforms/android-26/data/broadcast_actions.txt
 
 ---
-## 브로드캐스트 리시버
+##2. 브로드캐스트 리시버
 * 두 가지 방법이 가능
     - Manifest에 리시버 정의하기 (**Android 8.0-API level 26부터 사용불가**)
     - 컨텍스트에 리시버 정의하기
 
 ---
-### Manifest에 브로드캐스트 리시버 정의하기
+###2.1 Manifest에 브로드캐스트 리시버 정의하기
 - Manifest에 브로드캐스트 리시버를 선언하면, 브로드캐스트가 보내질때 (앱이 실행중이 아닐때) 시스템은 앱을 시작시킨다. (API level 25 이하에서만 사용 가능) 
 * AndroidManifest.xml
 
@@ -78,7 +78,7 @@
 https://github.com/kwanulee/Android/blob/master/examples/BroadcastTest/app/src/main/java/com/kwanwoo/android/broadcasttest/SystemBroadcastReceiver.java
 
 ---
-### 컨텍스트에 리시버 정의하기
+###2.2 컨텍스트에 리시버 정의하기
 1. 앞의 경우와 마찬가지로
     - BroadcastReceiver를 상속 받은 SystemBroadcastReceiver 클래스 생성
     - Manifest에 SystemBroadcastReceiver를 위한 &lt;receiver&gt; 추가(단, &lt;intent-filter&gt; 는 제외)
@@ -134,7 +134,7 @@ https://github.com/kwanulee/Android/blob/master/examples/BroadcastTest/app/src/m
 https://github.com/kwanulee/Android/blob/master/examples/BroadcastTest/app/src/main/java/com/kwanwoo/android/broadcasttest/MainActivity.java
 
 ---
-## 배터리 상태 표시
+##3. 배터리 상태 표시
 - 배터리를 많이 소모하는 작업은 배터리의 남은 양에 따라 작업의 강도를 조정할 필요 있음
 - 안드로이드 시스템은 배터리의 상태를 대신 감시하며 변화가 있을 때마다 방송을 함
 - 배터리와 관련된 방송
@@ -147,63 +147,88 @@ https://github.com/kwanulee/Android/blob/master/examples/BroadcastTest/app/src/m
 	| ACTION\_POWER\_CONNECTED | 외부 전원이 연결되었음 |
 	| ACTION\_POWER\_DISCONNECTED | 외부 전원이 분리되었음 |
 	
+###3.1 배터리의 중요한 변화 모니터링
+- **ACTION\_BATTERY\_CHANGED**는 모든 배터리의 상태변화시 발생되지만, 이를 지속적으로 모니터링하는 작업은 배터리 전력 소비에 큰 영향을 주므로, 중요한 변화가 있을 때만 모니터링하는 것이 좋음
+- 주요한 배터리 상태변화 모터링을 위한 브로드캐스트 리시버 등록 예
+
 	```java
 	    mBatteryBR = new BatteryWatchBR(status_output);
         IntentFilter filter = new IntentFilter();
-        filter.addAction(Intent.ACTION_BATTERY_CHANGED);
         filter.addAction(Intent.ACTION_BATTERY_LOW);
         filter.addAction(Intent.ACTION_BATTERY_OKAY);
         filter.addAction(Intent.ACTION_POWER_CONNECTED);
         filter.addAction(Intent.ACTION_POWER_DISCONNECTED);
         registerReceiver(mBatteryBR, filter);
 	```
+
 	
+###3.2 현재 충전상태 확인
+- 배터리의 현재상태를 확인하기 위해서는 **BroadcastReceiver를 등록할 필요가 없습니다**. 다음 스니펫에서와 같이 registerReceiver를 호출하여 null을 수신기로 전달하면 현재 배터리 상태 인텐트가 반환됩니다. [https://developer.android.com/training/monitoring-device-state/battery-monitoring.html]
+
+	```java
+	IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+	Intent batteryStatus = context.registerReceiver(null, ifilter);
+	```	
+		
 - 배터리 상태에 대한 상세한 정보는 인텐트의 **Extras**에 실려 전달됨
 	- 조사 가능한 값들은 [BatteryManager](https://developer.android.com/reference/android/os/BatteryManager.html) 클래스에 상수로 정의되어 있음 
 	
 	|상태				| 설명				|
 	|:---------------|:--------------|
-	|EXTRA\_PRESENT | 배터리가 존재하는 지 조사|
 	|EXTRA\_PLUGGED | 외부 전원에 연결되어 있는지 조사|
 	|EXTRA\_STATUS | 배터리의 현재 상태 |
-	|EXTRA\_SCALE | 배터리 레벨의 최대량 조사| 
 	|EXTRA\_LEVEL | 배터리 현재 충전 레벨|
 	|EXTRA\_HEALTH | 배터리의 성능상태 조사|
 	
-	```java
-	public class BatteryWatchBR extends BroadcastReceiver {
-		// ...
-	    @Override
-	    public void onReceive(Context context, Intent intent) {
-	        String action = intent.getAction();
-	
-	*       if (action.equals(Intent.ACTION_BATTERY_CHANGED)) {
-	            onBatteryChanged(intent);
-	        } else {
-	            Toast.makeText(context, action, Toast.LENGTH_SHORT).show();
-	        }
-	    }
-	
-	    private void onBatteryChanged(Intent intent) {
-	*       int plug = intent.getIntExtra(BatteryManager.EXTRA_PLUGGED,0);
-	        //...
-	        switch(plug) {
-	            case BatteryManager.BATTERY_PLUGGED_AC:
-	                sPlug = "AC";
-	                break;
-	            case BatteryManager.BATTERY_PLUGGED_USB:
-	                sPlug = "USB";
-	                break;
-	            default:
-	                sPlug = "Battery";
-	                break;
-	        }	
-	        // ...
-	    }
-	}
-	```
+```java
+public class BatteryWatchBR extends BroadcastReceiver {
+    TextView mStatus;
+
+    public BatteryWatchBR(TextView status) {
+        mStatus = status;
+    }
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        String action = intent.getAction();
+
+        Toast.makeText(context, action, Toast.LENGTH_SHORT).show();
+
+        IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+        Intent batteryStatus = context.registerReceiver(null, ifilter);
+*       printBatteryStatus(batteryStatus);
+    }
+
+    private void printBatteryStatus(Intent intent) {
+*       int level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL,0);
+*       int plug = intent.getIntExtra(BatteryManager.EXTRA_PLUGGED,0);
+*       int health = intent.getIntExtra(BatteryManager.EXTRA_HEALTH,0);
+*       int status = intent.getIntExtra(BatteryManager.EXTRA_STATUS, BatteryManager.BATTERY_STATUS_UNKNOWN);
+
+        String sPlug, sStatus, sHealth;
+
+        switch(plug) {
+            case BatteryManager.BATTERY_PLUGGED_AC:
+                sPlug = "AC";
+                break;
+            case BatteryManager.BATTERY_PLUGGED_USB:
+                sPlug = "USB";
+                break;
+            default:
+                sPlug = "Battery";
+                break;
+        }
+
+		 // ....
+        mStatus.setText(String.format("Remain: %d \nConnection: %s\n Health: %s \n Status: %s\n ", 
+        			level, sPlug, sHealth, sStatus));
+    }
+}
+```
 	
 https://github.com/kwanulee/Android/blob/master/examples/BroadcastTest/app/src/main/java/com/kwanwoo/android/broadcasttest/BatteryWatchBR.java
+
+
 
 ---
 ## SMS 수신
