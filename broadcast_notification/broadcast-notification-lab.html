@@ -244,29 +244,38 @@ pre[class*="language-"] {
 
 <h2 id="toc_1">개요</h2>
 
-<p>이번 실습은 예제로 주어진 배터리 상태 모니터링을 위한 브로드캐스트 예제와 알림 예제를 결합하여, 배터리 잔량이 20%가 남았을 때, 알림 메시지를 표시하고, 알림 메시지를 클릭하였을 때, 현재 배터리의 상태를 보여주는 액티비티를 실행하는 앱을 개발하는 것입니다.</p>
+<p>이번 실습은 예제로 주어진 배터리 상태 모니터링을 위한 브로드캐스트 예제와 알림 예제를 결합하여, 배터리 잔량이 14%이하로 떨어졌을 때, 알림 메시지를 표시하고, 알림 메시지를 클릭하였을 때, 현재 배터리의 상태를 보여주는 액티비티를 실행하는 앱을 개발하는 것입니다.</p>
 
 <ul>
-<li><p>에뮬레이터 제어기에서 배터리의 잔량을 20%로 내린 경우 
+<li><p>에뮬레이터 제어기에서 배터리의 잔량을 14%로 내린 경우 
 <img src="figures/broadcast-notification-lab1.png" alt=""></p></li>
 <li><p>알림 창을 열고, 알림 메시지를 클릭한 경우
 <img src="figures/broadcast-notification-lab2.png" alt=""></p></li>
 </ul>
 
-<h2 id="toc_2">1. 배터리의 잔량을 모니터링 하기 브로드캐스트 리시버 구현</h2>
+<h2 id="toc_2">1. 배터리의 수준의 중요한 변화을 모니터링 하기 브로드캐스트 리시버 구현 및 등록</h2>
 
 <ul>
-<li>배터리의 잔량을 모니터링 하기 위한 브로드캐스트 리시버를 구현하고 등록하시오.</li>
+<li>배터리의 수준이 매우 낮은 상태를 모니터링 하기 위한 브로드캐스트 리시버를 구현하고 등록하시오.
+
+<ul>
+<li>브로드캐스트 리시버는 ACTION_BATTERY_LOW를 수신대기 한다. </li>
+</ul></li>
 </ul>
 
 <p>[힌트]
-참조코드: <a href="https://github.com/kwanulee/Android/blob/master/examples/BroadcastTest/app/src/main/java/com/kwanwoo/android/broadcasttest/BatteryWatchBR.java">https://github.com/kwanulee/Android/blob/master/examples/BroadcastTest/app/src/main/java/com/kwanwoo/android/broadcasttest/BatteryWatchBR.java</a> </p>
+참조코드: </p>
+
+<ul>
+<li><p><a href="https://github.com/kwanulee/Android/blob/master/examples/BroadcastTest/app/src/main/java/com/kwanwoo/android/broadcasttest/MainActivity.java#L35-L48">https://github.com/kwanulee/Android/blob/master/examples/BroadcastTest/app/src/main/java/com/kwanwoo/android/broadcasttest/MainActivity.java#L35-L48</a></p></li>
+<li><p><a href="https://github.com/kwanulee/Android/blob/master/examples/BroadcastTest/app/src/main/java/com/kwanwoo/android/broadcasttest/BatteryWatchBR.java">https://github.com/kwanulee/Android/blob/master/examples/BroadcastTest/app/src/main/java/com/kwanwoo/android/broadcasttest/BatteryWatchBR.java</a> </p></li>
+</ul>
 
 <h2 id="toc_3">2. 알림 정의 및 발행</h2>
 
 <ul>
-<li>배터리 잔량을 체크한 후, 20%가 되는 시점에 <strong>배터리 상태 경고</strong> 알림을 표시하는 알람을 구현하시오.</li>
-<li>알림 메시지를 클릭하는 경우에 배터리의 상태 정보를 표시해주는 액티비티를 실행시켜야 합니다.
+<li>브로드캐스트 리시버가 ACTION_BATTERY_LOW를 수신한 후,  <strong>배터리 상태 경고</strong> 알림을 표시한다.</li>
+<li>알림 메시지를 클릭하는 경우에 배터리의 현재 상태 정보를 표시해주는 액티비티를 실행시켜야 합니다.
 
 <ul>
 <li>표시되는 배터리 상태정보는 다음과 같습니다.
