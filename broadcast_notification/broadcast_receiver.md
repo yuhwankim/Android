@@ -81,7 +81,6 @@ https://github.com/kwanulee/Android/blob/master/examples/BroadcastTest/app/src/m
 ###2.2 컨텍스트에 리시버 정의하기
 1. 앞의 경우와 마찬가지로
     - BroadcastReceiver를 상속 받은 SystemBroadcastReceiver 클래스 생성
-    - Manifest에 SystemBroadcastReceiver를 위한 &lt;receiver&gt; 추가(단, &lt;intent-filter&gt; 는 제외)
 2. SystemBroadcastReceiver 객체 생성
 
 		BroadcastReceiver br = new SystemBroadcastReceiver();
