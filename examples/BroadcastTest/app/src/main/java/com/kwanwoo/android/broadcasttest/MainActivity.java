@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
 
         mBatteryBR = new BatteryWatchBR(status_output);
         IntentFilter filter = new IntentFilter();
-        filter.addAction(Intent.ACTION_BATTERY_CHANGED);
         filter.addAction(Intent.ACTION_BATTERY_LOW);
         filter.addAction(Intent.ACTION_BATTERY_OKAY);
         filter.addAction(Intent.ACTION_POWER_CONNECTED);

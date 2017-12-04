@@ -3,6 +3,7 @@ package com.kwanwoo.android.broadcasttest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.BatteryManager;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,14 +19,14 @@ public class BatteryWatchBR extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         String action = intent.getAction();
 
-        if (action.equals(Intent.ACTION_BATTERY_CHANGED)) {
-            onBatteryChanged(intent);
-        } else {
-            Toast.makeText(context, action, Toast.LENGTH_SHORT).show();
-        }
+        Toast.makeText(context, action, Toast.LENGTH_SHORT).show();
+
+        IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+        Intent batteryStatus = context.registerReceiver(null, ifilter);
+        printBatteryStatus(batteryStatus);
     }
 
-    private void onBatteryChanged(Intent intent) {
+    private void printBatteryStatus(Intent intent) {
         int level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL,0);
         int plug = intent.getIntExtra(BatteryManager.EXTRA_PLUGGED,0);
         int health = intent.getIntExtra(BatteryManager.EXTRA_HEALTH,0);
