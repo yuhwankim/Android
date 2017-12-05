@@ -85,9 +85,7 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == REQUEST_PERMISSION_FOR_RECEIVE_SMS) {
             if (grantResults.length >0 &&
                     grantResults[0] == PackageManager.PERMISSION_GRANTED)
-                mSMSBR = new SMSBroadcastReceiver();
-            IntentFilter intentFilter_sms = new IntentFilter(Telephony.Sms.Intents.SMS_RECEIVED_ACTION);
-            registerReceiver(mSMSBR, intentFilter_sms);
+                mSMSBR = registSMSBR();
         }
     }
 
