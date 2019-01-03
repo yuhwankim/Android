@@ -4,7 +4,7 @@
 
 ## 1주 - 안드로이드 개요
 
-- [안드로이드 소개](intro-android/안드로이드소개.pdf) 
+- [안드로이드 소개](intro-android/intro_android.html) 
 - [개발환경 설치](intro-android/install_dev_env.html) 
 - [안드로이드 앱 시작하기](intro-android/start-android-project.html)   
 - [[실습1]](intro-android/안드로이드_시작하기_실습.html)
