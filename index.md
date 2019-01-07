@@ -11,7 +11,7 @@
 
 ## 2주 - 프로젝트 관리	
 
-- [안드로이드 프로젝트 기본](android-project/android-project-basic.html) 
+- [안드로이드 프로젝트 기본](android-project/android_project_basic.html) 
 - [git/GitHub를 이용한 프로젝트 관리](android-project/git_github.html)
 - [[실습2]](android-project/안드로이드_프로젝트_관리_실습.html)
 
