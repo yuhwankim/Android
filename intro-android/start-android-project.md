@@ -10,7 +10,8 @@ div.polaroid {
 # 안드로이드 앱 시작하기
 1. [**Android Studio**을 이용한 HelloAndroid 프로젝트 만들기](#start-android)
 2. [**에뮬레이터 (Android Virtual Device, AVD)** 만들기](#create-avd)
-3. [에뮬레이터에서 HellAndroid 프로젝트 실행하기](#run-helloandroid)
+3. [**에뮬레이터에서 HellAndroid 프로젝트 실행하기**](#run-helloandroid)
+4. [**실제디바이스에서 HelloAndroid 프로젝트 실행하기**](#run-by-real-device)
 
 ## <a name="start-android"></a> 1. **Android Studio**을 이용한 HelloAndroid 프로젝트 만들기
 
@@ -84,7 +85,7 @@ div.polaroid {
 	</div>
 	- [**AVD Name**]: 새롭게 만들 에뮬레이터의 이름을 알기 쉽게 작명
 	- [**Show Advanced Settings**] 버튼을 눌러 **Camera**나 **SD card** 설정을 변경할 수 있음.
-	
+
 		<div class="polaroid">
 			<img src="figure/avd/advanced-settings.gif">
 		</div>
@@ -103,22 +104,48 @@ div.polaroid {
 	<div class="polaroid">
 		<img src="figure/avd/avd-start.JPG">
 	</div>
-2. 실행결과
+
+  - 실행결과
 	<div class="polaroid">
 		<img src="figure/avd/avd-nexus5x.JPG" width="300px">
 	</div>
-3. HelloAndroid 프로젝트 화면에서 프로젝트 실행시키기
+2. HelloAndroid 프로젝트 화면에서 프로젝트 실행시키기
 	- [**Run**]-[**Run 'app'**] 메뉴 실행 또는
 	- 툴바의 실행 아이콘 클릭
 		<div class="polaroid">
 			<img src="figure/start-android/start-run.JPG">
 		</div>
-4. 실행시킬 디바이스 선택하기
+3. 실행시킬 디바이스 선택하기
 	- [**Select Deployment Target**] 화면에서 실행시킬 디바이스(에뮬레이터)를 선택 후, [**OK**] 버튼 클릭
 		<div class="polaroid">
 			<img src="figure/start-android/select-target.JPG">
 		</div>
-5. 에뮬레이터에서 HelloAndroid 실행결과
+4. 에뮬레이터에서 HelloAndroid 실행결과
 	<div class="polaroid">
 		<img src="figure/start-android/avd-helloandroid.JPG" width="300px">
 	</div>
+
+<a name="run-by-real-device"></a>
+## 4. 실제 디바이스에서 HellAndroid 프로젝트 실행하기
+
+1. PC에 해당 디바이스용 USB 드라이버 설치
+  - 삼성: http://local.sec.samsung.com/comLocal/support/down/kies_main.do?kind=usb
+  - LG: https://www.lgservice.co.kr/download/selectProductSearch.do
+
+2. 디바이스와 PC를 연결하고, 설정 변경하기
+  - **설정**에서 **개발자 옵션** 선택 후, **USB 디버깅**을 허용함
+    - (개발자 옵션이 안보이는 경우) **빌드 번호** 정보를 손가락으로 7번 터치하면, **설정**에서 **개발자옵션** 메뉴가 나타남
+      - **빌드 번호**를 찾는 방법은 휴대폰 모델마다 다소 차이가 있음
+        	- [**LG G 시리즈**의 경우] : **설정 > 일반 > 휴대폰 정보 > 소프트웨어 정보**를 선택
+        	- [*Samsung S8 이전 버전*의 경우]  **설정 > 디바이스 정보 > 소프트웨어 정보**를 선택
+        	- [*Samsung S8 포함 최신 버-*의 경우] **설정 > 휴대전화 정보 > 소프트웨어 정보**를 선택
+3. [**Run**]-[**Run 'app'**] 메뉴 실행 혹은 툴바의 **실행 아이콘** 클릭 후 나타나는 화면에서 연결된 실제 다비이스를 선택
+
+  <div class="polaroid">
+    <img src="figure/start-android/select-target2.JPG">
+  </div>
+
+4. Samsung S9+에서 HelloAndroid 실행결과
+  	<div class="polaroid">
+  		<img src="figure/start-android/s9-helloandroid.JPG" width="300px">
+  	</div>

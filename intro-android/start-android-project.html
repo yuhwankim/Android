@@ -263,7 +263,8 @@ div.polaroid {
 <ol>
 <li><a href="#start-android"><strong>Android Studio</strong>을 이용한 HelloAndroid 프로젝트 만들기</a></li>
 <li><a href="#create-avd"><strong>에뮬레이터 (Android Virtual Device, AVD)</strong> 만들기</a></li>
-<li><a href="#run-helloandroid">에뮬레이터에서 HellAndroid 프로젝트 실행하기</a></li>
+<li><a href="#run-helloandroid"><strong>에뮬레이터에서 HellAndroid 프로젝트 실행하기</strong></a></li>
+<li><a href="#run-by-real-device"><strong>실제디바이스에서 HelloAndroid 프로젝트 실행하기</strong></a></li>
 </ol>
 
 <h2 id="toc_1"><a name="start-android"></a> 1. <strong>Android Studio</strong>을 이용한 HelloAndroid 프로젝트 만들기</h2>
@@ -379,19 +380,19 @@ div.polaroid {
 <h2 id="toc_3"><a name="run-helloandroid"></a> 3. 에뮬레이터에서 HellAndroid 프로젝트 실행하기</h2>
 
 <ol>
-<li>에뮬레이터 실행시키기
+<li><p>에뮬레이터 실행시키기</p>
 
 <ul>
-<li>AVD Manager의 Virtual Devices 목록에서 실행할 에뮬레이터를 선택하고 연두색 삼각형 버튼을 눌러 에뮬레이터를  실행함
+<li><p>AVD Manager의 Virtual Devices 목록에서 실행할 에뮬레이터를 선택하고 연두색 삼각형 버튼을 눌러 에뮬레이터를  실행함
 <div class="polaroid">
 <img src="figure/avd/avd-start.JPG">
-</div></li>
-</ul></li>
-<li>실행결과
+</div></p></li>
+<li><p>실행결과
 <div class="polaroid">
-    <img src="figure/avd/avd-nexus5x.JPG" width="300px">
-</div></li>
-<li>HelloAndroid 프로젝트 화면에서 프로젝트 실행시키기
+<img src="figure/avd/avd-nexus5x.JPG" width="300px">
+</div></p></li>
+</ul></li>
+<li><p>HelloAndroid 프로젝트 화면에서 프로젝트 실행시키기</p>
 
 <ul>
 <li>[<strong>Run</strong>]-[<strong>Run &#39;app&#39;</strong>] 메뉴 실행 또는</li>
@@ -400,7 +401,7 @@ div.polaroid {
     <img src="figure/start-android/start-run.JPG">
 </div></li>
 </ul></li>
-<li>실행시킬 디바이스 선택하기
+<li><p>실행시킬 디바이스 선택하기</p>
 
 <ul>
 <li>[<strong>Select Deployment Target</strong>] 화면에서 실행시킬 디바이스(에뮬레이터)를 선택 후, [<strong>OK</strong>] 버튼 클릭
@@ -408,10 +409,48 @@ div.polaroid {
     <img src="figure/start-android/select-target.JPG">
 </div></li>
 </ul></li>
-<li>에뮬레이터에서 HelloAndroid 실행결과
+<li><p>에뮬레이터에서 HelloAndroid 실행결과
 <div class="polaroid">
     <img src="figure/start-android/avd-helloandroid.JPG" width="300px">
+</div></p></li>
+</ol>
+
+<p><a name="run-by-real-device"></a></p>
+
+<h2 id="toc_4">4. 실제 디바이스에서 HellAndroid 프로젝트 실행하기</h2>
+
+<ol>
+<li><p>PC에 해당 디바이스용 USB 드라이버 설치</p>
+
+<ul>
+<li>삼성: <a href="http://local.sec.samsung.com/comLocal/support/down/kies_main.do?kind=usb">http://local.sec.samsung.com/comLocal/support/down/kies_main.do?kind=usb</a></li>
+<li>LG: <a href="https://www.lgservice.co.kr/download/selectProductSearch.do">https://www.lgservice.co.kr/download/selectProductSearch.do</a></li>
+</ul></li>
+<li><p>디바이스와 PC를 연결하고, 설정 변경하기</p>
+
+<ul>
+<li><strong>설정</strong>에서 <strong>개발자 옵션</strong> 선택 후, <strong>USB 디버깅</strong>을 허용함</li>
+<li>(개발자 옵션이 안보이는 경우) <strong>빌드 번호</strong> 정보를 손가락으로 7번 터치하면, <strong>설정</strong>에서 <strong>개발자옵션</strong> 메뉴가 나타남
+
+<ul>
+<li><strong>빌드 번호</strong>를 찾는 방법은 휴대폰 모델마다 다소 차이가 있음
+
+<ul>
+<li>[<strong>LG G 시리즈</strong>의 경우] : <strong>설정 &gt; 일반 &gt; 휴대폰 정보 &gt; 소프트웨어 정보</strong>를 선택</li>
+<li>[<em>Samsung S8 이전 버전</em>의 경우]  <strong>설정 &gt; 디바이스 정보 &gt; 소프트웨어 정보</strong>를 선택</li>
+<li>[<em>Samsung S8 포함 최신 버-</em>의 경우] <strong>설정 &gt; 휴대전화 정보 &gt; 소프트웨어 정보</strong>를 선택</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><p>[<strong>Run</strong>]-[<strong>Run &#39;app&#39;</strong>] 메뉴 실행 혹은 툴바의 <strong>실행 아이콘</strong> 클릭 후 나타나는 화면에서 연결된 실제 다비이스를 선택</p>
+
+<div class="polaroid">
+<img src="figure/start-android/select-target2.JPG">
 </div></li>
+<li><p>Samsung S9+에서 HelloAndroid 실행결과
+<div class="polaroid">
+    <img src="figure/start-android/s9-helloandroid.JPG" width="300px">
+</div></p></li>
 </ol>
 
 
