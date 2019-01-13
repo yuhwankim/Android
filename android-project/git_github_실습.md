@@ -7,18 +7,16 @@ div.polaroid {
 }
 </style>
 
-# 안드로이드 프로젝트 관리 실습
+# Git/GitHub 실습
 
 ## 1. MyAndroidApp  생성 
-1. 다음 요구사항을 만족시키는 안드로이드 프로젝트를 생성하고, 이를  에뮬레이터(AVD)에서 실행하시오.
-	- Application Name: *MyAndroidApp*
-	- Package Name: *com.hansung.android.myandroidapp*
-	- Minimum SDK 버전: *API 19*
+1. 다음 요구사항을 만족시키는 안드로이드 프로젝트를 생성하고, 이를  API 28	에뮬레이터(AVD)에서 실행하시오.
+	- Application 이름: *MyAndroidApp*
+	- Package 이름: *com.hansung.android.myandroidapp*
+	- Minimum SDK 버전: *API 14*
+	- Activity 이름: 	StartActivity
+	- StartActivity의 화면을 정의한 XML layout 파일 이름: start\_activity\_view.xml 
 
-2. 생성된  *MyAndroidApp*의 **build.gradle (Module:app)** 파일에서 *targetSdkVersion* 의 값이  실행 중인 에뮬레이터의 안드로이드 플랫폼 API 버전과 일치하는 지를 확인하시오.
-	- 만약 실행 중인 에뮬레이터의 플랫폼 API 버전이 25이면, *targetSdkVersion* 의 값을 25로 수정하시오.
-	- **build.gradle (Module:app)** 파일을 수정하면, 화면 상단에 나타난 **Sync Now**를 클릭하여 프로젝트를 다시 빌드해야 한다.
-	- 빌드가 완료되면 에뮬레이터에서 실행해 보시오.
 	
 ## 2. MyAndroidApp의 버전관리
 1. GitHub 계정을 만드시오. (참고, [링크](create-github-account.html))
