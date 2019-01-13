@@ -17,6 +17,7 @@ div.polaroid {
 
 - 안드로이드 앱 프로젝트는 크게 **매니페스트 파일 (manifests)**, **자바 소스 파일 (java)**, **리소스 파일 (res)**로 구성됨 
 
+---
 <a name="1.1"></a>
 ### 1.1 매니페스트 파일
 - 앱의 기본 특징을 설명하고, 앱의 구성 요소인 컴포넌트(예, 액티비티, 서비스 등)를 정의한 XML 파일
@@ -42,8 +43,79 @@ div.polaroid {
 		- 안드로이드 컴포넌트 (예, \<activity\> 태그) 하위에 포함되는 태그로서, 해당 컴포넌트가 수신할 수 있는 [인텐트](https://developer.android.com/guide/components/intents-filters?hl=ko)를 걸러내는 역할을 수행
 		- 이 예제에서는 이름이 *MainActivity*인 액티비티 컴포넌트가 앱을 시작시키는 시작점으로서, 애플리케이션 론처(예, 홈 스크린)에 등록되어 있음을 나타냄.    
 
+---
 <a name="1.2"></a>
-### 1.2 자바 소스 파일
+### 1.2 리소스 파일
+- *애플리케이션 리소스*(예, 이미지 혹은 문자열)를 Java 코드에서 분리하여 독립적으로 유지관리할 수 있도록 함으로써, 다양한 환경 변화(예, 화면크기 변화 혹은 사용 언어 변경)를 코드의 변경없이 수용할 수 있음.
+	- 예를 들어, 여러가지 화면 크기에 따라 여러가지 UI 레이아웃을 리소스 파일로 제공하거나, 언어 설정에 따라 각기 다른 문자열을 리소스 파일로 제공할 수 있음. 
+- 프로젝트의 res/ 디렉터리에 속한 특정 하위 디렉터리에 각 유형의 리소스를 배치
+
+	```
+	res/
+	     drawable/  
+	         ic_launcher_background.xml  
+	     layout/  
+	         activity_main.xml
+	     mipmap/  
+	         ic_launcher.png 
+	     values/
+	         colors.xml  
+	         strings.xml  
+	         styles.xml
+	```
+	- 더 자세한 내용은 다음 [링크](https://developer.android.com/guide/topics/resources/providing-resources?hl=ko)를 참조
+
+- 예
+	- **activity_main.xml**
+
+		<div class="polaroid">
+		<img src="figure/activity_main.png">
+		</div>
+	
+		- 화면의 레이아웃을 정의한 XML 파일 (*res/layout* 폴더에 위치)
+		- 이 파일은 ConstraintLayout 안에 하나의 TextView 요소가 포함된 화면 디자인을 나타냄
+			- [ContraintLayout](https://developer.android.com/reference/android/support/constraint/ConstraintLayout)은 내부에 포함되는 위젯의 위치와 크기를 [RelativeLayout](https://developer.android.com/reference/android/widget/RelativeLayout) 보다 유연한 방식으로 결정하는 **뷰 그룹**
+			- [TextView](https://developer.android.com/reference/android/widget/TextView)는 문자열을 표시하는 **위젯** 
+				- <span style="color:blue">android:text</span> 속성에 지정된 문자열(Hello World!)을 표시	 
+	- **strings.xml**
+
+		```xml
+		<resources>
+    		<string name="app_name">HelloAndroid</string>
+		</resources>
+
+		```
+		- 애플리케이션 또는 다른 리소스(예: XML 출력)에서 참조할 수 있는 문자열을 제공하는 XML 리소스 (*res/values* 폴더에 위치)
+	
+- [**aapt**](https://developer.android.com/studio/command-line/aapt2) 도구는 *애플리케이션 리소스*를 컴파일하여 **컴파일된 리소스**(**R** 클래스와 *패키지된 리소스 파일*)을 생성함. 
+	- **R.java**
+		-  **aapt** 도구에 의해 자동으로 생성된 파일
+		- **R** 클래스는 리소스를 Java 프로그램에서 접근하기 위한 리소스 ID를 정의 
+
+		```java
+		public final class R {
+		  public static final class anim { ... }
+		  public static final class attr { ... }
+		  ...
+		  public static final class layout {
+		     ...
+		     public static final int activity_main=0x7f09001b;
+		     ... 
+		  }
+		  ...
+		  public static final class string {
+		     ...
+		     public static final int app_name=0x7f0b001d;
+		     ...
+		  }
+		  ...
+		}
+		
+		``` 
+
+---
+<a name="1.3"></a>
+### 1.3 자바 소스 파일
 - Android 앱은 Java 프로그래밍 언어로 작성
 - **MainActivity.java**
 
@@ -72,36 +144,6 @@ div.polaroid {
 		- *R.layout.activity_main*이 가리키는 리소스를 이 액티비티의 콘텐츠뷰로 사용하겠다는 의미
 		- *R.layout.activity_main*은 res/layout 폴더에 있는 activity\_main.xml을 가리키는 정적상수 (**R** 클래스에서 정의됨)
 
-### 1.3 리소스 파일
-- 애플리케이션 리소스(예, 이미지 혹은 문자열)를 Java 코드에서 분리하여 독립적으로 유지관리할 수 있도록 함으로써, 다양한 환경 변화(예, 화면크기 변화 혹은 사용 언어 변경)를 코드의 변경없이 수용할 수 있음.
-	- 예를 들어, 여러가지 화면 크기에 따라 여러가지 UI 레이아웃을 리소스 파일로 제공하거나, 언어 설정에 따라 각기 다른 문자열을 리소스 파일로 제공할 수 있음. 
-- 프로젝트의 res/ 디렉터리에 속한 특정 하위 디렉터리에 각 유형의 리소스를 배치
-
-	```
-	res/
-	     drawable/  
-	         ic_launcher_background.xml  
-	     layout/  
-	         activity_main.xml
-	     mipmap/  
-	         ic_launcher.png 
-	     values/
-	         colors.xml  
-	         strings.xml  
-	         styles.xml
-	```
-	- 더 자세한 내용은 다음 [링크](https://developer.android.com/guide/topics/resources/providing-resources?hl=ko)를 참조
-- **activity_main.xml**
-
-	<div class="polaroid">
-	<img src="figure/activity_main.png">
-	</div>
-	
-	- 화면의 레이아웃을 정의한 XML 파일
-	- 이 파일은 ConstraintLayout 안에 하나의 TextView 요소가 포함된 화면 디자인을 나타냄
-		- [ContraintLayout](https://developer.android.com/reference/android/support/constraint/ConstraintLayout)은 내부에 포함되는 위젯의 위치와 크기를 [RelativeLayout](https://developer.android.com/reference/android/widget/RelativeLayout) 보다 유연한 방식으로 결정하는 **뷰 그룹**
-		- [TextView](https://developer.android.com/reference/android/widget/TextView)는 문자열을 표시하는 **위젯** 
-			- <span style="color:blue">android:text</span> 속성에 지정된 문자열(Hello World!)을 표시	 
 
 ---
 ##2. 프로젝트 빌드[^build]
@@ -115,8 +157,11 @@ div.polaroid {
 
 
 1. **컴파일러**는 소스 코드를 **DEX(Dalvik Executable)** 파일로 변환하고 그 외 모든 것을 **컴파일된 리소스**로 변환합니다. 
+	- [**aapt**](https://developer.android.com/studio/command-line/aapt2) 도구는 리스소 파일(/res 폴더 하위 파일)들을 **컴파일된 리소스**(**R** 클래스파일과 패키지된 리소스파일)로 변환시킴
+	- **javac** 컴파일러는 Java 소스파일 (자동으로 생성된 **R.java**와 사용자가 정의한 .java 파일)을 Java 클래스파일(.class 확장자)로 변환시킴
+	- **dx** 안드로이드 개발 도구는 컴파일된 Java 클래스파일을 DEX 파일(.dex 확장자)로 변환시킴
 	- 이 DEX 파일에는 Android 기기에서 실행되는 바이트코드가 포함됨
-2. **APK Packager**는 DEX 파일과 컴파일된 리소스를 **단일 APK에 결합**함 
+2. **APK Packager**는 DEX 파일과 *컴파일된 리소스*를 **단일 APK에 결합**함 
 3. 앱을 Android 기기에 설치하고 배포하기 위해서, **APK Packager**는 디버그 또는 릴리스 키스토어를 사용하여 **APK를 서명**
 	1. **디버그 버전의 앱**(즉, 테스트 및 프로파일링 전용의 앱)을 빌드 중인 경우에는, 패키저가 디버그 키스토어로 앱에 서명함. *Android Studio는 디버그 키스토어로 새 프로젝트를 자동으로 구성함*
 	2. **릴리스 버전의 앱**(즉, 외부에 릴리스할 앱)을 빌드 중인 경우에는, 패키저가 릴리스 키스토어로 앱에 서명함. (더 자세한 내용은 [Android Studio에서 앱 서명](https://developer.android.com/studio/publish/app-signing#studio)을 참조)
