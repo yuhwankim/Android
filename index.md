@@ -11,9 +11,8 @@
 
 ## 2주 - 프로젝트 관리	
 
-- [안드로이드 프로젝트 기본](android-project/android_project_basic.html) 
-- [git/GitHub를 이용한 프로젝트 관리](android-project/git_github.html)
-- [[실습2]](android-project/안드로이드_프로젝트_관리_실습.html)
+- [안드로이드 프로젝트 기본](android-project/android_project_basic.html)
+- [[실습2]](android-project/안드로이드_프로젝트_실습.html) 
 
 ##3주 - 안드로이드 UI
  - [UI 설계 개요](android-ui/ui-design-overview.pdf) 
@@ -84,3 +83,7 @@
 
 ##15주  
 - 텀 프로젝트 발표
+
+## 기타
+- [git/GitHub를 이용한 프로젝트 관리](android-project/git_github.html)
+	- [[실습]](android-project/git_github_실습.html)
