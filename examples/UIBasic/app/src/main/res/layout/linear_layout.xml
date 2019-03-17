@@ -13,12 +13,12 @@
         android:layout_weight="1"
         android:orientation="vertical"
         android:background="#aa00ff">
+
         <Button
+            android:id="@+id/button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button 1"
-            android:onClick="OnClickB1"
-            android:id="@+id/button1" />
+            android:text="Button 1" />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

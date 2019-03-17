@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">UIBasic</string>
-    <string name="button_clicked_msg">Button clicked!</string>
+    <string name="button_clicked_msg">Submitted Successfully</string>
 </resources>

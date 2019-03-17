@@ -1,5 +1,6 @@
 package com.kwanwoo.android.uibasic;
 
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,20 +12,22 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.linear_layout);
+        setContentView(R.layout.text_views);
 
-        Button btn = (Button)findViewById(R.id.button1);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), R.string.button_clicked_msg,
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
+        Button btn = findViewById(R.id.submit_button);
+        btn.setOnClickListener(new ClickListener());
     }
-   /* public void OnClickB1(View v) {
+
+    public void doAction(View v) {
         Toast.makeText(getApplicationContext(), R.string.button_clicked_msg,
                 Toast.LENGTH_SHORT).show();
     }
-    */
+
+    class ClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            Toast.makeText(getApplicationContext(), R.string.button_clicked_msg,
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
 }

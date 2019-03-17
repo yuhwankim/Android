@@ -11,8 +11,8 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:layout_margin="10dp"
-        android:padding="10dp"
+        android:layout_margin="40dp"
+        android:padding="20dp"
         android:background="#aa00ff"
         >
         <Button
@@ -21,7 +21,7 @@
             android:text="Button"
            />
     </LinearLayout>
-    <FrameLayout
+   <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#ff0000"
@@ -30,23 +30,27 @@
         <Button
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Left"
+            android:text="L | T"
+            android:gravity="left|top"
             android:layout_gravity="left"/>
         <Button
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="center_h"
+            android:text="C_H | T"
+            android:gravity="center_horizontal|top"
             android:layout_gravity="center_horizontal"/>
         <Button
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="right"
+            android:text="R | T"
+            android:gravity="right|top"
             android:layout_gravity="right"/>
 
         <Button
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="center_v"
+            android:text="L | C_V"
+            android:gravity="left|center_vertical"
             android:layout_gravity="center_vertical"/>
         <Button
             android:layout_width="100dp"
@@ -56,24 +60,28 @@
         <Button
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="center_v | right"
+            android:text="R | C_V"
+            android:gravity="right|center_vertical"
             android:layout_gravity="center_vertical|right"/>
 
 
         <Button
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="bottom"
+            android:text="L | B"
+            android:gravity="left|bottom"
             android:layout_gravity="bottom"/>
         <Button
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="center_h | bottom"
+            android:text="C_H | B"
+            android:gravity="center_horizontal|bottom"
             android:layout_gravity="center_horizontal|bottom"/>
         <Button
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="right | bottom"
+            android:text="R | B"
+            android:gravity="right|bottom"
             android:layout_gravity="right|bottom"/>
     </FrameLayout>
 </LinearLayout>

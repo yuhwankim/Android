@@ -6,15 +6,15 @@
     android:layout_height="match_parent"
     tools:context="com.kwanwoo.android.uibasic.MainActivity">
 
-    <Button
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Width = Match Parent"/>
-    <Button
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Width = wrap content"/>
-    <Button
+    <TextView
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="Width = 100dp"/>
