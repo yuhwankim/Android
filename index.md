@@ -15,11 +15,7 @@
 - [[실습2]](android-project/안드로이드_프로젝트_실습.html) 
 
 ##3주 - 안드로이드 UI
- - [UI 설계 개요](android-ui/ui-design-overview.pdf) 
- - [위젯](android-ui/widget.pdf) 
- - [레이아웃](android-ui/layouts.pdf)
- - [Marging/Padding/Gravity](android-ui/margin-padding-gravity.pdf) 
- - [이벤트 처리](android-ui/event-handling.pdf) 
+ - [안드로이드 UI](android-ui/android_ui.html) 
  - [[실습3]](android-ui/안드로이드_UI_실습.html)
  
 ##4주 - 어댑터 뷰 
@@ -41,7 +37,7 @@
 - [화면방향과 프래그먼트](fragment/fragment-example.pdf) 
 - [[실습6]](fragment/fragment-practice.html)
 
-## 7주 
+## 7주 - 데이터 저장 및 관리 1
 - [설정](data-management/sharedpreferences.html) 
 - [파일](data-management/file.html) 
 - [[실습7]](data-management/datamanagement_lab.html)
@@ -49,12 +45,12 @@
 ## 8주 
 - 중간고사
 
-## 9주 
+## 9주 - 데이터 저장 및 관리 2
 - [SQLite](data-management/sqlite.html) 
 - [컨텐츠 프로바이더](data-management/content-provider.html) 
 -  [[실습8]](data-management/sqlite-content-provider-lab.html)
 
-##10주
+##10주 - 멀티미디어
 - [오디오 재생하기](multimedia/multimedia.html#1)
 - [동영상 재생하기](multimedia/multimedia.html#2)
 - [오디오 녹음하기](multimedia/multimedia.html#3)
@@ -63,23 +59,26 @@
 
 -  [[실습9]](multimedia/multimedia_lab.html)
 
-##11주 
+##11주 - 위치 기반 서비스 및 지도
 - [위치기반 서비스](location_map/location.html) 
 - [지도](location_map/map.html) 
 -  [[실습10]](location_map/location-map-lab.html)
 
-##12주 
+##12주 - 애니메이션 및 그래픽
 - [애니메이션](animation-graphics/animation.html) 
 - [그래픽](animation-graphics/graphics.html) 
 -  [[실습11]](animation-graphics/animation_lab.html)
 
-##13주 
+##13주 - 브로드캐스트 리시버 및 알림
 - [브로드캐스트 리시버](broadcast_notification/broadcast_receiver.html)
 - [알림 (Notification)](broadcast_notification/notification.html)
 -  [[실습12]](broadcast_notification/broadcast-notification-lab.html)
 
-##14주 
-- 기말고사
+##14주 - 센서 및 NFC
+- 방향 센서
+- 가속도 센서
+- NFC
+- [실습13]
 
 ##15주  
 - 텀 프로젝트 발표
