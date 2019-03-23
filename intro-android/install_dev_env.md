@@ -89,13 +89,13 @@ div.polaroid {
 
   - **SDK Platforms** 탭에서 필요한 SDK 플랫폼 설치
     <div class="polaroid">
-      <img src="figure/sdk_manager_platforms1.png">
+      <img src="figure/sdk_manager_platforms1.PNG">
     </div>
 
     - *Show Package Details* 체크박스를 클릭하면, 각 SDK 플랫폼 패키지에 포함되어 있는 SDK 플랫폼, 소스, 시스템 이미지들을 자세히 볼 수 있슴.
 
         <div class="polaroid">
-        <img src="figure/sdk_manager_platforms2.png">
+        <img src="figure/sdk_manager_platforms2.PNG">
         </div>
 
     - 이 중에서  **Android SDK 플랫폼 버전**과 하나 이상의 **시스템 이미지**를 선택한 후, **OK** 버튼 클릭
