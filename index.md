@@ -19,10 +19,7 @@
  - [[실습3]](android-ui/안드로이드_UI_실습.html)
  
 ## 4주 - 어댑터 뷰 
-- [어댑터뷰 개요](adapter-view/adapterview-overview.pdf)
-- [리스트뷰](adapter-view/listview.pdf) 
-- [그리드뷰](adapter-view/gridview.pdf) 
-- [커스텀 어댑터뷰](adapter-view/custom-adapterview.pdf) 
+- [어댑터뷰](adapter-view/adapterview.html)
 - [[실습4]](adapter-view/adapterview-practice.html)
 
 ## 5주 - 액티비티와 네비게이션
