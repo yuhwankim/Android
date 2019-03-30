@@ -75,8 +75,8 @@ div.polaroid {
 
 <a name="2.2.1"></a>
 #### 2.2.1 메인화면 레이아웃에 ListView 위젯 정의
-- 메인화면 레이아웃(예, activity_main.xml)에 ListView 위젯을 추가하고, XML 레이아웃 파일에 정의된 **ListView 위젯을 Java 코드에서 참조하기 위하여 id 속성을 정의**한다.
-	- res/layout/activity_main.xml
+- 메인화면 레이아웃(예, activity\_main.xml)에 ListView 위젯을 추가하고, XML 레이아웃 파일에 정의된 **ListView 위젯을 Java 코드에서 참조하기 위하여 id 속성을 정의**한다.
+	- res/layout/activity\_main.xml
 
 	```xml
 	<?xml version="1.0" encoding="utf-8"?>
@@ -102,11 +102,11 @@ div.polaroid {
 
 			리소스 ID | 설명
 			--------|-----
-			android.R.layout.simple_list_item_1 | 하나의 텍스트 뷰로 구성된 레이아웃
-			android.R.layout.simple_list_item_2 | 두 개의 텍스트 뷰로 구성된 레이아웃
-			android.R.layout.simple_list_item_checked | 오른쪽에 체크 표시가 나타남
-			android.R.layout.simple_list_item_single_choice | 오른쪽에 라디오 버튼이 나타남
-			android.R.layout.simple_lsit_item_multiple_choice | 오른쪽에 체크 버튼이 나타남
+			android.R.layout.simple\_list\_item\_1 | 하나의 텍스트 뷰로 구성된 레이아웃
+			android.R.layout.simple\_list\_item\_2 | 두 개의 텍스트 뷰로 구성된 레이아웃
+			android.R.layout.simple\_list\_item\_checked | 오른쪽에 체크 표시가 나타남
+			android.R.layout.simple\_list\_item\_single\_choice | 오른쪽에 라디오 버튼이 나타남
+			android.R.layout.simple\_lsit\_item\_multiple\_choice | 오른쪽에 체크 버튼이 나타남
 		- objects: 어댑터로 공급될 데이터 원본으로 단순 배열
 
 - String 배열을 이용한 ArrayAdapter 객체 생성 예제
@@ -135,7 +135,7 @@ div.polaroid {
 
 
 #### 2.2.3 ListView 객체에 어댑터 연결
-1. 현재 화면 레이아웃(activity_main.xml)에 정의된 뷰 중에서 id가 *listView*인 	ListView 객체를 [findViewById](https://developer.android.com/reference/android/app/Activity.html#findViewById(int))() 메소드를 통해서 얻어온다.
+1. 현재 화면 레이아웃(activity\_main.xml)에 정의된 뷰 중에서 id가 *listView*인 	ListView 객체를 [findViewById](https://developer.android.com/reference/android/app/Activity.html#findViewById(int))() 메소드를 통해서 얻어온다.
 2. 얻어온 ListView 객체에 생성된 어댑터 객체(예, ArrayAdapter 객체-adapt)를 [setAdapter](https://developer.android.com/reference/android/widget/ListView.html#setAdapter(android.widget.ListAdapter))()라는 메소드를 통해서 설정한다.
 
 	```java
@@ -186,8 +186,8 @@ div.polaroid {
 	3. ArrayAdapter 객체를 생성하고 GridView 객체에 연결 (Java 코드)
 
 #### 3.2.1 메인화면 레이아웃에 GridView 위젯 정의
-- 메인화면 레이아웃(예, activity_main.xml)에 GridView 위젯을 추가하고, XML 레이아웃 파일에 정의된 **GridView 위젯을 Java 코드에서 참조하기 위하여 id 속성을 정의**한다.
-- res/layout/activity_main.xml
+- 메인화면 레이아웃(예, activity\_main.xml)에 GridView 위젯을 추가하고, XML 레이아웃 파일에 정의된 **GridView 위젯을 Java 코드에서 참조하기 위하여 id 속성을 정의**한다.
+- res/layout/activity\_main.xml
 
 	```xml
 	<?xml version="1.0" encoding="utf-8"?>
@@ -206,7 +206,7 @@ div.polaroid {
 
 
 	- **android:columnWidth="100dp"** : 그리드 항목 하나의 폭을 100dp로 설정
-	- **android:numColumns="auto_fit"**: 열의 폭과 화면 폭을 바탕으로 자동 계산
+	- **android:numColumns="auto\_fit"**: 열의 폭과 화면 폭을 바탕으로 자동 계산
 	- **android:verticalSpacing**: 항목 간의 간격 설정
 	- **android:stretchMode="columnWidth"**: 열 내부의 여백을 폭에 맞게 채움
 
@@ -239,7 +239,7 @@ public class MainActivity extends AppCompatActivity {
 ```
 
 1. [2.2 간단한 리스트뷰 만들어 보기](#2.2) 예제와 마찬가지로, [ArrayAdapter](https://developer.android.com/reference/android/widget/ArrayAdapter) 객체를 생성
-2. id를 바탕으로 메인화면 레이아웃(activity_main.xml)에 정의된 GridView 객체 로딩
+2. id를 바탕으로 메인화면 레이아웃(activity\_main.xml)에 정의된 GridView 객체 로딩
 3. 생성된 ArrayAdapter 객체를 GridView 객체에 연결
 
 - 실행화면
@@ -257,9 +257,9 @@ public class MainActivity extends AppCompatActivity {
 	3. 어댑터를 생성하고 GridView 객체에 연결 (Java 코드)
 
 
-#### 3.3.1 메인화면 레이아웃에 ListView 위젯 정의
-- 메인화면 레이아웃(예, activity_main.xml)에 GridView 위젯을 추가하고, XML 레이아웃 파일에 정의된 GridView 위젯을 Java 코드에서 참조하기 위하여 id 속성을 정의한다.
-- activity_main.xml
+#### 3.3.1 메인화면 레이아웃에 GridView 위젯 정의
+- 메인화면 레이아웃(예, activity\_main.xml)에 GridView 위젯을 추가하고, XML 레이아웃 파일에 정의된 GridView 위젯을 Java 코드에서 참조하기 위하여 id 속성을 정의한다.
+- activity\_main.xml
 
 	```xml
 	<?xml version="1.0" encoding="utf-8"?>
@@ -587,7 +587,7 @@ public class MainActivity extends AppCompatActivity {
 
 <a name="4.4"></a>
 ### 4.4 메인화면 레이아웃에 ListView 위젯 정의
-- [2.2.1 절](#2.2.1)에서와 설명한 방식과 동일하게 메인화면 레이아웃(activity_main.xml)에 ListView 위젯을 추가
+- [2.2.1 절](#2.2.1)에서와 설명한 방식과 동일하게 메인화면 레이아웃(activity\_main.xml)에 ListView 위젯을 추가
 
 <a name="4.5"></a>
 ### 4.5 어댑터 생성 및 연결
