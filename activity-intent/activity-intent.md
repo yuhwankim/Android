@@ -9,8 +9,8 @@ div.polaroid {
 # 액티비티와 인텐트
 ---
 ## 학습목표
-- 액티비티의 기본 개념 및 액티비티 라이프사이클을 이해한다.
-- 인턴트의 기본 개념을 이해하고, 이를 활용하여 액티비티 컴포넌트 간에 메시지를 주고 받는 방법을 실습한다.
+- 액티비티의 기본 개념 및 액티비티 수명주기를 이해한다.
+- 인텐트의 기본 개념을 이해하고, 이를 활용하여 액티비티 컴포넌트 간에 메시지를 주고 받는 방법을 실습한다.
 
 ---
 <a name="1"> </a>
@@ -42,8 +42,8 @@ div.polaroid {
 	```
 
 	- [참고] **R.java**파일
-		- 애플리케이션이 컴파일 될 때, 자동 생성
-		- res 디렉토리에 있는 모든 리소스의 리소스 ID 포함
+		- 애플리케이션이 컴파일 될 때, 자동 생성됨
+		- res 디렉토리에 있는 모든 리소스에 대한 리소스 ID 포함
 			- 형식: R.[리소스유형].[리소스_이름]
 			- 예
 				- R.layout.activity\_first
@@ -86,7 +86,7 @@ div.polaroid {
 ### 2.1 인텐트란?
 
 - **인텐트 (Intent)**는 일종의 메시지 객체입니다.
-- 이것을 사용해 **다른 앱 구성 요소**(액티비티, 서비스, 브로드캐스트 리시버)로부터
+- 이것을 사용해 **다른 앱 구성 요소**(액티비티, 서비스, 브로드캐스트 리시버)로
 작업을 요청할 수 있습니다.
 	- 액티비티 시작하기
 	- 서비스 시작하기
@@ -129,7 +129,7 @@ div.polaroid {
 	[ACTION\_MAIN](https://developer.android.com/reference/android/content/Intent.html#ACTION_MAIN) | 메인 진입점으로 시작
 	[ACTION\_CALL](https://developer.android.com/reference/android/content/Intent.html#ACTION_CALL) | 전화통화 수행
 	[ACTION\_DIAL](https://developer.android.com/reference/android/content/Intent.html#ACTION_DIAL) | 전화번호 누르는 화면을 표시
-- **데이터(Data)**- 작업에 필요한 데이터
+- **데이터(Data)**: 작업에 필요한 데이터
 	- 데이터는 [**URI**](https://ko.wikipedia.org/wiki/%ED%86%B5%ED%95%A9_%EC%9E%90%EC%9B%90_%EC%8B%9D%EB%B3%84%EC%9E%90) 형식으로 설정
 		- [참고] URI는 정보의 고유한 명칭으로 웹 주소를 나타내는 URL보다 더 상위의 개념
 	- 예 (작업, 데이터)
@@ -183,13 +183,13 @@ div.polaroid {
 - 인텐트는 액티비티 간에 데이터를 전달하는 도구로도 사용
 - **Extras**를 활용하여 이름과 값의 쌍으로된 정보를 전달
   - Extras에 값을 저장하는 메소드
-    - Intent **putExtra**(String name, int value)
-    - Intent **putExtra**(String name, String value)
-    - Intent **putExtra**(String name, boolean value)
+    	- Intent **putExtra**(String name, int value)
+    	- Intent **putExtra**(String name, String value)
+    	- Intent **putExtra**(String name, boolean value)
   - Extras에 저장된 값을 읽는 메소드
-    - int **getIntExtra**(String name, int defaultValue)
-    - String **getStringExtra**(String name)
-    - boolean **getBooleanExtra**(String name, boolean defaultValue)
+    	- int **getIntExtra**(String name, int defaultValue)
+    	- String **getStringExtra**(String name)
+    	- boolean **getBooleanExtra**(String name, boolean defaultValue)
 - 액티비티로 인수를 전달하고 계산된 결과를 돌려받기 위해서는 다음 메소드를 사용
   - public void **startActivityForResult**(Intent *intent*, int *requestCode*)
     	- 위 메소드를 이용하여 리턴값을 돌려 주는 액티비티 호출
@@ -202,7 +202,7 @@ div.polaroid {
      		- *data*: 호출된 액티비티의 수행결과가 Extras를 통해 전달된 인텐트 객체.
   - public void **setResult**(int *requestCode*, Intent *data*)
     	- 현재 액티비티를 띄운 액티비티로 응답을 보낼 때 사용
-     		 - *resultCode*: 호출한 액티비티로 전달될 실행결과
+     		 - *resultCode*: 호출한 액티비티로 전달될 실행결과코드
       		- *data*: 액티비티의 수행결과를 Extras를 통해 전달할 인텐트 객체.
 
   <div class="polaroid">

@@ -59,13 +59,10 @@
 		        edit.setText(msg);
 		    }
 		}
-		
 	```
 
-
-
 3. ThirdActivity 클래스의 다음 내용을 업데이트 한다.
-	- ThirdActivity 클래스에서 버튼이 클릭되면, 현재 화면의 **EditText** 객체에 입력된 값을 읽어와서, 새롭게 생성시킨 인텐트 객체의 **Extra**에 "**ResultString**" 키 값으로 저장한 후에, 이를 **setResult()** 메소드를 통해 ThirdActivity를 시작시킨 액티비티로 결과를 전달한다 .
+	- ThirdActivity 클래스에서 버튼이 클릭되면, 현재 화면의 **EditText** 객체에 입력된 값을 읽어와서, 새롭게 생성시킨 인텐트 객체의 **Extra**에 "**ResultString**" 키 값으로 저장한 후에, 이를 **setResult()** 메소드를 통해 ThirdActivity를 시작시킨 액티비티(FirstActivity)로 결과를 전달한다 .
 
 	```java
 	public class ThirdActivity extends AppCompatActivity {

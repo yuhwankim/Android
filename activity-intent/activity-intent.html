@@ -265,8 +265,8 @@ div.polaroid {
 <h2 id="toc_1">학습목표</h2>
 
 <ul>
-<li>액티비티의 기본 개념 및 액티비티 라이프사이클을 이해한다.</li>
-<li>인턴트의 기본 개념을 이해하고, 이를 활용하여 액티비티 컴포넌트 간에 메시지를 주고 받는 방법을 실습한다. </li>
+<li>액티비티의 기본 개념 및 액티비티 수명주기를 이해한다.</li>
+<li>인텐트의 기본 개념을 이해하고, 이를 활용하여 액티비티 컴포넌트 간에 메시지를 주고 받는 방법을 실습한다.</li>
 </ul>
 
 <hr>
@@ -315,8 +315,8 @@ div.polaroid {
 <li>[참고] <strong>R.java</strong>파일
 
 <ul>
-<li>애플리케이션이 컴파일 될 때, 자동 생성</li>
-<li>res 디렉토리에 있는 모든 리소스의 리소스 ID 포함
+<li>애플리케이션이 컴파일 될 때, 자동 생성됨</li>
+<li>res 디렉토리에 있는 모든 리소스에 대한 리소스 ID 포함
 
 <ul>
 <li>형식: R.[리소스유형].[리소스_이름]</li>
@@ -361,11 +361,9 @@ div.polaroid {
 
 <hr>
 
-<p><a name="practice1"></a></p>
+<p><a name="exercise1"></a></p>
 
-<h4 id="toc_6"><a href="practice1.html">[연습1] - 세 개의 액티비티로 구성된 앱 만들기</a></h4>
-
-<hr>
+<h4 id="toc_6"><a href="exercise1.html">[연습1] - 세 개의 액티비티로 구성된 앱 만들기</a></h4>
 
 <p><a name="2"> </a></p>
 
@@ -377,7 +375,7 @@ div.polaroid {
 
 <ul>
 <li><strong>인텐트 (Intent)</strong>는 일종의 메시지 객체입니다.</li>
-<li><p>이것을 사용해 <strong>다른 앱 구성 요소</strong>(액티비티, 서비스, 브로드캐스트 리시버)로부터
+<li><p>이것을 사용해 <strong>다른 앱 구성 요소</strong>(액티비티, 서비스, 브로드캐스트 리시버)로
 작업을 요청할 수 있습니다.</p>
 
 <ul>
@@ -400,26 +398,134 @@ div.polaroid {
 </div>
 
 <ul>
-<li><p><strong>명시적 인텐트 (Explicit Intent)</strong> </p>
+<li><p><strong>명시적 인텐트 (Explicit Intent)</strong></p>
 
 <ul>
-<li>시작할 구성요소의 이름을 인텐트 객체에 설정하고 이를 startActivity() 또는 startService()에 넘긴다.</li>
+<li>시작할 구성요소의 이름을 인텐트 객체에 설정하고 이를 <strong>startActivity()</strong> 또는 <strong>startService()</strong>에 넘긴다.</li>
 <li>보통 현재 앱 안에 있는 구성요소(예, 액티비티나 서비스)를 시작시킬 때 사용</li>
 </ul></li>
-<li><p><strong>암시적 인텐트 (Implicit Intent)</strong> </p>
+<li><p><strong>암시적 인텐트 (Implicit Intent)</strong></p>
 
 <ul>
-<li>시작할 구성요소의 이름을 지정하지 않고 일반적인 작업(예, 전화걸기, 지도보기 등)을 인텐트 객체에 설정하고 이를 startActivity()에 넘긴다.</li>
+<li>시작할 구성요소의 이름을 지정하지 않고 일반적인 <strong>작업</strong>(예, 전화걸기, 지도보기 등)을 인텐트 객체에 설정하고 이를 <strong>startActivity()</strong>에 넘긴다.</li>
 <li><p>안드로이드 시스템은 모든 앱을 검색하여 해당 인텐트와 일치하는 <strong>인텐트 필터</strong>를 찾고, 일치된 인텐트 필터를 포함한 앱 구성요소를 시작시킴</p>
 
 <ul>
-<li><strong>인텐트 필터</strong>란 해당 구성 요소가 수신하고자 하는 인텐트의 유형을 나타낸 것</li>
+<li><strong>인텐트 필터</strong>란 해당 구성요소가 수신하고자 하는 인텐트의 유형을 나타낸 것</li>
 </ul></li>
 <li><p>보통 다른 앱 안에 있는 구성요소를 구동하는데 사용된다.</p></li>
 </ul></li>
 </ul>
 
-<h3 id="toc_10">2.3 명시적 인텐트로 다른 액티비티 시작하기</h3>
+<p><a name="2.3"> </a>  </p>
+
+<h3 id="toc_10">2.3 인텐트 객체</h3>
+
+<ul>
+<li><a href="https://developer.android.com/reference/android/content/Intent.html">Intent</a> 객체에는 안드로이드 시스템이 어떤 구성요소를 시작할지 판별하는 데 필요한 정보가 담겨 있습니다.</li>
+<li><strong>컴포넌트 이름(Component Name)</strong>: 인텐트를 처리하는 타켓 컴포넌트 이름
+
+<ul>
+<li>선택항목이므로, 컴포넌트 이름이 지정되지 않으면 암시적 인텐트를 의미함<br></li>
+</ul></li>
+<li><p><strong>작업(Action)</strong>: 수행되어야할 작업을 나타내는 문자열</p>
+
+<table>
+<thead>
+<tr>
+<th>문자열 상수</th>
+<th>작업 내용</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="https://developer.android.com/reference/android/content/Intent.html#ACTION_VIEW">ACTION_VIEW</a></td>
+<td>사용자에게 데이터를 표시 (예, 사진 보기, 지도 보기)</td>
+</tr>
+<tr>
+<td><a href="https://developer.android.com/reference/android/content/Intent.html#ACTION_SEND">ACTION_SEND</a></td>
+<td>사용자가 다른 앱을 통해 공유할 수 있는 데이터를 보내기 (예, 메시지 전송, 이메일 전송)</td>
+</tr>
+<tr>
+<td><a href="https://developer.android.com/reference/android/content/Intent.html#ACTION_MAIN">ACTION_MAIN</a></td>
+<td>메인 진입점으로 시작</td>
+</tr>
+<tr>
+<td><a href="https://developer.android.com/reference/android/content/Intent.html#ACTION_CALL">ACTION_CALL</a></td>
+<td>전화통화 수행</td>
+</tr>
+<tr>
+<td><a href="https://developer.android.com/reference/android/content/Intent.html#ACTION_DIAL">ACTION_DIAL</a></td>
+<td>전화번호 누르는 화면을 표시</td>
+</tr>
+</tbody>
+</table></li>
+<li><p><strong>데이터(Data)</strong>: 작업에 필요한 데이터</p>
+
+<ul>
+<li>데이터는 <a href="https://ko.wikipedia.org/wiki/%ED%86%B5%ED%95%A9_%EC%9E%90%EC%9B%90_%EC%8B%9D%EB%B3%84%EC%9E%90"><strong>URI</strong></a> 형식으로 설정
+
+<ul>
+<li>[참고] URI는 정보의 고유한 명칭으로 웹 주소를 나타내는 URL보다 더 상위의 개념</li>
+</ul></li>
+<li><p>예 (작업, 데이터)</p>
+
+<table>
+<thead>
+<tr>
+<th>작업</th>
+<th>데이터</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ACTION_VIEW</td>
+<td><a href="http://www.google.com">http://www.google.com</a></td>
+<td><a href="http://www.google.com">http://www.google.com</a> 웹페이지를 표시</td>
+</tr>
+<tr>
+<td>ACTION_CALL</td>
+<td>tel:114</td>
+<td>114번 전화번호로 전화연결 시작</td>
+</tr>
+<tr>
+<td>ACTION_DIAL</td>
+<td>tel:114</td>
+<td>114번 전화번호로 전화걸기 화면을 표시</td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
+<li><p><strong>카테고리(Category)</strong>: 작업에 대한 추가적인 정보 제공</p>
+
+<table>
+<thead>
+<tr>
+<th>카테코리</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>CATEGORY_BROWSABLE</td>
+<td>대상 액티비티가 웹브라우저에 의해 시작되어서 이미지와 같은 데이터를 표시할 수 있다.</td>
+</tr>
+<tr>
+<td>CATEGORY_LAUNCHER</td>
+<td>이 액티비티가 작업의 최초 액티비티이며, 이것이 시스템의 애플리케이션 시작 관리자에 목록으로 게재되어 있다.</td>
+</tr>
+</tbody>
+</table></li>
+<li><p><strong>엑스트라(extra)</strong>: 요청한 작업을 수행하기 위해 필요한 추가 정보를 담고 있는 <strong>키-값</strong> 쌍의 데이터</p></li>
+</ul>
+
+<p><a name="2.4"> </a>  </p>
+
+<h3 id="toc_11">2.4 명시적 인텐트로 다른 액티비티 시작하기</h3>
 
 <ul>
 <li><p>명시적 인텐트로 다른 액티비티를 시작시키기 위해서는 <strong>startActivity()</strong> 메소드를 호출하고, 시작하고자 하는 액티비티를 설명하는 <strong>Intent</strong> 객체를 전달하면 됩니다.</p>
@@ -429,9 +535,166 @@ div.polaroid {
 </div></li>
 </ul>
 
-<p><a name="practice2"> </a></p>
+<hr>
 
-<h4 id="toc_11"><a href="practice2.html">[연습2] - FirstActivity에서 SecondActivity 시작시키기</a></h4>
+<p><a name="exercise2"> </a></p>
+
+<h4 id="toc_12"><a href="exercise2.html">[연습2] - FirstActivity에서 SecondActivity 시작시키기</a></h4>
+
+<p><a name="2.4"> </a>  </p>
+
+<h3 id="toc_13">2.5 암시적 인텐트로 다른 액티비티 시작하기</h3>
+
+<ul>
+<li><p>암시적 인텐트로 다른 액티비티를 시작시키기 위해서는 인텐트 안에 작업과 데이터를 지정해야 한다. 예를 들어 114 번호로 다이얼 작업을 수행할 수 있는 액티비티를 실행시키기 위해서는 다음과 같이 인텐트를 생성하고 이를 <strong>startActivity()</strong> 메소드에 전달하면 된다.</p>
+
+<div class="polaroid">
+    <img src="figure/implicit-intent.png">
+</div></li>
+</ul>
+
+<h4 id="toc_14"><a href="exercise3.html">[연습3] - FirstActivity에서 암시적 인텐트로 다른 액티비티 시작시키기</a></h4>
+
+<h3 id="toc_15">2.6 암시적 인텐트 수신 (인텐트 필터)</h3>
+
+<ul>
+<li>본인의 앱이 수신할 수 있는 암시적 인텐트가 어느 것인지 알리려면, 각 앱 구성 요소에 대한 하나 이상의 인텐트 필터를 <strong>&lt;intent-filter&gt;</strong> 요소로 매니페스트 파일에 선언합니다.</li>
+<li>각 인텐트 필터가 인텐트의 <strong>작업</strong>, <strong>데이터</strong> 및 <strong>카테고리</strong>를 근거로 어느 유형의 인텐트를 수신할 지를 결정한다.</li>
+</ul>
+
+<h4 id="toc_16"><a href="exercise4.html">[연습4] - SecondActivity가 ACTION_DIAL 암시적 인텐트를 수신하도록 만들기</a></h4>
+
+<h3 id="toc_17">2.7 액티비티 간의 통신</h3>
+
+<ul>
+<li>인텐트는 액티비티 간에 데이터를 전달하는 도구로도 사용</li>
+<li><strong>Extras</strong>를 활용하여 이름과 값의 쌍으로된 정보를 전달
+
+<ul>
+<li>Extras에 값을 저장하는 메소드
+
+<ul>
+<li>Intent <strong>putExtra</strong>(String name, int value)</li>
+<li>Intent <strong>putExtra</strong>(String name, String value)</li>
+<li>Intent <strong>putExtra</strong>(String name, boolean value)</li>
+</ul></li>
+<li>Extras에 저장된 값을 읽는 메소드
+
+<ul>
+<li>int <strong>getIntExtra</strong>(String name, int defaultValue)</li>
+<li>String <strong>getStringExtra</strong>(String name)</li>
+<li>boolean <strong>getBooleanExtra</strong>(String name, boolean defaultValue)</li>
+</ul></li>
+</ul></li>
+<li><p>액티비티로 인수를 전달하고 계산된 결과를 돌려받기 위해서는 다음 메소드를 사용</p>
+
+<ul>
+<li>public void <strong>startActivityForResult</strong>(Intent <em>intent</em>, int <em>requestCode</em>)
+
+<ul>
+<li>위 메소드를 이용하여 리턴값을 돌려 주는 액티비티 호출
+
+<ul>
+<li><em>intent</em>: 시작 시킬 액티비티나 작업을 기술한 인텐트</li>
+<li><em>requestCode</em>: 호출한 대상을 나타내는 식별자</li>
+</ul></li>
+</ul></li>
+<li>protected void <strong>onActivityResult</strong>(int <em>requestCode</em>, int <em>resultCode</em>, Intent <em>data</em>)
+
+<ul>
+<li>호출된 액티비티가 종료되면 호출되는 메소드
+
+<ul>
+<li><em>requestCode</em>:  액티비티를 호출할 때 전달한 요청코드</li>
+<li><em>resultCode</em>: 액티비티의 실행결과</li>
+<li><em>data</em>: 호출된 액티비티의 수행결과가 Extras를 통해 전달된 인텐트 객체.</li>
+</ul></li>
+</ul></li>
+<li>public void <strong>setResult</strong>(int <em>requestCode</em>, Intent <em>data</em>)
+
+<ul>
+<li>현재 액티비티를 띄운 액티비티로 응답을 보낼 때 사용
+
+<ul>
+<li><em>resultCode</em>: 호출한 액티비티로 전달될 실행결과코드</li>
+<li><em>data</em>: 액티비티의 수행결과를 Extras를 통해 전달할 인텐트 객체.</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<div class="polaroid">
+        <img src="figure/activity-communication.png">
+</div></li>
+</ul>
+
+<h4 id="toc_18"><a href="exercise5.html">[연습5] - FirstActivity에서 ThirdActivity로 데이터 전송 및 수신</a></h4>
+
+<h4 id="toc_19"><a href="exercise6.html">[연습6] - FirstActivity에서 시작시킨 ThirdActivity의 수행결과를 수신하기</a></h4>
+
+<h3 id="toc_20">2.8 액티비티 수명주기</h3>
+
+<div class="polaroid">
+    <img src="figure/activity-lifecycle.png">
+</div>
+
+<ul>
+<li>한 액티비티의 수명은 <strong>onCreate</strong>() 호출과 <strong>onDestroy</strong>() 호출 사이에 있습니다. 
+
+<ul>
+<li>onCreate()에서 액티비티가 생성되어 레이아웃  설정 등을 수행한 다음에, onDestroy()가 호출되는 시점에 사용하고 있는 리소스를 모두 해제하고 생을 마감합니다.</li>
+</ul></li>
+<li><p>액티비티의 화면이 눈에 보이게 되는  Visibility는 <strong>onStart</strong>()에서 <strong>onStop</strong>() 호출 사이에 있습니다.</p>
+
+<ul>
+<li>이 기간 중에는 사용자가 액티비티를 화면에서 보고 이와 상호작용할 수 있습니다. 예컨대 onStop()이 호출되어 새 액티비티가 시작되면 이 액티비티는 더 이상 표시되지 않게 됩니다. 시스템은 액티비티의 전체 수명 내내 onStart() 및 onStop()을 여러 번 호출할 수 있으며, 이때 액티비티는 사용자에게 표시되었다 숨겨지는 상태를 오가게 됩니다.</li>
+</ul></li>
+<li><p>액티비티가 foreground에서 동작하는 구간은 <strong>onResume</strong>()에서 <strong>onPause</strong>() 호출 사이를 말합니다.</p>
+
+<ul>
+<li>이 기간 중에는 이 액티비티가 화면에서 다른 모든 액티비티 앞에 표시되며 사용자 입력도 여기에 집중됩니다. 액티비티는 전경에 나타났다 숨겨지는 전환을 자주 반복할 수 있습니다. 예를 들어 , 기기가 절전 모드에 들어가거나 대화 상자가 나타나면 onPause()가 호출됩니다.</li>
+</ul></li>
+</ul>
+
+<h4 id="toc_21">2.8.1 수명주기 콜백 메소드</h4>
+
+<ul>
+<li>액티비티가 생성되면서 해제될 때까지 액비티티의 상태에 따라서 불려지는 메소드를 <strong>라이프사이클 콜백 메소드</strong>라 부르고, 애플리케이션 개발자는 필요한 경우에 해당 콜백 메소드를 재정의하여 필요한 일을 수행하게 할 수 있습니다.</li>
+<li>주요 콜백 메소드
+
+<ul>
+<li>onCreate(): 반드시 구현해야 하는 메소드로서 액티비티가 생성되면서 호출됨
+
+<ul>
+<li>가장 중요한 작업은 화면을 setContentView()를 호출하여 설정하는 것</li>
+</ul></li>
+<li>onPause(): 사용자가 액티비티를 떠나고 있을 때, 호출됨
+
+<ul>
+<li>액티비티가 완전히 소멸되는 것은 아니지만 사용자가 돌아오지 않을 수 있기 때문에 그 동안 이루어졌던 변경사항을 저장함</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h4 id="toc_22">2.8.2 액티비티 전환시 수명주기 콜백 메소드 호출 순서</h4>
+
+<ol>
+<li>FirstActivity에서 SecondActivity 시작 
+
+<ol>
+<li>FirstActivity의 onPause()</li>
+<li>SecondActivity의 onCreate(),  3. onStart(), onResume()</li>
+<li>FirstActivity의 onStop()</li>
+</ol></li>
+<li>단말기의 뒤로가기 버튼 누름
+
+<ol>
+<li>SecondActivity의 onPause()</li>
+<li>FirstActivity의 onRestart(), onStart(), onResume()</li>
+<li>SecondActivity의 onStop(), onDestroy()</li>
+</ol></li>
+</ol>
+
+<h4 id="toc_23"><a href="exercise7.html">[연습7] - 수명주기 콜백 메소드 호출 순서 살펴보기</a></h4>
 
 
 

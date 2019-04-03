@@ -313,13 +313,11 @@ pre[class*="language-"] {
         edit.setText(msg);
     }
 }</code></pre></div></li>
-</ul>
-
-<div><pre><code class="language-none"></code></pre></div></li>
+</ul></li>
 <li><p>ThirdActivity 클래스의 다음 내용을 업데이트 한다.</p>
 
 <ul>
-<li>ThirdActivity 클래스에서 버튼이 클릭되면, 현재 화면의 <strong>EditText</strong> 객체에 입력된 값을 읽어와서, 새롭게 생성시킨 인텐트 객체의 <strong>Extra</strong>에 <q><strong>ResultString</strong></q> 키 값으로 저장한 후에, 이를 <strong>setResult()</strong> 메소드를 통해 ThirdActivity를 시작시킨 액티비티로 결과를 전달한다 .</li>
+<li>ThirdActivity 클래스에서 버튼이 클릭되면, 현재 화면의 <strong>EditText</strong> 객체에 입력된 값을 읽어와서, 새롭게 생성시킨 인텐트 객체의 <strong>Extra</strong>에 <q><strong>ResultString</strong></q> 키 값으로 저장한 후에, 이를 <strong>setResult()</strong> 메소드를 통해 ThirdActivity를 시작시킨 액티비티(FirstActivity)로 결과를 전달한다 .</li>
 </ul>
 
 <div><pre><code class="language-java">public class ThirdActivity extends AppCompatActivity {

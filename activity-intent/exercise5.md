@@ -44,7 +44,7 @@
 3. FirstActivity 클래스에서 다음 코드를 추가하시오
 	- "**세번째 액티비티에 데이터 전달**" 버튼이 클릭 되었을 때,
 		1. 세번째 액티비티를 시작시키기 위한 명시적 인텐트 객체를 생성 
-		2. id가 *edit\_data*인 EditText 객체에 입력된 문자열 값을 가져와서 이를 앞에서 생성한 인텐트 객체의 Extra에 설정 (키 값은 "dataFromFirstActivity"로 지정)
+		2. id가 *edit\_data*인 EditText 객체에 입력된 문자열 값을 가져와서 이를 앞에서 생성한 인텐트 객체의 Extra에 설정 (이름은 "dataFromFirstActivity"로 지정)
 		3. startActivity()의 파라미터로 인텐트 객체 전달 
 
 	```java
