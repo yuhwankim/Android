@@ -179,7 +179,9 @@ div.polaroid {
 
 #### [[연습4] - SecondActivity가 ACTION\_DIAL 암시적 인텐트를 수신하도록 만들기](exercise4.html)
 
-### 2.7 액티비티 간의 통신
+---
+<a name="3"> </a>
+## 3 액티비티 간의 통신
 - 인텐트는 액티비티 간에 데이터를 전달하는 도구로도 사용
 - **Extras**를 활용하여 이름과 값의 쌍으로된 정보를 전달
   - Extras에 값을 저장하는 메소드
@@ -212,8 +214,11 @@ div.polaroid {
 #### [[연습5] - FirstActivity에서 ThirdActivity로 데이터 전송 및 수신](exercise5.html)
 #### [[연습6] - FirstActivity에서 시작시킨 ThirdActivity의 수행결과를 수신하기](exercise6.html)
 
-### 2.8 액티비티 수명주기
+---
+<a name="4"> </a>
+## 4 액티비티 수명주기
 
+### 4.1 개요
 <div class="polaroid">
     <img src="figure/activity-lifecycle.png">
 </div>
@@ -226,7 +231,7 @@ div.polaroid {
 - 액티비티가 foreground에서 동작하는 구간은 **onResume**()에서 **onPause**() 호출 사이를 말합니다.
 	- 이 기간 중에는 이 액티비티가 화면에서 다른 모든 액티비티 앞에 표시되며 사용자 입력도 여기에 집중됩니다. 액티비티는 전경에 나타났다 숨겨지는 전환을 자주 반복할 수 있습니다. 예를 들어 , 기기가 절전 모드에 들어가거나 대화 상자가 나타나면 onPause()가 호출됩니다.
 
-#### 2.8.1 수명주기 콜백 메소드
+### 4.2 수명주기 콜백 메소드
 - 액티비티가 생성되면서 해제될 때까지 액비티티의 상태에 따라서 불려지는 메소드를 **라이프사이클 콜백 메소드**라 부르고, 애플리케이션 개발자는 필요한 경우에 해당 콜백 메소드를 재정의하여 필요한 일을 수행하게 할 수 있습니다.
 - 주요 콜백 메소드
 	- onCreate(): 반드시 구현해야 하는 메소드로서 액티비티가 생성되면서 호출됨
@@ -234,7 +239,7 @@ div.polaroid {
 	- onPause(): 사용자가 액티비티를 떠나고 있을 때, 호출됨
 		- 액티비티가 완전히 소멸되는 것은 아니지만 사용자가 돌아오지 않을 수 있기 때문에 그 동안 이루어졌던 변경사항을 저장함
 
-#### 2.8.2 액티비티 전환시 수명주기 콜백 메소드 호출 순서
+#### 4.2.1 액티비티 전환시 수명주기 콜백 메소드 호출 순서
 1. FirstActivity에서 SecondActivity 시작 
 	1. FirstActivity의 onPause()
 	2. SecondActivity의 onCreate(), 	3. onStart(), onResume()
