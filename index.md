@@ -22,11 +22,11 @@
 - [어댑터뷰](adapter-view/adapterview.html)
 - [[실습3]](adapter-view/adapterview-practice.html)
 
-## 5주 - 액티비티와 네비게이션
-- [액티비티](activity-navigation/activity.pdf) 
-- [인텐트](activity-navigation/intent.pdf) 
-- [액션바](activity-navigation/actionbar.pdf) 
-- [[실습4]](activity-navigation/activity-navigation-practice.html)
+## 5주 - 액티비티와 인텐트
+- [액티비티](activity-intent/activity-intent.html#1) 
+- [인텐트](activity-intent/activity-intent.html#2) 
+- [액티비티 간의 통신](activity-intent/activity-intent.html#3) 
+- [액티비티 수명주기](activity-intent/activity-intent.html#4) 
 
 ## 6주 - 프래그먼트
 - [프그먼트 기본](fragment/fragment-basics.pdf) 
