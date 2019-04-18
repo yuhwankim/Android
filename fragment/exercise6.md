@@ -43,7 +43,7 @@
 
 	```java
 	public class MainActivity extends AppCompatActivity 
-									implements TitlesFragment.OnTitleSelectedListener{{
+									implements TitlesFragment.OnTitleSelectedListener{
 	
 	    @Override
 	    protected void onCreate(Bundle savedInstanceState) {
