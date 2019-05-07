@@ -2,6 +2,7 @@ package com.example.kwanwoo.fragmentexample;
 
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -19,9 +20,6 @@ public class TitlesFragment extends Fragment {
 
     int mCurCheckPosition = -1;
 
-    public interface OnTitleSelectedListener {
-        public void onTitleSelected(int i);
-    }
 
     public TitlesFragment() {
         // Required empty public constructor
@@ -31,23 +29,39 @@ public class TitlesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = (View)inflater.inflate(R.layout.fragment_titles, container, false);
-        ListView lv = (ListView)rootView.findViewById(R.id.listview);
-        lv.setAdapter(new ArrayAdapter<String>(getActivity(),
+        View rootView = inflater.inflate(R.layout.fragment_titles, container, false);
+        ListView listView = rootView.findViewById(R.id.listview);
+        listView.setAdapter(new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_activated_1, Shakespeare.TITLES));
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                mCurCheckPosition = i;
-                Activity activity = getActivity();
-                ((OnTitleSelectedListener)activity).onTitleSelected(i);
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                mCurCheckPosition = position;
+                //listener.onTitleSelected(position);
+                ((MainActivity)getActivity()).onTitleSelected(position);
             }
         });
-        lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+
+        listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         return rootView;
     }
 
-    @Override
+    public interface OnTitleSelectedListener {
+        public void onTitleSelected(int i);
+    }
+//
+//    OnTitleSelectedListener listener;
+//
+//    @Override
+//    public void onAttach(Context context) {
+//        super.onAttach(context);
+//
+//        if (context instanceof  OnTitleSelectedListener) {
+//            listener = (OnTitleSelectedListener)context;
+//        }
+//    }
+
+ /*   @Override
     public void onViewStateRestored(Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
         if (savedInstanceState != null) {
@@ -67,6 +81,6 @@ public class TitlesFragment extends Fragment {
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt("curChoice", mCurCheckPosition);
-    }
+    }*/
 
 }
