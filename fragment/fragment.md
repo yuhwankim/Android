@@ -178,7 +178,7 @@ div.polaroid {
 
 	<img src="figure/titlesfragment.png" width=300>
 
-#### [[연습4] - 리스트뷰를 포함한 TitlesFragment 정의하기](#exercise4.html) 
+#### [[연습4] - 리스트뷰를 포함한 TitlesFragment 정의하기](exercise4.html) 
 
 ---
 
@@ -204,9 +204,9 @@ div.polaroid {
 	방법2 | 정의된 인터페이스를 구현하는 모든 Activity와 통신 가능 | 다소 복잡한 구조
 
 	
-#### [[연습5] - 프래그먼트-액티비티 통신 방법 (액티비티에서 직접 구현된 메소드 호출)](#exercise5.html)
+#### [[연습5] - 프래그먼트-액티비티 통신 방법 (액티비티에서 직접 구현된 메소드 호출)](exercise5.html)
 
-#### [[연습6] - 프래그먼트-액티비티 통신 방법 (인터페이스를 구현한 액티비티를 인터페이스로 접근)](#exercise6.html)
+#### [[연습6] - 프래그먼트-액티비티 통신 방법 (인터페이스를 구현한 액티비티를 인터페이스로 접근)](exercise6.html)
 		   
 
 ### 3.2 태블릿용 화면 레이아웃 추가
@@ -214,7 +214,7 @@ div.polaroid {
 	
 	![](figure/layout-large.png)
 
-#### [[연습7]- 태블릿용 화면 레이아웃 추가하기](#exercise7.html) 
+#### [[연습7]- 태블릿용 화면 레이아웃 추가하기](exercise7.html) 
 
  
 ### 3.3 DetailsFragment 구현
@@ -224,7 +224,7 @@ div.polaroid {
 - TitlesFragment에서 리스트뷰 항목 선택 번호를 MainActivity로 전달하였으므로, MainActivity에서는 전달받은 항목 선택 번호를 다시 DetailsFragment로 넘긴다. 
 
 
-#### [[연습8] - 선택된 항목의 상세정보를 보여주는 DetailsFragment 추가하기](#exercise8.html)
+#### [[연습8] - 선택된 항목의 상세정보를 보여주는 DetailsFragment 추가하기](exercise8.html)
 
 
 ### 3.4 스마트폰용 **TitlesFragment**와 **DetailsFragment**을 스마트폰용에서 재사용
