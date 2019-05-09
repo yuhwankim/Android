@@ -171,6 +171,9 @@ div.polaroid {
 
 	<img src="figure/communication.png">	 
 
+- **예제 프로젝트 소스**
+	https://github.com/kwanulee/Android/tree/master/examples/TabletPhoneFragment
+
 ---
 ### 3.1 TitlesFragment 구현
 -  제목 목록을 ListView로 보여주는 TitlesFragment를 구현한다.
