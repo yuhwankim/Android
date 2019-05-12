@@ -50,7 +50,7 @@
 ## 2. Internal Storage 실습
 * 옵션 메뉴 아이템 중 *Internal Storage*가 선택된 상태에서
 * 메인 화면의 *EditText* 창에 임의의 타이틀 텍스트를 입력하고, **SAVE** 버튼을 누르면, 앱 내부의 지정된 위치 (**/data/data/패키지명/files/**)에 있는 여러분이 지정한 이름의 파일에 입력된 텍스트를 저장합니다. **단 저장 시, 파일에 입력된 내용을 덧붙이는 방식으로 저장합니다.**
-* **[Tool->Android->Android Device Monitor]**를 실행시켜서, *FileExplorer* 탭을 열어 해당 파일이 생성되었는 지 확인합니다. (주의 **API level 23** 이하의 디바이스에서 앱을 실행해야 합니다.)
+* **Android Studio**의 좌측 하단에 있는 **Device File Explorer** 탭을 열어 해당 파일이 생성되었는 지 확인합니다. 
 * 메인 화면의 **LOAD** 버튼을 누르면 해당 파일에서 데이터를 읽어서 결과를 보여는 *TextView* 창에 출력해 줍니다. 
 [다음 그림은 **LOAD** 버튼을 누른 후 저장된 파일의 내용을 출력한 결과임]
 
@@ -61,6 +61,6 @@
 ## 3.  External Storage 실습
 * 옵션 메뉴 아이템 중 *External Storage*가 선택된 상태에서
 * 메인 화면의 *EditText* 창에 임의의 타이틀 텍스트를 입력하고, **SAVE** 버튼을 누르면, 외부저장소의 위치(**sdcard/**)에 있는 여러분이 지정한 이름의 파일에 입력된 텍스트를 저장합니다. 단 저장 시, 파일에 입력된 내용을 덧붙이는 방식으로 저장합니다.
-* **[Tool->Android->Android Device Monitor]**를 실행시켜서, **FileExplorer** 탭을 열어 해당 파일이 생성되었는 지 확인합니다.
+* **Android Studio**의 좌측 하단에 있는 **Device File Explorer** 탭을 열어 해당 파일이 생성되었는 지 확인합니다. 
 * 메인 화면의 **LOAD** 버튼을 누르면 해당 파일에서 데이터를 읽어서 결과를 보여는 *TextView* 창에 출력해 줍니다. [4번 결과와 유사함]
 * 참조코드: https://github.com/kwanulee/Android/blob/master/examples/FileTest/app/src/main/java/com/example/kwanwoo/filetest/MainActivity.java#L183-L275
