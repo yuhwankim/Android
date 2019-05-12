@@ -57,8 +57,10 @@ package com.example.kwanwoo.filetest;
 [https://github.com/kwanulee/Android/blob/master/examples/FileTest/app/src/main/java/com/example/kwanwoo/filetest/MainActivity.java#L121-L136](https://github.com/kwanulee/Android/blob/master/examples/FileTest/app/src/main/java/com/example/kwanwoo/filetest/MainActivity.java#L121-L136)
 
 - "myfile.txt"는 디바이스의 **data/data/com.example.kwanwoo.filetest/files/** 에 위치
-	- **Android Studio**의 [**Tool->Android->Android Device Monitor**]를 실행시키고, **FileExplorer** 탭을 열어 해당 파일이 생성되었는 지 확인 가능합니다.
-	- [**주의**] 실행중인 에뮬레이터의 **API level이 24** 이상인 경우에는 **FileExplorer** 탭에서 해당 파일들 탐색하지 못할 수 있는데, 이 경우에는 **API level 23 이하의 에뮬레이터를 사용**하면 됩니다. 
+	- **Android Studio**의 좌측 하단에 있는 **Device File Explorer** 탭을 열어 해당 파일이 생성되었는 지 확인 가능합니다.
+	
+		<img src="figure/device-file-explorer.png">
+	
 
 
 
@@ -162,7 +164,7 @@ package com.example.kwanwoo.filetest;
     - static String Environment.getExternalStorageState()
         + 반환값
             - MEDIA\_MOUNTED: 미디어가 읽기/쓰기 권한으로 마운트 됨
-            - MEDIA\_MOUNTED_READ_ONLY: 미디어가 읽기 권한으로 마운트 됨
+            - MEDIA\_MOUNTED\_READ\_ONLY: 미디어가 읽기 권한으로 마운트 됨
             - MEDIA\_REMOVED: 미디어가 존재하지 않음
             - MEDIA\_UNMOUNTED: 미디어가 마운트 안됨
 	
@@ -255,7 +257,7 @@ package com.example.kwanwoo.filetest;
 
 ---
 
-#### 다른 앱과 공유되는 파일 입출력
+#### 3.4.1 다른 앱과 공유되는 파일 입출력
 * 공유 디렉토리 (Music, Pictures, Ringtones) 접근하기
     - [static File Environment.getExternalStoragePublicDirectory(String type)](https://developer.android.com/reference/android/os/Environment.html#getExternalStoragePublicDirectory(java.lang.String))
         + Type
@@ -278,11 +280,17 @@ package com.example.kwanwoo.filetest;
 
 ---
 
-#### 앱 전용 파일 입출력
+#### 3.4.2 앱 전용 파일 입출력
 * 외부 저장소의 앱 전용(private) 저장소 디렉토리 접근하기
     - [File getExternalFilesDir(String type)](https://developer.android.com/reference/android/content/Context.html#getExternalFilesDir(java.lang.String))    [[Context](https://developer.android.com/reference/android/content/Context.html) 클래스 메소드]
         + Type
-            - DIRECTORY\_MUSIC, DIRECTORY\_PODCASTS, DIRECTORY\_RINGTONES, DIRECTORY\_ALARMS, DIRECTORY\_NOTIFICATIONS, DIRECTORY\_PICTURES, or DIRECTORY\_MOVIES 등
+            - DIRECTORY\_MUSIC 
+            - DIRECTORY\_PODCASTS
+            - DIRECTORY\_RINGTONES
+            - DIRECTORY\_ALARMS
+            - DIRECTORY\_NOTIFICATIONS
+            - DIRECTORY\_PICTURES
+            - DIRECTORY\_MOVIES 등
         + 반환값: 외부저장소의 Android/data/패키지명/files 디렉토리 아래의 지정된 타입의 서브 디렉토리
             - (예,sdcard/Android/data/com.example.kwanwoo.filetest/files/Download)
 

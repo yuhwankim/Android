@@ -362,11 +362,12 @@ FileInputStream openFileInput (String name)</code></pre></div>
 <p><a href="https://github.com/kwanulee/Android/blob/master/examples/FileTest/app/src/main/java/com/example/kwanwoo/filetest/MainActivity.java#L121-L136">https://github.com/kwanulee/Android/blob/master/examples/FileTest/app/src/main/java/com/example/kwanwoo/filetest/MainActivity.java#L121-L136</a></p>
 
 <ul>
-<li><q>myfile.txt</q>는 디바이스의 <strong>data/data/com.example.kwanwoo.filetest/files/</strong> 에 위치
+<li><p><q>myfile.txt</q>는 디바이스의 <strong>data/data/com.example.kwanwoo.filetest/files/</strong> 에 위치</p>
 
 <ul>
-<li><strong>Android Studio</strong>의 [<strong>Tool-&gt;Android-&gt;Android Device Monitor</strong>]를 실행시키고, <strong>FileExplorer</strong> 탭을 열어 해당 파일이 생성되었는 지 확인 가능합니다.</li>
-<li>[<strong>주의</strong>] 실행중인 에뮬레이터의 <strong>API level이 24</strong> 이상인 경우에는 <strong>FileExplorer</strong> 탭에서 해당 파일들 탐색하지 못할 수 있는데, 이 경우에는 <strong>API level 23 이하의 에뮬레이터를 사용</strong>하면 됩니다. </li>
+<li><p><strong>Android Studio</strong>의 좌측 하단에 있는 <strong>Device File Explorer</strong> 탭을 열어 해당 파일이 생성되었는 지 확인 가능합니다.</p>
+
+<p><img src="figure/device-file-explorer.png"></p></li>
 </ul></li>
 </ul>
 
@@ -485,7 +486,7 @@ FileInputStream openFileInput (String name)</code></pre></div>
 
 <ul>
 <li>MEDIA_MOUNTED: 미디어가 읽기/쓰기 권한으로 마운트 됨</li>
-<li>MEDIA_MOUNTED<u>READ</u>ONLY: 미디어가 읽기 권한으로 마운트 됨</li>
+<li>MEDIA_MOUNTED_READ_ONLY: 미디어가 읽기 권한으로 마운트 됨</li>
 <li>MEDIA_REMOVED: 미디어가 존재하지 않음</li>
 <li>MEDIA_UNMOUNTED: 미디어가 마운트 안됨</li>
 </ul></li>
@@ -589,7 +590,7 @@ final int REQUEST_SAVETO_EXTERNAL_STORAGE = 1;
 
 <hr>
 
-<h4 id="toc_10">다른 앱과 공유되는 파일 입출력</h4>
+<h4 id="toc_10">3.4.1 다른 앱과 공유되는 파일 입출력</h4>
 
 <ul>
 <li>공유 디렉토리 (Music, Pictures, Ringtones) 접근하기
@@ -622,7 +623,7 @@ final int REQUEST_SAVETO_EXTERNAL_STORAGE = 1;
 
 <hr>
 
-<h4 id="toc_11">앱 전용 파일 입출력</h4>
+<h4 id="toc_11">3.4.2 앱 전용 파일 입출력</h4>
 
 <ul>
 <li>외부 저장소의 앱 전용(private) 저장소 디렉토리 접근하기
@@ -634,7 +635,13 @@ final int REQUEST_SAVETO_EXTERNAL_STORAGE = 1;
 <li>Type
 
 <ul>
-<li>DIRECTORY_MUSIC, DIRECTORY_PODCASTS, DIRECTORY_RINGTONES, DIRECTORY_ALARMS, DIRECTORY_NOTIFICATIONS, DIRECTORY_PICTURES, or DIRECTORY_MOVIES 등</li>
+<li>DIRECTORY_MUSIC </li>
+<li>DIRECTORY_PODCASTS</li>
+<li>DIRECTORY_RINGTONES</li>
+<li>DIRECTORY_ALARMS</li>
+<li>DIRECTORY_NOTIFICATIONS</li>
+<li>DIRECTORY_PICTURES</li>
+<li>DIRECTORY_MOVIES 등</li>
 </ul></li>
 <li>반환값: 외부저장소의 Android/data/패키지명/files 디렉토리 아래의 지정된 타입의 서브 디렉토리
 
