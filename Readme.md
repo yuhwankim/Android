@@ -35,6 +35,7 @@
 ## 7주 - 데이터 저장 및 관리 1
 - [설정](data-management/sharedpreferences.html) 
 - [파일](data-management/file.html) 
+- [앱바와 옵션메뉴](activity-navigation/actionbar.html)
 - [[실습5]](data-management/datamanagement_lab.html)
 
 ## 8주 
