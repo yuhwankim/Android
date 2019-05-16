@@ -8,7 +8,7 @@
 <img src="figure/data-storage-lab1.png" width=400px>
 
 ### 나. [옵션메뉴 실습] 
-액션바의 옵션 메뉴를 누르면 다음과 같이 2개의 메뉴가 나오고, 이중 하나만 선택되도록 하기 위해 메뉴 리소스의 메뉴 아이템을 <group> 태그로 묶고, **android:checkableBehavior** 의 값을 "single"로 설정하라.
+액션바의 옵션 메뉴를 누르면 다음과 같이 2개의 메뉴가 나오고, 이중 하나만 선택되도록 하기 위해 메뉴 리소스의 메뉴 아이템을 **\<group\>** 태그로 묶고, **android:checkableBehavior** 의 값을 "*single*"로 설정하라.
 
 <img src="figure/data-storage-lab2.png" width=200px>
 
