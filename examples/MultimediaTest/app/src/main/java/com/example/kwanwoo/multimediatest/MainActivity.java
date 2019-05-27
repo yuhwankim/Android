@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.net.Uri;
@@ -242,6 +243,24 @@ public class MainActivity extends AppCompatActivity {
         mMediaPlayer.setDataSource(getApplicationContext(), uri);
         mMediaPlayer.prepare();
         mMediaPlayer.start();
+    }
+
+    private void playAudioByURL(String url) throws Exception {
+        killMediaPlayer();
+        try {
+            mMediaPlayer = new MediaPlayer();
+            mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+            mMediaPlayer.setDataSource(url);
+            mMediaPlayer.prepare();
+            mMediaPlayer.start();
+            Log.i(TAG, "url="+url);
+        } catch (IllegalArgumentException e) {
+            Log.i(TAG, "IllegalArgumentException");
+            Toast.makeText(this, "IllegalArgumentException", Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            Log.i(TAG, "IOException:"+e.getMessage());
+            Toast.makeText(this, "IOException", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void startAudioRec()  {
